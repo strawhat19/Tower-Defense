@@ -6,29 +6,28 @@ using System.Collections.Generic;
 public class Turret : MonoBehaviour {
     private Transform target;
     private float fireCooldown = 0.0f;
-    // [SerializeField] private LayerMask enemyMask;
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
-    public float range = 3.5f;
+    private float range = 1.0f;
     public float cost = 100.0f;
     public float rateOfFire = 1.0f;
     public float damageMin = 15.0f;
     public float damageMax = 25.0f;
 
-    public Transform finishLine;
+    private Transform finishLine;
     public GameObject projectile;
     public AudioSource shootSound;
     public Transform barrelOfTheGun;
 
     void Start() {
-        // Adjust the range of the collider
+        GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
+        if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
         CircleCollider2D collider = gameObject.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
         collider.radius = range;
     }
 
     void Update() {
-        // Always find the closest target to the finish line
         FindTarget();
 
         if (target != null) {
@@ -54,7 +53,8 @@ public class Turret : MonoBehaviour {
     private void RotateTowardsTarget() {
         if (target == null) return;
         Vector2 direction = (target.position - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; // Adjusted to face the correct direction
+        // Adjusted to face the correct direction
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         transform.rotation = rotation;
     }
@@ -65,10 +65,8 @@ public class Turret : MonoBehaviour {
             Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
                 float damage = Random.Range(damageMin, damageMax);
+                if (shootSound != null) shootSound.Play();
                 proj.Seek(target, damage);
-            }
-            if (shootSound != null) {
-                shootSound.Play(); // Play the shooting sound
             }
         }
     }
@@ -78,7 +76,8 @@ public class Turret : MonoBehaviour {
         float shortestDistance = Mathf.Infinity;
 
         foreach (GameObject enemy in enemiesInRange) {
-            if (enemy == null || !enemy.activeInHierarchy) continue; // Skip destroyed or inactive enemies
+            // Skip destroyed or inactive enemies
+            if (enemy == null || !enemy.activeInHierarchy) continue;
             float distanceToFinishLine = Vector2.Distance(enemy.transform.position, finishLine.position);
             if (distanceToFinishLine < shortestDistance) {
                 shortestDistance = distanceToFinishLine;
@@ -101,8 +100,12 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmosSelected() {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, range);
+    private void OnDrawGizmos() {
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        if (collider != null) {
+            Handles.color = Color.cyan;
+            float colliderRange = (float)collider.radius / 3.33f;
+            Handles.DrawWireDisc(transform.position, Vector3.forward, colliderRange);
+        }
     }
 }

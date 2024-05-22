@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour {
     
     public void TakeDamage(float damage) {
         // Debug.Log(currentHealth + " - " + damage + " Dmg = " + (currentHealth - damage));
+        TriggerHitAnimation();
         currentHealth -= damage;
         if (damageText != null) {
             damageText.text = $"- {GlobalData.RemoveDotZeroZero(damage.ToString("F2"))}";

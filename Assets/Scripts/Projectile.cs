@@ -35,11 +35,12 @@ public class Projectile : MonoBehaviour {
     }
 
     void HitTarget() {
-        Enemy targetSettings = target.GetComponent<Enemy>();
+        Enemy enemySettings = target.GetComponent<Enemy>();
         // Logic for what happens when the projectile hits the target
         Destroy(gameObject); // Destroy the projectile
-        if (targetSettings != null) {
-            targetSettings.TakeDamage(dmg);
+        if (enemySettings != null) {
+            enemySettings.TakeDamage(dmg);
+            // enemySettings.TriggerHitAnimation();
         }
     }
 

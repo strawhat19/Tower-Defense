@@ -20,16 +20,16 @@ public class Waypoints : MonoBehaviour {
         return CurrentPosition + Points[index];
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmosSelected() {
         if (points == null || points.Length == 0) return;
         if (!_gameStarted && transform.hasChanged) _currentPosition = transform.position;
 
         for (int i = 0; i < points.Length; i++) {
-            Gizmos.color = Color.black;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(points[i] + _currentPosition, 0.5f);
 
             if (i < points.Length - 1) {
-                Gizmos.color = Color.gray;
+                Gizmos.color = Color.cyan;
                 Gizmos.DrawLine(points[i] + _currentPosition, points[i + 1] + _currentPosition);
             }
         }
