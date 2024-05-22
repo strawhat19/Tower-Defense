@@ -79,11 +79,16 @@ public class Turret : MonoBehaviour {
         foreach (GameObject enemy in enemiesInRange) {
             // Skip destroyed or inactive enemies
             if (enemy == null || !enemy.activeInHierarchy) continue;
-            float distanceToFinishLine = Vector2.Distance(enemy.transform.position, finishLine.position);
-            if (distanceToFinishLine < shortestDistance) {
-                shortestDistance = distanceToFinishLine;
+            float distanceToFinishLineX = Mathf.Abs(enemy.transform.position.x - finishLine.position.x);
+            if (distanceToFinishLineX < shortestDistance) {
+                shortestDistance = distanceToFinishLineX;
                 closestEnemy = enemy;
             }
+            // float distanceToFinishLine = Vector2.Distance(enemy.transform.position, finishLine.position);
+            // if (distanceToFinishLine < shortestDistance) {
+            //     shortestDistance = distanceToFinishLine;
+            //     closestEnemy = enemy;
+            // }
         }
 
         return closestEnemy;
