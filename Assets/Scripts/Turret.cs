@@ -4,15 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Turret : MonoBehaviour {
-    public float range = 5.0f; // Turret range
-    public float fireRate = 1.0f; // Time between shots
-    public GameObject projectilePrefab; // Projectile to shoot
-    public Transform firePoint; // Point from where projectiles are fired
-
     private Transform target;
-    [SerializeField] private LayerMask enemyMask;
-    private List<GameObject> enemiesInRange = new List<GameObject>();
     private float fireCooldown = 0.0f;
+    // [SerializeField] private LayerMask enemyMask;
+    private List<GameObject> enemiesInRange = new List<GameObject>();
+
+    public float range = 3.5f;
+    public float cost = 100.0f;
+    public float rateOfFire = 1.0f;
+    public float damageMin = 15.0f;
+    public float damageMax = 25.0f;
+
+    public Transform finishLine;
+    public GameObject projectile;
+    public AudioSource shootSound;
+    public Transform barrelOfTheGun;
 
     void Start() {
         // Adjust the range of the collider
@@ -22,46 +28,47 @@ public class Turret : MonoBehaviour {
     }
 
     void Update() {
-        if (target == null) {
-            FindTarget();
-            return;
+        // Always find the closest target to the finish line
+        FindTarget();
+
+        if (target != null) {
+            RotateTowardsTarget();
+            fireCooldown -= Time.deltaTime;
+
+            if (fireCooldown <= 0f) {
+                Shoot(target.gameObject);
+                fireCooldown = 1.0f / rateOfFire;
+            }
         }
-
-        RotateTowardsTarget();
-        fireCooldown -= Time.deltaTime;
-
-        // if (enemiesInRange.Count > 0 && fireCooldown <= 0f) {
-        //     // Target the closest enemy
-        //     GameObject target = GetClosestEnemy();
-        //     if (target != null) {
-        //         Shoot(target);
-        //         fireCooldown = 1.0f / fireRate;
-        //     }
-        // }
     }
 
     private void FindTarget() {
-        // RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, (Vector2)transform.position, 0f, enemyMask);
-
-        // if (hits.Length > 0) {
-            // target = hits[0].transform;
-        // } else {
-            target = firePoint.transform;
-        // }
+        GameObject closestEnemy = GetClosestEnemy();
+        if (closestEnemy != null) {
+            target = closestEnemy.transform;
+        } else {
+            target = null;
+        }
     }
 
     private void RotateTowardsTarget() {
-        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
+        if (target == null) return;
+        Vector2 direction = (target.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; // Adjusted to face the correct direction
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         transform.rotation = rotation;
     }
 
     void Shoot(GameObject target) {
-        if (projectilePrefab != null && firePoint != null) {
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-            Projectile proj = projectile.GetComponent<Projectile>();
+        if (projectile != null && barrelOfTheGun != null) {
+            GameObject projectileObject = Instantiate(projectile, barrelOfTheGun.position, barrelOfTheGun.rotation);
+            Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
-                proj.Seek(target);
+                float damage = Random.Range(damageMin, damageMax);
+                proj.Seek(target, damage);
+            }
+            if (shootSound != null) {
+                shootSound.Play(); // Play the shooting sound
             }
         }
     }
@@ -71,10 +78,10 @@ public class Turret : MonoBehaviour {
         float shortestDistance = Mathf.Infinity;
 
         foreach (GameObject enemy in enemiesInRange) {
-            if (enemy == null) continue; // Skip destroyed enemies
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance) {
-                shortestDistance = distanceToEnemy;
+            if (enemy == null || !enemy.activeInHierarchy) continue; // Skip destroyed or inactive enemies
+            float distanceToFinishLine = Vector2.Distance(enemy.transform.position, finishLine.position);
+            if (distanceToFinishLine < shortestDistance) {
+                shortestDistance = distanceToFinishLine;
                 closestEnemy = enemy;
             }
         }
@@ -85,14 +92,12 @@ public class Turret : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D trigger) {
         if (trigger.CompareTag("Enemy")) {
             enemiesInRange.Add(trigger.gameObject);
-            bool enemy_in_range = trigger.bounds.size.magnitude < 5;
         }
     }
 
     private void OnTriggerExit2D(Collider2D trigger) {
         if (trigger.CompareTag("Enemy")) {
             enemiesInRange.Remove(trigger.gameObject);
-            bool enemy_in_range = trigger.bounds.size.magnitude < 5;
         }
     }
 

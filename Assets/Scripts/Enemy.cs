@@ -64,9 +64,9 @@ public class Enemy : MonoBehaviour {
         // Debug.Log(currentHealth + " - " + damage + " Dmg = " + (currentHealth - damage));
         currentHealth -= damage;
         if (damageText != null) {
-            damageText.text = $"- {damage.ToString()}";
+            damageText.text = $"- {GlobalData.RemoveDotZeroZero(damage.ToString("F2"))}";
             if (damageTextContainer != null) damageTextContainer.SetActive(true);
-            Invoke("RemoveDamageText", 0.3f);
+            Invoke("RemoveDamageText", 0.5f);
             // float damagePosX = Random.Range(-0.75f, 0.75f);
             // float damagePosY = Random.Range(-0.5f, 0.5f);
             // GameObject damageMarkerInstance = Instantiate(damageMarkerPrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour {
             Move();
         }
 
-        SimulateTakingDamage();
+        // SimulateTakingDamage();
 
         if (currentHealth <= 0) {
             Invoke("Kill", 0.5f);
