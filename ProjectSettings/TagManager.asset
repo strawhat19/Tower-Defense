@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DamageTextContainer
   - Enemy
+  - HitSound
   layers:
   - Default
   - TransparentFX

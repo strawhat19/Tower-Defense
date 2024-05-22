@@ -11,12 +11,13 @@ public class Turret : MonoBehaviour {
     private float range = 1.0f;
     public float cost = 100.0f;
     public float rateOfFire = 1.0f;
-    public float damageMin = 15.0f;
-    public float damageMax = 25.0f;
+    public float damageMin = 5.0f;
+    public float damageMax = 15.0f;
 
     private Transform finishLine;
     public GameObject projectile;
     public AudioSource shootSound;
+    public AudioSource hitSound;
     public Transform barrelOfTheGun;
 
     void Start() {
@@ -66,7 +67,7 @@ public class Turret : MonoBehaviour {
             if (proj != null) {
                 float damage = Random.Range(damageMin, damageMax);
                 if (shootSound != null) shootSound.Play();
-                proj.Seek(target, damage);
+                proj.Seek(target, damage, hitSound);
             }
         }
     }

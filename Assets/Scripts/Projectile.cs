@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Projectile : MonoBehaviour {
-    public float dmg = 5f;
-    public float speed = 10f;
     private GameObject target;
-    private Enemy targetSettings;
+    private AudioSource hitSound;
+    private float damageToDeal = 5f;
+    private float speedOfProjectile = 10f;
 
-    public void Seek(GameObject target, float damage) {
+    public void Seek(GameObject target, float damage, AudioSource hitSnd) {
         this.target = target;
-        dmg = damage; 
-        // AdjustRotation(); // Adjust the rotation when the target is set
+        damageToDeal = damage;
+        hitSound = hitSnd;
     }
 
     void Update() {
@@ -21,27 +21,21 @@ public class Projectile : MonoBehaviour {
         }
 
         Vector3 direction = target.transform.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
+        float distanceThisFrame = speedOfProjectile * Time.deltaTime;
 
         if (direction.magnitude <= distanceThisFrame) {
+            if (hitSound != null) hitSound.Play();
             HitTarget();
             return;
         }
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-        
-        // Adjust rotation during movement
-        // AdjustRotation();
     }
 
     void HitTarget() {
         Enemy enemySettings = target.GetComponent<Enemy>();
-        // Logic for what happens when the projectile hits the target
+        if (enemySettings != null) enemySettings.TakeDamage(damageToDeal);
         Destroy(gameObject); // Destroy the projectile
-        if (enemySettings != null) {
-            enemySettings.TakeDamage(dmg);
-            // enemySettings.TriggerHitAnimation();
-        }
     }
 
     private void AdjustRotation() {
