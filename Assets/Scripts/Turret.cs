@@ -4,13 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Turret : MonoBehaviour {
-    private Transform target;
-    private Transform finishLine;
-    private GameObject rangeIndicator;
-    private float fireCooldown = 0.0f;
-    private List<GameObject> enemiesInRange = new List<GameObject>();
-
-    private float range = 1.0f;
     public bool canFire = true;
     public float cost = 100.0f;
     public float rateOfFire = 1.0f;
@@ -21,6 +14,13 @@ public class Turret : MonoBehaviour {
     public AudioSource shootSound;
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
+
+    private Transform target;
+    private float range = 1.0f;
+    private Transform finishLine;
+    private float cooldown = 0.0f;
+    private GameObject rangeIndicator;
+    private List<GameObject> enemiesInRange = new List<GameObject>();
 
     void Start() {
         GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
@@ -49,11 +49,11 @@ public class Turret : MonoBehaviour {
 
             if (target != null) {
                 RotateTowardsTarget();
-                fireCooldown -= Time.deltaTime;
+                cooldown -= Time.deltaTime;
 
-                if (fireCooldown <= 0f) {
+                if (cooldown <= 0f) {
                     Shoot(target.gameObject);
-                    fireCooldown = 1.0f / rateOfFire;
+                    cooldown = 1.0f / rateOfFire;
                 }
             }
         }

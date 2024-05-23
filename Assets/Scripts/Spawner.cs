@@ -12,14 +12,12 @@ public class Spawner : MonoBehaviour {
     private float _spawnTimer;
     private int _objectsSpawned;
     private ObjectPooler _pooler;
+    private EnemySettings defaultsVsOverride = EnemySettings.UseOverrideValues;
 
-    // [Header("Spawn Settings")]
     [SerializeField] private float spawnDelay;
     [SerializeField] private int maxObjects = 10;
-    [SerializeField] private GameObject objectToSpawn;
-
-    // [Header("Override Values")]
-    private EnemySettings defaultsVsOverride = EnemySettings.UseOverrideValues;
+    
+    public GameObject objectToSpawn;
     public float objectHealth = GlobalData.defaultHealth;
     public float objectReward = GlobalData.defaultReward;
     public float objectDamage = GlobalData.defaultDamage;
@@ -33,23 +31,26 @@ public class Spawner : MonoBehaviour {
         _spawnTimer -= Time.deltaTime;
         if (_spawnTimer < 0) {
             _spawnTimer = spawnDelay;
+            if (_objectsSpawned >= maxObjects) GlobalData.lastEnemyInWaveSpawned = true;
             if (_objectsSpawned < maxObjects) {
                 _objectsSpawned++;
-                SpawnObject();
+                SpawnObject(_objectsSpawned);
             }
         }
     }
 
-    private void SpawnObject() {
+    private void SpawnObject(int wavePosition) {
         GameObject newInstanceOfObjectToSpawn = _pooler.GetInstanceFromPool();
         if (defaultsVsOverride == EnemySettings.UseOverrideValues) {
-            Enemy objectSettings = newInstanceOfObjectToSpawn.GetComponent<Enemy>();
-            if (objectSettings != null) {
-                objectSettings.speed = objectSpeed;
-                objectSettings.damage = objectDamage;
-                objectSettings.reward = objectReward;
-                objectSettings.maxHealth = objectHealth;
-                objectSettings.currentHealth = objectHealth;
+            Enemy enemyObjectSettings = newInstanceOfObjectToSpawn.GetComponent<Enemy>();
+            if (enemyObjectSettings != null) {
+                enemyObjectSettings.speed = objectSpeed;
+                enemyObjectSettings.waveMax = maxObjects;
+                enemyObjectSettings.damage = objectDamage;
+                enemyObjectSettings.reward = objectReward;
+                enemyObjectSettings.maxHealth = objectHealth;
+                enemyObjectSettings.wavePosition = wavePosition;
+                enemyObjectSettings.currentHealth = objectHealth;
             }
         }
         newInstanceOfObjectToSpawn.SetActive(true);

@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapInteraction : MonoBehaviour {
-    private Color originalColor;
-    private GameObject activePreviewTurret;
-    private Vector3Int previousMousePos = new Vector3Int();
-
     public Tilemap tilemap;
     public GameObject turret;
     public GameObject[] turrets;
     public Color highlightColor = Color.cyan;
+
+    private Color originalColor;
+    private GameObject activePreviewTurret;
+    private Vector3Int previousMousePos = new Vector3Int();
 
     void Start() {
         if (tilemap == null) tilemap = GetComponent<Tilemap>();

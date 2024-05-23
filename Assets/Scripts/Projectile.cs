@@ -14,6 +14,10 @@ public class Projectile : MonoBehaviour {
         hitSound = hitSnd;
     }
 
+    void PlayHitSound() {
+        if (hitSound != null) hitSound.Play();
+    }
+
     void Update() {
         if (target == null) {
             Destroy(gameObject);
@@ -24,7 +28,7 @@ public class Projectile : MonoBehaviour {
         float distanceThisFrame = speedOfProjectile * Time.deltaTime;
 
         if (direction.magnitude <= distanceThisFrame) {
-            if (hitSound != null) hitSound.Play();
+            PlayHitSound();
             HitTarget();
             return;
         }

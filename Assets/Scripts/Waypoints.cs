@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Waypoints : MonoBehaviour {
     [SerializeField] private Vector3[] points;
-
     public Vector3[] Points => points;
     public Vector3 CurrentPosition => _currentPosition;
 
@@ -25,11 +24,14 @@ public class Waypoints : MonoBehaviour {
         if (!_gameStarted && transform.hasChanged) _currentPosition = transform.position;
 
         for (int i = 0; i < points.Length; i++) {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(points[i] + _currentPosition, 0.5f);
-
-            if (i < points.Length - 1) {
-                Gizmos.color = Color.cyan;
+            bool isFirst = i == 0;
+            bool isLast = i == (points.Length - 1);
+            bool notFirstAndNotLast = i < points.Length - 1;
+            Gizmos.color = isFirst ? Color.green : isLast ? Color.red : Color.black;
+            Gizmos.DrawWireSphere(points[i] + _currentPosition, 0.45f);
+            if (notFirstAndNotLast) {
+                bool isLastLine = i >= points.Length - 2;
+                Gizmos.color = isFirst ? Color.green : (isLast || isLastLine) ? Color.red : Color.black;
                 Gizmos.DrawLine(points[i] + _currentPosition, points[i + 1] + _currentPosition);
             }
         }

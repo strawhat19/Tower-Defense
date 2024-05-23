@@ -9,6 +9,13 @@ public static class GlobalData {
     public static float defaultSpeed = 2f;
     public static float startCoins = 0f;
     public static float startLives = 20f;
+
+    // Wave Management
+    public static int currentWave = 1;
+    public static float currentWaveF = 1f;
+    public static bool lastEnemyInWaveSpawned = false;
+    public static bool lastEnemyInWaveDied = false;
+
     public static string RemoveDotZeroZero(string input) {
         if (input.EndsWith(".00")) {
             return input.Substring(0, input.Length - 3);  // Remove the last three characters

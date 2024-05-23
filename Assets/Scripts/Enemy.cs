@@ -10,10 +10,8 @@ public enum HealthDisplays {
 }
 
 public class Enemy : MonoBehaviour {
-    private Animator animator;
-    private int waypointIndex = 0;
-    private SpriteRenderer spriteRenderer;
-
+    public int waveMax = 15;
+    public int wavePosition = 1;
     public float speed = GlobalData.defaultSpeed;
     public float damage = GlobalData.defaultDamage;
     public float reward = GlobalData.defaultReward;
@@ -26,12 +24,17 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private Waypoints waypoints;
     public HealthDisplays HealthDisplay = HealthDisplays.ShowHealthPoints;
 
+    private Animator animator;
+    private int waypointIndex = 0;
+    private SpriteRenderer spriteRenderer;
+
     void Die() {
         Destroy(gameObject);
     }
 
     void AddCoins() {
         GlobalData.startCoins = GlobalData.startCoins + reward;
+        if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
     }
 
     void Kill() {
@@ -82,8 +85,6 @@ public class Enemy : MonoBehaviour {
             Move();
         }
 
-        // SimulateTakingDamage();
-
         if (currentHealth <= 0) {
             Invoke("Kill", 0.5f);
         }
@@ -96,17 +97,6 @@ public class Enemy : MonoBehaviour {
 
     void StopHitAnimation() {
         animator.SetBool("Hit", false);
-    }
-
-    void SimulateTakingDamage() {
-        if (Input.GetButtonDown("Fire1")) {
-            TriggerHitAnimation();
-            if (healthBarRect != null) {
-                float damage = Random.Range(5f, 15f);
-                damage = Mathf.Round(damage * 100f) / 100f;
-                TakeDamage(damage);
-            }
-        }
     }
 
     void Move() {
@@ -128,6 +118,7 @@ public class Enemy : MonoBehaviour {
             if (waypointIndex >= waypoints.Points.Length) {
                 // Reached the final waypoint, destroy the enemy or handle end of path
                 GlobalData.startLives = GlobalData.startLives - damage;
+                if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
                 Die();
             }
         }
