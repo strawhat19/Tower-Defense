@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFire: 1
-  cost: 250
+  cost: 200
   rateOfFire: 1.5
   damageMin: 7.5
   damageMax: 22.5

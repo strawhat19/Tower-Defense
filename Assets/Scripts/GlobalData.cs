@@ -11,8 +11,9 @@ public static class GlobalData {
     public static float startLives = 20f;
 
     // Wave Management
+    public static int maxWaves = 3;
     public static int currentWave = 1;
-    public static float currentWaveF = 1f;
+    public static int currentLevel = 1;
     public static bool lastEnemyInWaveSpawned = false;
     public static bool lastEnemyInWaveDied = false;
 

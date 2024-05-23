@@ -33,10 +33,10 @@ RectTransform:
   m_Children:
   - {fileID: 6450316134538163028}
   - {fileID: 5150653416704768558}
-  - {fileID: 3225238607261847086}
+  - {fileID: 1552422618725366310}
   - {fileID: 936850122730997374}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -204,12 +204,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220472285860637592, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_text
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8384425668637974565, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e707186e096f672438c0ee7857031fae, type: 3}
+    - target: {fileID: 8384425668637974565, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8568881674643902159, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_Name
       value: Photon Blaster Card
@@ -219,7 +223,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
---- !u!224 &3225238607261847086 stripped
+--- !u!224 &1552422618725366310 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4127840744073327627, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
   m_PrefabInstance: {fileID: 3225238607261847085}
@@ -322,12 +326,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220472285860637592, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_text
-      value: 350
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8384425668637974565, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d76f9b55ad9f0074f8b61eb81fb3aed5, type: 3}
+    - target: {fileID: 8384425668637974565, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8568881674643902159, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_Name
       value: Missile Launcher Card
@@ -538,6 +546,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127840744073327627, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220472285860637592, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
+      propertyPath: m_text
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384425668637974565, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8568881674643902159, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}

@@ -81,7 +81,7 @@ public class Turret : MonoBehaviour {
             GameObject projectileObject = Instantiate(projectile, barrelOfTheGun.position, barrelOfTheGun.rotation);
             Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
-                float damage = Random.Range(damageMin, damageMax);
+                float damage = (float)(Random.Range(damageMin, damageMax) * GlobalData.currentWave) * GlobalData.currentLevel;
                 if (shootSound != null) shootSound.Play();
                 proj.Seek(target, damage, hitSound);
             }

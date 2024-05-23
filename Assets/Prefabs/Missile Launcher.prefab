@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFire: 1
-  cost: 350
-  rateOfFire: 2
+  cost: 300
+  rateOfFire: 3
   damageMin: 10
   damageMax: 35
   projectile: {fileID: 6295518927219759172, guid: 3211b164a5abfda4c8223119e93dbb26, type: 3}

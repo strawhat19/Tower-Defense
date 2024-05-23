@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class WavesCount : MonoBehaviour {
     public TextMeshProUGUI wavesCount;
-    private float waves = GlobalData.currentWaveF;
+    private int waves = GlobalData.currentWave;
 
     void Start() {
         SetCount();
@@ -22,6 +22,6 @@ public class WavesCount : MonoBehaviour {
     }
 
     void UpdateCount() {
-        if (wavesCount != null) wavesCount.text = $"Wave {GlobalData.currentWaveF} / 3";
+        if (wavesCount != null) wavesCount.text = $"Wave {GlobalData.currentWave} / {GlobalData.maxWaves}";
     }
 }
