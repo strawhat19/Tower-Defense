@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class Turret : MonoBehaviour {
     private Transform target;
+    private Transform finishLine;
+    private GameObject rangeIndicator;
     private float fireCooldown = 0.0f;
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
@@ -14,22 +16,18 @@ public class Turret : MonoBehaviour {
     public float rateOfFire = 1.0f;
     public float damageMin = 5.0f;
     public float damageMax = 15.0f;
-    private float radiusMultiplier = 24f;
 
-    private Transform finishLine;
     public GameObject projectile;
     public AudioSource shootSound;
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
 
-    private GameObject rangeIndicator;
-
     void Start() {
         GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
         if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
-        CircleCollider2D collider = gameObject.AddComponent<CircleCollider2D>();
-        collider.isTrigger = true;
-        collider.radius = range;
+        CircleCollider2D finishcollider = gameObject.AddComponent<CircleCollider2D>();
+        finishcollider.isTrigger = true;
+        finishcollider.radius = range;
 
         // Create and configure the range indicator
         rangeIndicator = new GameObject("RangeIndicator");
@@ -38,7 +36,9 @@ public class Turret : MonoBehaviour {
         var spriteRenderer = rangeIndicator.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = CreateCircleSprite();
         spriteRenderer.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparent
-        float colliderRange = (float)collider.radius * radiusMultiplier;
+
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        float colliderRange = (float)collider.radius * 2f;
         rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
         rangeIndicator.SetActive(false);
     }
