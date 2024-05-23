@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1110422967}
-  turret: {fileID: 931715758}
+  turretPrefab: {fileID: 931715758}
   highlightColor: {r: 0, g: 1, b: 0.7442703, a: 1}
 --- !u!1 &1199965975
 GameObject:

@@ -9,10 +9,12 @@ public class Turret : MonoBehaviour {
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     private float range = 1.0f;
+    public bool canFire = true;
     public float cost = 100.0f;
     public float rateOfFire = 1.0f;
     public float damageMin = 5.0f;
     public float damageMax = 15.0f;
+    private float radiusMultiplier = 24f;
 
     private Transform finishLine;
     public GameObject projectile;
@@ -20,24 +22,39 @@ public class Turret : MonoBehaviour {
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
 
+    private GameObject rangeIndicator;
+
     void Start() {
         GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
         if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
         CircleCollider2D collider = gameObject.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
         collider.radius = range;
+
+        // Create and configure the range indicator
+        rangeIndicator = new GameObject("RangeIndicator");
+        rangeIndicator.transform.SetParent(transform);
+        rangeIndicator.transform.localPosition = Vector3.zero;
+        var spriteRenderer = rangeIndicator.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = CreateCircleSprite();
+        spriteRenderer.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparent
+        float colliderRange = (float)collider.radius * radiusMultiplier;
+        rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
+        rangeIndicator.SetActive(false);
     }
 
     void Update() {
-        FindTarget();
+        if (canFire) {
+            FindTarget();
 
-        if (target != null) {
-            RotateTowardsTarget();
-            fireCooldown -= Time.deltaTime;
+            if (target != null) {
+                RotateTowardsTarget();
+                fireCooldown -= Time.deltaTime;
 
-            if (fireCooldown <= 0f) {
-                Shoot(target.gameObject);
-                fireCooldown = 1.0f / rateOfFire;
+                if (fireCooldown <= 0f) {
+                    Shoot(target.gameObject);
+                    fireCooldown = 1.0f / rateOfFire;
+                }
             }
         }
     }
@@ -54,7 +71,6 @@ public class Turret : MonoBehaviour {
     private void RotateTowardsTarget() {
         if (target == null) return;
         Vector2 direction = (target.position - transform.position).normalized;
-        // Adjusted to face the correct direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         transform.rotation = rotation;
@@ -77,18 +93,12 @@ public class Turret : MonoBehaviour {
         float shortestDistance = Mathf.Infinity;
 
         foreach (GameObject enemy in enemiesInRange) {
-            // Skip destroyed or inactive enemies
             if (enemy == null || !enemy.activeInHierarchy) continue;
             float distanceToFinishLineX = Mathf.Abs(enemy.transform.position.x - finishLine.position.x);
             if (distanceToFinishLineX < shortestDistance) {
                 shortestDistance = distanceToFinishLineX;
                 closestEnemy = enemy;
             }
-            // float distanceToFinishLine = Vector2.Distance(enemy.transform.position, finishLine.position);
-            // if (distanceToFinishLine < shortestDistance) {
-            //     shortestDistance = distanceToFinishLine;
-            //     closestEnemy = enemy;
-            // }
         }
 
         return closestEnemy;
@@ -113,5 +123,52 @@ public class Turret : MonoBehaviour {
             float colliderRange = (float)collider.radius / 3.33f;
             Handles.DrawWireDisc(transform.position, Vector3.forward, colliderRange);
         }
+    }
+
+    public void SetTransparency(bool transparent, bool fullyOpaque = false) {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers) {
+            foreach (Material mat in renderer.materials) {
+                Color color = mat.color;
+                if (fullyOpaque) {
+                    color.a = 1.0f;
+                } else {
+                    color.a = transparent ? 0.35f : 0.75f;
+                }
+                mat.color = color;
+            }
+        }
+
+        // Show the range indicator only if not fully opaque
+        ShowRange(!fullyOpaque);
+    }
+
+    public void ShowRange(bool show) {
+        if (rangeIndicator != null) {
+            rangeIndicator.SetActive(show);
+        }
+    }
+
+    public void EnableFiring(bool enable) {
+        canFire = enable;
+    }
+
+    private Sprite CreateCircleSprite() {
+        int size = 256;
+        Texture2D texture = new Texture2D(size, size, TextureFormat.ARGB32, false);
+        float radius = size / 2f;
+        Vector2 center = new Vector2(radius, radius);
+        for (int y = 0; y < size; y++) {
+            for (int x = 0; x < size; x++) {
+                Vector2 pos = new Vector2(x, y);
+                if (Vector2.Distance(pos, center) <= radius) {
+                    texture.SetPixel(x, y, Color.cyan); // Set the color to cyan
+                } else {
+                    texture.SetPixel(x, y, Color.clear);
+                }
+            }
+        }
+        texture.Apply();
+        return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
     }
 }
