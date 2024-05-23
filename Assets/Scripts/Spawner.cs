@@ -40,6 +40,7 @@ public class Spawner : MonoBehaviour {
     }
 
     private void SpawnObject(int wavePosition) {
+        if (wavePosition == maxObjects) Debug.Log("Last Enemy #" + wavePosition + " In Wave Spawned");
         GameObject newInstanceOfObjectToSpawn = _pooler.GetInstanceFromPool();
         if (defaultsVsOverride == EnemySettings.UseOverrideValues) {
             Enemy enemyObjectSettings = newInstanceOfObjectToSpawn.GetComponent<Enemy>();

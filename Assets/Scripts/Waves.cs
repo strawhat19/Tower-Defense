@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -6,11 +5,34 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class Waves : MonoBehaviour {
-    public float waveDelay = 5f;
+    public float delay = 5f;
     public GameObject[] waves;
     private int currentWaveIndex = 0;
+    private bool isWaitingForNextWave = false;
 
     void Start() {
+        SetWaves();
+        StartWaves();
+    }
+
+    void Update() {
+        UpdateWaves();
+    }
+
+    void SetWaves() {
+        bool userNotProvidedWaves = waves == null || waves.Length == 0 || waves[0] == null;
+        if (userNotProvidedWaves) {
+            List<GameObject> waveList = new List<GameObject>();
+            foreach (Transform child in transform) {
+                if (child.GetComponent<Spawner>() != null) {
+                    waveList.Add(child.gameObject);
+                }
+            }
+            waves = waveList.ToArray();
+        }
+    }
+
+    void StartWaves() {
         GlobalData.maxWaves = waves.Length;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         GlobalData.currentLevel = currentSceneIndex + 1;
@@ -19,13 +41,21 @@ public class Waves : MonoBehaviour {
         }
     }
 
-    void Update() {
+    void UpdateWaves() {
         bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
-        // if (readyForNextWave) Invoke("ActivateNextWave", waveDelay);
-        if (readyForNextWave) ActivateNextWave();
+        if (readyForNextWave && !isWaitingForNextWave) {
+            StartCoroutine(StartNextWaveAfterDelay());
+        }
     }
 
-    // Call this method when the current wave is done
+    private IEnumerator StartNextWaveAfterDelay() {
+        isWaitingForNextWave = true;
+        Debug.Log("Starting Next Wave In " + delay + " seconds");
+        yield return new WaitForSeconds(delay);
+        ActivateNextWave();
+        isWaitingForNextWave = false;
+    }
+
     public void ActivateNextWave() {
         if (currentWaveIndex < waves.Length - 1) {
             waves[currentWaveIndex].SetActive(false);

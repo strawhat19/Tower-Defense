@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Turret : MonoBehaviour {
+    public bool canAim = true;
     public bool canFire = true;
     public float cost = 100.0f;
     public float rateOfFire = 1.0f;
     public float damageMin = 5.0f;
     public float damageMax = 15.0f;
+    public string displayName = "Turret";
 
     public GameObject projectile;
     public AudioSource shootSound;
@@ -44,18 +46,36 @@ public class Turret : MonoBehaviour {
     }
 
     void Update() {
-        if (canFire) {
+        if (canAim) {
             FindTarget();
-
             if (target != null) {
                 RotateTowardsTarget();
-                cooldown -= Time.deltaTime;
-
-                if (cooldown <= 0f) {
-                    Shoot(target.gameObject);
-                    cooldown = 1.0f / rateOfFire;
+                if (canFire) {
+                    ShootAtTarget();
                 }
             }
+        }
+    }
+
+    public void ShowRange(bool show) {
+        if (rangeIndicator != null) {
+            rangeIndicator.SetActive(show);
+        }
+    }
+
+    public void EnableFiring(bool enable) {
+        canFire = enable;
+    }
+
+    private void OnTriggerEnter2D(Collider2D trigger) {
+        if (trigger.CompareTag("Enemy")) {
+            enemiesInRange.Add(trigger.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D trigger) {
+        if (trigger.CompareTag("Enemy")) {
+            enemiesInRange.Remove(trigger.gameObject);
         }
     }
 
@@ -76,12 +96,20 @@ public class Turret : MonoBehaviour {
         transform.rotation = rotation;
     }
 
+    void ShootAtTarget() {
+        cooldown -= Time.deltaTime;
+        if (cooldown <= 0f) {
+            Shoot(target.gameObject);
+            cooldown = 1.0f / rateOfFire;
+        }
+    }
+
     void Shoot(GameObject target) {
         if (projectile != null && barrelOfTheGun != null) {
             GameObject projectileObject = Instantiate(projectile, barrelOfTheGun.position, barrelOfTheGun.rotation);
             Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
-                float damage = (float)(Random.Range(damageMin, damageMax) * GlobalData.currentWave) * GlobalData.currentLevel;
+                float damage = (float)(Random.Range(damageMin, damageMax) * GlobalData.currentWave) * (GlobalData.currentLevel > 1 ? (GlobalData.currentLevel / GlobalData.currentLevel + 1) : GlobalData.currentLevel);
                 if (shootSound != null) shootSound.Play();
                 proj.Seek(target, damage, hitSound);
             }
@@ -91,7 +119,6 @@ public class Turret : MonoBehaviour {
     GameObject GetClosestEnemy() {
         GameObject closestEnemy = null;
         float shortestDistance = Mathf.Infinity;
-
         foreach (GameObject enemy in enemiesInRange) {
             if (enemy == null || !enemy.activeInHierarchy) continue;
             float distanceToFinishLineX = Mathf.Abs(enemy.transform.position.x - finishLine.position.x);
@@ -100,20 +127,7 @@ public class Turret : MonoBehaviour {
                 closestEnemy = enemy;
             }
         }
-
         return closestEnemy;
-    }
-
-    private void OnTriggerEnter2D(Collider2D trigger) {
-        if (trigger.CompareTag("Enemy")) {
-            enemiesInRange.Add(trigger.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D trigger) {
-        if (trigger.CompareTag("Enemy")) {
-            enemiesInRange.Remove(trigger.gameObject);
-        }
     }
 
     private void OnDrawGizmos() {
@@ -138,19 +152,7 @@ public class Turret : MonoBehaviour {
                 mat.color = color;
             }
         }
-
-        // Show the range indicator only if not fully opaque
-        ShowRange(!fullyOpaque);
-    }
-
-    public void ShowRange(bool show) {
-        if (rangeIndicator != null) {
-            rangeIndicator.SetActive(show);
-        }
-    }
-
-    public void EnableFiring(bool enable) {
-        canFire = enable;
+        ShowRange(!fullyOpaque); // Show the range indicator only if not fully opaque
     }
 
     private Sprite CreateCircleSprite() {

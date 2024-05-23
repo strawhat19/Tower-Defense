@@ -34,7 +34,10 @@ public class Enemy : MonoBehaviour {
 
     void AddCoins() {
         GlobalData.startCoins = GlobalData.startCoins + reward;
-        if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
+        if (wavePosition == waveMax) {
+            Debug.Log("Last Enemy #" + wavePosition + " In Wave Killed, +" + reward + " Points");
+            GlobalData.lastEnemyInWaveDied = true;
+        }
     }
 
     void Kill() {
@@ -118,7 +121,10 @@ public class Enemy : MonoBehaviour {
             if (waypointIndex >= waypoints.Points.Length) {
                 // Reached the final waypoint, destroy the enemy or handle end of path
                 GlobalData.startLives = GlobalData.startLives - damage;
-                if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
+                if (wavePosition == waveMax) {
+                    Debug.Log("Last Enemy #" + wavePosition + " In Wave Died");
+                    GlobalData.lastEnemyInWaveDied = true;
+                }
                 Die();
             }
         }
