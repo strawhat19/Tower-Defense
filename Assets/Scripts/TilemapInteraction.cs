@@ -2,17 +2,17 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapInteraction : MonoBehaviour {
-    public Tilemap tilemap;
-    public GameObject turretPrefab;
-    public Color highlightColor = Color.cyan;
     private Color originalColor;
-    private Vector3Int previousMousePos = new Vector3Int();
     private GameObject activePreviewTurret;
+    private Vector3Int previousMousePos = new Vector3Int();
+
+    public Tilemap tilemap;
+    public GameObject turret;
+    public GameObject[] turrets;
+    public Color highlightColor = Color.cyan;
 
     void Start() {
-        if (tilemap == null) {
-            tilemap = GetComponent<Tilemap>();
-        }
+        if (tilemap == null) tilemap = GetComponent<Tilemap>();
     }
 
     void Update() {
@@ -24,7 +24,7 @@ public class TilemapInteraction : MonoBehaviour {
         if (tilemap.HasTile(cellPos)) {
             if (activePreviewTurret == null) {
                 // Instantiate the semi-transparent turret preview
-                activePreviewTurret = Instantiate(turretPrefab, worldPos, Quaternion.identity);
+                activePreviewTurret = Instantiate(turret, worldPos, Quaternion.identity);
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
                 turretComponent.SetTransparency(true);
                 turretComponent.ShowRange(true);
@@ -81,12 +81,12 @@ public class TilemapInteraction : MonoBehaviour {
 
     void OnTileClicked(Vector3 worldPos) {
         // Get the cost of the turret from its component
-        float turretCost = turretPrefab.GetComponent<Turret>().cost;
+        float turretCost = turret.GetComponent<Turret>().cost;
 
         // Check if the player can afford the turret
         if (GlobalData.startCoins >= turretCost) {
             // Instantiate the turret at the clicked position
-            GameObject newTurret = Instantiate(turretPrefab, worldPos, Quaternion.identity);
+            GameObject newTurret = Instantiate(turret, worldPos, Quaternion.identity);
             // Enable the firing logic for the placed turret
             Turret turretComponent = newTurret.GetComponent<Turret>();
             turretComponent.SetTransparency(false, true);
