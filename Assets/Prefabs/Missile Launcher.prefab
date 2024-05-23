@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473628534214583348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.001, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 3.030303, y: 3.030303, z: 3.030303}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846365768006492587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0009997685, y: 0.0938483, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03030303, y: 0.03030303, z: 0.03030303}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -208,15 +208,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5532c58ee3d29d24da9d349bbbe54e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAim: 1
   canFire: 1
+  baseCost: 300
   cost: 300
   rateOfFire: 3
   damageMin: 10
   damageMax: 35
+  displayName: Missile Launcher
   projectile: {fileID: 6295518927219759172, guid: 3211b164a5abfda4c8223119e93dbb26, type: 3}
   shootSound: {fileID: 6143733164065864471}
   hitSound: {fileID: 5421062861525877212}
   barrelOfTheGun: {fileID: 498274869141839631}
+  costText: {fileID: 0}
 --- !u!58 &4624484233970162599
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -329,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6085881717133486305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0009997685, y: 0.0938483, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03030303, y: 0.03030303, z: 0.03030303}
   m_ConstrainProportionsScale: 1
   m_Children: []

@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;  // Include this if you're using TextMeshPro
 
 public class Turret : MonoBehaviour {
     public bool canAim = true;
     public bool canFire = true;
-    public float cost = 100.0f;
+    public float baseCost = 100.0f;
+    public float cost;
     public float rateOfFire = 1.0f;
     public float damageMin = 5.0f;
     public float damageMax = 15.0f;
@@ -16,6 +18,8 @@ public class Turret : MonoBehaviour {
     public AudioSource shootSound;
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
+    
+    public TextMeshProUGUI costText;  // Reference to the TextMeshPro component for displaying the cost
 
     private Transform target;
     private float range = 1.0f;
@@ -25,27 +29,37 @@ public class Turret : MonoBehaviour {
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     void Start() {
-        GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
-        if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
-        CircleCollider2D finishcollider = gameObject.AddComponent<CircleCollider2D>();
-        finishcollider.isTrigger = true;
-        finishcollider.radius = range;
-
-        // Create and configure the range indicator
-        rangeIndicator = new GameObject("RangeIndicator");
-        rangeIndicator.transform.SetParent(transform);
-        rangeIndicator.transform.localPosition = Vector3.zero;
-        var spriteRenderer = rangeIndicator.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = CreateCircleSprite();
-        spriteRenderer.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparent
-
-        CircleCollider2D collider = GetComponent<CircleCollider2D>();
-        float colliderRange = (float)collider.radius * 2f;
-        rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
-        rangeIndicator.SetActive(false);
+        SetTurret();
     }
 
     void Update() {
+        UpdateTurret();
+    }
+
+    public void EnableFiring(bool enable) {
+        canFire = enable;
+    }
+
+    public void ShowRange(bool show) {
+        if (rangeIndicator != null) rangeIndicator.SetActive(show);
+    }
+
+    private void OnTriggerEnter2D(Collider2D trigger) {
+        if (trigger.CompareTag("Enemy")) enemiesInRange.Add(trigger.gameObject);
+    }
+
+    private void OnTriggerExit2D(Collider2D trigger) {
+        if (trigger.CompareTag("Enemy")) enemiesInRange.Remove(trigger.gameObject);
+    }
+
+    void ScaleCost() {
+        // float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
+        cost = baseCost * GlobalData.currentWave;
+        if (costText != null) costText.text = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
+    }
+
+    void UpdateTurret() {
+        ScaleCost();
         if (canAim) {
             FindTarget();
             if (target != null) {
@@ -54,28 +68,6 @@ public class Turret : MonoBehaviour {
                     ShootAtTarget();
                 }
             }
-        }
-    }
-
-    public void ShowRange(bool show) {
-        if (rangeIndicator != null) {
-            rangeIndicator.SetActive(show);
-        }
-    }
-
-    public void EnableFiring(bool enable) {
-        canFire = enable;
-    }
-
-    private void OnTriggerEnter2D(Collider2D trigger) {
-        if (trigger.CompareTag("Enemy")) {
-            enemiesInRange.Add(trigger.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D trigger) {
-        if (trigger.CompareTag("Enemy")) {
-            enemiesInRange.Remove(trigger.gameObject);
         }
     }
 
@@ -109,7 +101,8 @@ public class Turret : MonoBehaviour {
             GameObject projectileObject = Instantiate(projectile, barrelOfTheGun.position, barrelOfTheGun.rotation);
             Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
-                float damage = (float)(Random.Range(damageMin, damageMax) * GlobalData.currentWave) * (GlobalData.currentLevel > 1 ? (GlobalData.currentLevel / GlobalData.currentLevel + 1) : GlobalData.currentLevel);
+                float damageInRange = Random.Range(damageMin, damageMax);
+                float damage = GlobalData.CalculateLevelScaled(damageInRange);
                 if (shootSound != null) shootSound.Play();
                 proj.Seek(target, damage, hitSound);
             }
@@ -172,5 +165,27 @@ public class Turret : MonoBehaviour {
         }
         texture.Apply();
         return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
+
+    void SetTurret() {
+        ScaleCost();
+        GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
+        if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
+        CircleCollider2D finishcollider = gameObject.AddComponent<CircleCollider2D>();
+        finishcollider.isTrigger = true;
+        finishcollider.radius = range;
+
+        // Create and configure the range indicator
+        rangeIndicator = new GameObject("RangeIndicator");
+        rangeIndicator.transform.SetParent(transform);
+        rangeIndicator.transform.localPosition = Vector3.zero;
+        var spriteRenderer = rangeIndicator.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = CreateCircleSprite();
+        spriteRenderer.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparent
+
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        float colliderRange = (float)collider.radius * 2f;
+        rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
+        rangeIndicator.SetActive(false);
     }
 }

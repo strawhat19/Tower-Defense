@@ -50,7 +50,9 @@ public class Waves : MonoBehaviour {
 
     private IEnumerator StartNextWaveAfterDelay() {
         isWaitingForNextWave = true;
-        Debug.Log("Starting Next Wave In " + delay + " seconds");
+        if (currentWaveIndex < waves.Length - 1) {
+            Debug.Log("Starting Next Wave In " + delay + " seconds");
+        }
         yield return new WaitForSeconds(delay);
         ActivateNextWave();
         isWaitingForNextWave = false;

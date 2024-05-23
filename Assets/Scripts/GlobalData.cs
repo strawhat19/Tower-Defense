@@ -23,4 +23,9 @@ public static class GlobalData {
         }
         return input;
     }
+
+    public static float CalculateLevelScaled(float initialVal) {
+        float calculatedLevelScalingValue = (float)(initialVal * currentLevel) * (currentWave > 1 ? (currentWave / currentWave + 1) : currentWave);
+        return calculatedLevelScalingValue;
+    }
 }

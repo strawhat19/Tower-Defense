@@ -36,7 +36,7 @@ public class TilemapInteraction : MonoBehaviour {
 
                 // Check affordability and adjust transparency
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
-                if (GlobalData.startCoins >= turretComponent.cost) {
+                if (GlobalData.startCoins >= turretComponent.baseCost * GlobalData.currentWave) {
                     turretComponent.SetTransparency(false);  // Less transparent
                 } else {
                     turretComponent.SetTransparency(true);  // More transparent
@@ -81,7 +81,7 @@ public class TilemapInteraction : MonoBehaviour {
 
     void OnTileClicked(Vector3 worldPos) {
         // Get the cost of the turret from its component
-        float turretCost = turret.GetComponent<Turret>().cost;
+        float turretCost = turret.GetComponent<Turret>().baseCost * GlobalData.currentWave;
 
         // Check if the player can afford the turret
         if (GlobalData.startCoins >= turretCost) {
@@ -101,7 +101,7 @@ public class TilemapInteraction : MonoBehaviour {
             }
 
             // Debug log for successful placement
-            Debug.Log("Turret placed at: " + worldPos + ". Remaining coins: " + GlobalData.startCoins);
+            Debug.Log(turretComponent.displayName + " placed at: " + worldPos + ". Remaining coins: " + GlobalData.startCoins);
         } else {
             // Debug log for insufficient funds
             Debug.Log("Cannot afford turret. Cost: " + turretCost + ", Available: " + GlobalData.startCoins);

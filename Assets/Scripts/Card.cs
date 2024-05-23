@@ -15,6 +15,10 @@ public class Card : MonoBehaviour {
         SetCard();
     }
 
+    void Update() {
+        SetCard();
+    }
+
     void SetCardImage(Sprite spriteToSet) {
         if (costContainer != null) {
             spriteRenderer = costContainer.GetComponent<SpriteRenderer>();
@@ -41,7 +45,7 @@ public class Card : MonoBehaviour {
 
             Turret turretSettings = turret.GetComponent<Turret>();
             if (turretSettings != null) {
-                SetCost(turretSettings.cost);
+                SetCost(turretSettings.baseCost * GlobalData.currentWave);
             }
         }
     }
