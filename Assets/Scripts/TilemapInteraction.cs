@@ -8,6 +8,7 @@ public class TilemapInteraction : MonoBehaviour {
     public Color highlightColor = Color.cyan;
 
     private Color originalColor;
+    private bool canAfford = false;
     private GameObject activePreviewTurret;
     private Vector3Int previousMousePos = new Vector3Int();
 
@@ -26,7 +27,7 @@ public class TilemapInteraction : MonoBehaviour {
                 // Instantiate the semi-transparent turret preview
                 activePreviewTurret = Instantiate(turret, worldPos, Quaternion.identity);
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
-                turretComponent.SetTransparency(true);
+                turretComponent.SetAffordability(true);
                 turretComponent.ShowRange(true);
                 turretComponent.EnableFiring(false);
             } else {
@@ -37,9 +38,9 @@ public class TilemapInteraction : MonoBehaviour {
                 // Check affordability and adjust transparency
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
                 if (GlobalData.startCoins >= turretComponent.baseCost * GlobalData.currentWave) {
-                    turretComponent.SetTransparency(false);  // Less transparent
+                    turretComponent.SetAffordability(false);  // Less transparent
                 } else {
-                    turretComponent.SetTransparency(true);  // More transparent
+                    turretComponent.SetAffordability(true);  // More transparent
                 }
             }
         } else {
@@ -84,21 +85,21 @@ public class TilemapInteraction : MonoBehaviour {
         float turretCost = turret.GetComponent<Turret>().baseCost * GlobalData.currentWave;
 
         // Check if the player can afford the turret
-        if (GlobalData.startCoins >= turretCost) {
+        canAfford = GlobalData.startCoins >= turretCost;
+        if (canAfford) {
             // Instantiate the turret at the clicked position
             GameObject newTurret = Instantiate(turret, worldPos, Quaternion.identity);
             // Enable the firing logic for the placed turret
             Turret turretComponent = newTurret.GetComponent<Turret>();
-            turretComponent.SetTransparency(false, true);
+            
+            turretComponent.SetAffordability(false, canAfford);
             turretComponent.ShowRange(false);
             turretComponent.EnableFiring(true);
             // Deduct the cost from the player's coins
             GlobalData.startCoins -= turretCost;
 
             // Destroy the semi-transparent turret preview
-            if (activePreviewTurret != null) {
-                Destroy(activePreviewTurret);
-            }
+            if (activePreviewTurret != null) Destroy(activePreviewTurret);
 
             // Debug log for successful placement
             Debug.Log(turretComponent.displayName + " placed at: " + worldPos + ". Remaining coins: " + GlobalData.startCoins);

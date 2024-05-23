@@ -1,8 +1,9 @@
+using TMPro;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;  // Include this if you're using TextMeshPro
 
 public class Turret : MonoBehaviour {
     public bool canAim = true;
@@ -18,14 +19,18 @@ public class Turret : MonoBehaviour {
     public AudioSource shootSound;
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
-    
+
+    public GameObject preview;
     public TextMeshProUGUI costText;  // Reference to the TextMeshPro component for displaying the cost
+    public GameObject[] costTexts;
 
     private Transform target;
     private float range = 1.0f;
     private Transform finishLine;
     private float cooldown = 0.0f;
+    private bool canAfford = false;
     private GameObject rangeIndicator;
+    private bool alwaysShowRangeIndicator = false;
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     void Start() {
@@ -41,7 +46,9 @@ public class Turret : MonoBehaviour {
     }
 
     public void ShowRange(bool show) {
-        if (rangeIndicator != null) rangeIndicator.SetActive(show);
+        bool ifShowRange = alwaysShowRangeIndicator ? true : show;
+        if (rangeIndicator != null) rangeIndicator.SetActive(ifShowRange);
+        if (preview != null) preview.SetActive(show);
     }
 
     private void OnTriggerEnter2D(Collider2D trigger) {
@@ -55,7 +62,16 @@ public class Turret : MonoBehaviour {
     void ScaleCost() {
         // float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
         cost = baseCost * GlobalData.currentWave;
-        if (costText != null) costText.text = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
+        string costString = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
+        if (costText != null) costText.text = costString;
+        if (preview != null) {
+            bool userProvidedCostTexts = costTexts != null || costTexts.Length > 0 || costTexts[0] != null;
+            if (userProvidedCostTexts) {
+                for (int i = 0; i < costTexts.Length; i++) {
+                    costTexts[i].GetComponent<TextMeshProUGUI>().text = costString;
+                }
+            }
+        }
     }
 
     void UpdateTurret() {
@@ -132,20 +148,40 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    public void SetTransparency(bool transparent, bool fullyOpaque = false) {
+    void SetHaloTransparency(float alpha) {
+        if (rangeIndicator != null) {
+            var lineRenderer = rangeIndicator.GetComponent<LineRenderer>();
+            if (lineRenderer != null) {
+                Color newColor = lineRenderer.startColor;
+                newColor.a = alpha;
+                lineRenderer.startColor = newColor;
+                lineRenderer.endColor = newColor;
+            }
+        }
+    }
+
+    public void SetAffordability(bool transparent, bool turretIsPlaced = false) {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         foreach (Renderer renderer in renderers) {
             foreach (Material mat in renderer.materials) {
                 Color color = mat.color;
-                if (fullyOpaque) {
+                if (turretIsPlaced) {
                     color.a = 1.0f;
                 } else {
+                    if (!transparent) canAfford = true;
                     color.a = transparent ? 0.35f : 0.75f;
                 }
                 mat.color = color;
             }
         }
-        ShowRange(!fullyOpaque); // Show the range indicator only if not fully opaque
+        SetHaloTransparency(transparent ? 0.35f : 0.75f);
+        ShowRange(!turretIsPlaced); // Show the range indicator only if not fully opaque
+
+        // Show or hide the red 'X' based on affordability
+        // Transform redX = rangeIndicator.transform.Find("RedX");
+        // if (redX != null) {
+        //     redX.gameObject.SetActive(!canAfford);
+        // }
     }
 
     private Sprite CreateCircleSprite() {
@@ -179,13 +215,67 @@ public class Turret : MonoBehaviour {
         rangeIndicator = new GameObject("RangeIndicator");
         rangeIndicator.transform.SetParent(transform);
         rangeIndicator.transform.localPosition = Vector3.zero;
-        var spriteRenderer = rangeIndicator.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = CreateCircleSprite();
-        spriteRenderer.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparent
+        var lineRenderer = rangeIndicator.AddComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.loop = true;
+        lineRenderer.useWorldSpace = false;
+
+        // Create a material and set it to the LineRenderer
+        Material lineMaterial = new Material(Shader.Find("Unlit/Color"));
+        lineMaterial.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparency
+        lineRenderer.material = lineMaterial;
+        lineRenderer.startColor = lineMaterial.color;
+        lineRenderer.endColor = lineMaterial.color;
+
+        int segments = 100;
+        lineRenderer.positionCount = segments + 1;
 
         CircleCollider2D collider = GetComponent<CircleCollider2D>();
-        float colliderRange = (float)collider.radius * 2f;
-        rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
-        rangeIndicator.SetActive(false);
+        float radius = collider.radius;
+
+        for (int i = 0; i <= segments; i++) {
+            float angle = i * (2f * Mathf.PI / segments);
+            float x = Mathf.Cos(angle) * (radius / 3.33f);
+            float y = Mathf.Sin(angle) * (radius / 3.33f);
+            lineRenderer.SetPosition(i, new Vector3(x, y, 0));
+        }
+
+        bool ifShowRange = alwaysShowRangeIndicator ? true : false;
+        rangeIndicator.SetActive(ifShowRange);
+
+        // Create the red 'X' GameObject
+        // GameObject redX = new GameObject("RedX");
+        // redX.transform.SetParent(rangeIndicator.transform);
+        // redX.transform.localPosition = Vector3.zero;
+
+        // LineRenderer xLineRenderer = redX.AddComponent<LineRenderer>();
+        // xLineRenderer.startWidth = 0.1f;
+        // xLineRenderer.endWidth = 0.1f;
+        // xLineRenderer.useWorldSpace = false;
+        // xLineRenderer.material = new Material(Shader.Find("Unlit/Color"));
+        // xLineRenderer.material.color = Color.red;
+
+        // xLineRenderer.positionCount = 4;
+        // xLineRenderer.SetPosition(0, new Vector3(-0.5f, -0.5f, 0));
+        // xLineRenderer.SetPosition(1, new Vector3(0.5f, 0.5f, 0));
+        // xLineRenderer.SetPosition(2, new Vector3(0.5f, -0.5f, 0));
+        // xLineRenderer.SetPosition(3, new Vector3(-0.5f, 0.5f, 0));
+
+        // redX.SetActive(false); // Initially hide the red 'X'
+        
+        // Bubble Range
+        // // Create and configure the range indicator as a bubble
+        // rangeIndicator = new GameObject("RangeIndicator");
+        // rangeIndicator.transform.SetParent(transform);
+        // rangeIndicator.transform.localPosition = Vector3.zero;
+        // var spriteRenderer = rangeIndicator.AddComponent<SpriteRenderer>();
+        // spriteRenderer.sprite = CreateCircleSprite();
+        // spriteRenderer.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparent
+
+        // CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        // float colliderRange = (float)collider.radius * 2f;
+        // rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
+        // rangeIndicator.SetActive(false);
     }
 }
