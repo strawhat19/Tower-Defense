@@ -7,8 +7,10 @@ using System.Collections.Generic;
 
 public class SimpleTurret : MonoBehaviour {
     private Transform target;
+    public GameObject shells;
     public GameObject bullets;
     public GameObject rotatingGun;
+    public GameObject bulletImpact;
     public GameObject fireAnimation;
     private ParticleSystem bulletParticles;
     private List<ParticleCollisionEvent> particleCollisionEvents;
@@ -27,20 +29,26 @@ public class SimpleTurret : MonoBehaviour {
         FindTarget();
         if (target != null) {
             Aim();
-            // Fire();
         }
     }
 
     void OnParticleCollision(GameObject collidedWith) {
+        ParticleSystem bulletImpactParticles = bulletImpact.GetComponent<ParticleSystem>();
+        ParticlePhysicsExtensions.GetCollisionEvents(bulletImpactParticles, collidedWith, particleCollisionEvents);
         ParticlePhysicsExtensions.GetCollisionEvents(bulletParticles, collidedWith, particleCollisionEvents);
+        Debug.Log("Collided with " + collidedWith.name);
     }
 
     public void StopFiring() {
-        fireAnimation.SetActive(false);
+        if (fireAnimation != null) fireAnimation.SetActive(false);
     }
 
     public void Fire() {
-        fireAnimation.SetActive(true);
+        if (fireAnimation != null) fireAnimation.SetActive(true);
+        bulletParticles.Emit(1);
+        fireAnimation.GetComponent<ParticleSystem>().Emit(1);
+        if (shells != null) shells.GetComponent<ParticleSystem>().Emit(1);
+        if (bulletImpact != null) bulletImpact.GetComponent<ParticleSystem>().Emit(1);
     }
 
     private void OnTriggerEnter2D(Collider2D trigger) {
@@ -55,6 +63,7 @@ public class SimpleTurret : MonoBehaviour {
         GameObject closestEnemy = GetClosestEnemy();
         if (closestEnemy != null) {
             target = closestEnemy.transform;
+            Fire();
         } else {
             target = null;
             StopFiring();
@@ -97,5 +106,12 @@ public class SimpleTurret : MonoBehaviour {
         // }
     }
 
-
+    private void OnDrawGizmos() {
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        if (collider != null) {
+            Handles.color = Color.cyan;
+            float colliderRange = (float)collider.radius;
+            Handles.DrawWireDisc(transform.position, Vector3.forward, colliderRange);
+        }
+    }
 }

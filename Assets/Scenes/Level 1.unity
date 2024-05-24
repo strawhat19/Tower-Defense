@@ -2506,7 +2506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1462556330252027798, guid: 6b4b1d32be3048245b2fde7c4893133f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7477238509996304817, guid: 6b4b1d32be3048245b2fde7c4893133f, type: 3}
       propertyPath: m_IsActive
@@ -2555,7 +2555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7117267929761829139, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_RootOrder
@@ -3094,7 +3094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13004,9 +13004,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1266523351518082590, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5827531241856073002, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
       propertyPath: m_Name
       value: Gatling Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217655709662345730, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8830093287250571367, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
       propertyPath: m_RootOrder
@@ -13014,11 +13022,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8830093287250571367, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.08
+      value: -3.47
       objectReference: {fileID: 0}
     - target: {fileID: 8830093287250571367, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8830093287250571367, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13053,7 +13061,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1266523351518082590, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894ef5cbd1a442741931526b92ea7de0, type: 3}
