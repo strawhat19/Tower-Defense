@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5633543107856190056}
   - component: {fileID: 3709160464237354405}
   - component: {fileID: 8556778530430262730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 9099369802808930063}
   - component: {fileID: 7710796068726217257}
   - component: {fileID: 6129546709111629151}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8192165896554670094}
   - component: {fileID: 7681443605069506792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 7496812021056559628}
   - component: {fileID: 7267794033254008628}
   - component: {fileID: 4930610444766996744}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2214877095905898819}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DamageTextContainer
   m_TagString: DamageTextContainer
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 4493307902525916328}
   - component: {fileID: 4957450947470672918}
   - component: {fileID: 5410319321445439012}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 7742131815863014600}
   - component: {fileID: 5391626653990221634}
   - component: {fileID: 6275174507944484425}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 3983849221869271010}
   - component: {fileID: 8583990753018427758}
   - component: {fileID: 2713344825326178199}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -662,6 +662,7 @@ MonoBehaviour:
   healthBarRect: {fileID: 9099369802808930063}
   waypoints: {fileID: 0}
   HealthDisplay: 2
+  waves: {fileID: 0}
 --- !u!58 &6356699953489058156
 CircleCollider2D:
   m_ObjectHideFlags: 0
