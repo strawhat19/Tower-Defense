@@ -4,13 +4,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+public enum HandleShapes {
+    Circle = 1,
+    Square = 2,
+}
+
 public class Waves : MonoBehaviour {
+    [Header("Waves Settings")]
     public float delay = 5f;
     public GameObject[] waves;
     private int currentWaveIndex = 0;
+    private bool gameStarted = false;
     private bool isWaitingForNextWave = false;
 
+    [Header("Waypoints Settings")]
+    public bool alwaysShowPath = true;
+    public Vector3[] waypoints;
+    public int fontSize = 16;
+    public float handleSize = 0.25f;
+    public Color fontColor = Color.white;
+    public Color pathColor = Color.black;
+    public Color handleColor = Color.black;
+    public Color wireCircleColor = Color.black;
+    public HandleShapes handleShape = HandleShapes.Circle;
+
     void Start() {
+        SetPath();
         SetWaves();
         StartWaves();
     }
@@ -19,12 +38,22 @@ public class Waves : MonoBehaviour {
         UpdateWaves();
     }
 
+    void SetPath() {
+        gameStarted = true;
+        GlobalData.waypointPosition = transform.position;
+        GlobalData.finishLineX = waypoints[waypoints.Length - 1].x;
+    }
+
+    public Vector3 GetWaypointPosition(int index) {
+        return GlobalData.waypointPosition + waypoints[index];
+    }
+
     void SetWaves() {
         bool userNotProvidedWaves = waves == null || waves.Length == 0 || waves[0] == null;
         if (userNotProvidedWaves) {
             List<GameObject> waveList = new List<GameObject>();
             foreach (Transform child in transform) {
-                if (child.GetComponent<Spawner>() != null) {
+                if (child.GetComponent<Wave>() != null) {
                     waveList.Add(child.gameObject);
                 }
             }
@@ -68,6 +97,44 @@ public class Waves : MonoBehaviour {
             waves[currentWaveIndex].SetActive(true);
         } else {
             Debug.Log("All waves are complete!");
+        }
+    }
+
+    private void OnDrawGizmos() {
+        if (!alwaysShowPath) return;
+        if (waypoints == null || waypoints.Length == 0) return;
+        if (!gameStarted && transform.hasChanged) GlobalData.waypointPosition = transform.position;
+
+        for (int i = 0; i < waypoints.Length; i++) {
+            bool isFirst = i == 0;
+            bool isLast = i == (waypoints.Length - 1);
+            bool notFirstAndNotLast = i < waypoints.Length - 1;
+            Gizmos.color = isFirst ? Color.green : isLast ? Color.red : wireCircleColor;
+            Gizmos.DrawWireSphere(waypoints[i] + GlobalData.waypointPosition, 0.45f);
+            if (notFirstAndNotLast) {
+                bool isLastLine = i >= waypoints.Length - 2;
+                Gizmos.color = isFirst ? Color.green : (isLast || isLastLine) ? Color.red : pathColor;
+                Gizmos.DrawLine(waypoints[i] + GlobalData.waypointPosition, waypoints[i + 1] + GlobalData.waypointPosition);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected() {
+        if (alwaysShowPath) return;
+        if (waypoints == null || waypoints.Length == 0) return;
+        if (!gameStarted && transform.hasChanged) GlobalData.waypointPosition = transform.position;
+
+        for (int i = 0; i < waypoints.Length; i++) {
+            bool isFirst = i == 0;
+            bool isLast = i == (waypoints.Length - 1);
+            bool notFirstAndNotLast = i < waypoints.Length - 1;
+            Gizmos.color = isFirst ? Color.green : isLast ? Color.red : wireCircleColor;
+            Gizmos.DrawWireSphere(waypoints[i] + GlobalData.waypointPosition, 0.45f);
+            if (notFirstAndNotLast) {
+                bool isLastLine = i >= waypoints.Length - 2;
+                Gizmos.color = isFirst ? Color.green : (isLast || isLastLine) ? Color.red : pathColor;
+                Gizmos.DrawLine(waypoints[i] + GlobalData.waypointPosition, waypoints[i + 1] + GlobalData.waypointPosition);
+            }
         }
     }
 }

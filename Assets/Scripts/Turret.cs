@@ -130,7 +130,7 @@ public class Turret : MonoBehaviour {
         float shortestDistance = Mathf.Infinity;
         foreach (GameObject enemy in enemiesInRange) {
             if (enemy == null || !enemy.activeInHierarchy) continue;
-            float distanceToFinishLineX = Mathf.Abs(enemy.transform.position.x - finishLine.position.x);
+            float distanceToFinishLineX = Mathf.Abs(enemy.transform.position.x - (finishLine == null ? GlobalData.finishLineX : finishLine.position.x));
             if (distanceToFinishLineX < shortestDistance) {
                 shortestDistance = distanceToFinishLineX;
                 closestEnemy = enemy;
@@ -174,6 +174,9 @@ public class Turret : MonoBehaviour {
                 mat.color = color;
             }
         }
+
+        if (canAfford) Debug.Log("Can now afford " + gameObject.name);
+
         SetHaloTransparency(transparent ? 0.35f : 0.75f);
         ShowRange(!turretIsPlaced); // Show the range indicator only if not fully opaque
 

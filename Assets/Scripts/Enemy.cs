@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private Waypoints waypoints;
     public HealthDisplays HealthDisplay = HealthDisplays.ShowHealthPoints;
 
+    public Waves waves;
     private Animator animator;
     private int waypointIndex = 0;
     private SpriteRenderer spriteRenderer;
@@ -84,8 +85,12 @@ public class Enemy : MonoBehaviour {
     }
 
     void Update() {
-        if (waypoints != null && waypoints.Points.Length > 0) {
+        if (waves != null && waves.waypoints.Length > 0) {
             Move();
+        } else {
+            if (waypoints != null && waypoints.Points.Length > 0) {
+                Move();
+            }
         }
 
         if (currentHealth <= 0) {
@@ -103,7 +108,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void Move() {
-        Vector3 targetPosition = waypoints.GetWaypointPosition(waypointIndex);
+        Vector3 targetPosition = waves != null ? waves.GetWaypointPosition(waypointIndex) : waypoints.GetWaypointPosition(waypointIndex);
         Vector3 direction = targetPosition - transform.position;
 
         // Flip the sprite based on the direction of movement
@@ -118,7 +123,8 @@ public class Enemy : MonoBehaviour {
         // Check if the enemy is close to the waypoint
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f) {
             waypointIndex++;
-            if (waypointIndex >= waypoints.Points.Length) {
+            int amountOfWaypoints = waves != null ? waves.waypoints.Length : waypoints.Points.Length;
+            if (waypointIndex >= amountOfWaypoints) {
                 // Reached the final waypoint, destroy the enemy or handle end of path
                 GlobalData.startLives = GlobalData.startLives - damage;
                 if (wavePosition == waveMax) {
