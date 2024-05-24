@@ -211,18 +211,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAim: 1
   canFire: 1
-  baseCost: 300
-  cost: 300
-  rateOfFire: 3.33
+  baseCost: 125
+  cost: 125
+  rateOfFire: 3
   damageMin: 10
-  damageMax: 35
-  displayName: Missile Launcher
+  damageMax: 15
   projectile: {fileID: 6295518927219759172, guid: 3211b164a5abfda4c8223119e93dbb26, type: 3}
   shootSound: {fileID: 6143733164065864471}
   hitSound: {fileID: 5421062861525877212}
   barrelOfTheGun: {fileID: 498274869141839631}
   preview: {fileID: 7477238509996304817}
-  costText: {fileID: 0}
+  aimAndFireObject: {fileID: 0}
   costTexts:
   - {fileID: 4942397651640686185}
 --- !u!58 &4624484233970162599
@@ -259,7 +258,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 25
+  m_Radius: 15
 --- !u!212 &7971199176285532290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -462,7 +461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 300
+  m_text: 150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

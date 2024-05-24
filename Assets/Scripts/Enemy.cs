@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour {
     public GameObject damageTextContainer;
     public TextMeshProUGUI damageText;
     public RectTransform healthBarRect;
-    [SerializeField] private Waypoints waypoints;
     public HealthDisplays HealthDisplay = HealthDisplays.ShowHealthPoints;
 
     public Waves waves;
@@ -51,13 +50,11 @@ public class Enemy : MonoBehaviour {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         RemoveDamageText();
-        if (waypoints == null) waypoints = GameObject.FindObjectOfType<Waypoints>();
         if (healthText != null) {
             if (HealthDisplay == HealthDisplays.ShowPercentages) {
                 healthText.text = $"Health: 100%";
             } else {
                 healthText.text = $"{currentHealth}";
-                // healthText.text = $"HP: {currentHealth} / {maxHealth}";
             }
         }
     }
@@ -87,10 +84,6 @@ public class Enemy : MonoBehaviour {
     void Update() {
         if (waves != null && waves.waypoints.Length > 0) {
             Move();
-        } else {
-            if (waypoints != null && waypoints.Points.Length > 0) {
-                Move();
-            }
         }
 
         if (currentHealth <= 0) {
@@ -108,7 +101,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void Move() {
-        Vector3 targetPosition = waves != null ? waves.GetWaypointPosition(waypointIndex) : waypoints.GetWaypointPosition(waypointIndex);
+        Vector3 targetPosition = waves.GetWaypointPosition(waypointIndex);
         Vector3 direction = targetPosition - transform.position;
 
         // Flip the sprite based on the direction of movement
@@ -123,7 +116,7 @@ public class Enemy : MonoBehaviour {
         // Check if the enemy is close to the waypoint
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f) {
             waypointIndex++;
-            int amountOfWaypoints = waves != null ? waves.waypoints.Length : waypoints.Points.Length;
+            int amountOfWaypoints = waves.waypoints.Length;
             if (waypointIndex >= amountOfWaypoints) {
                 // Reached the final waypoint, destroy the enemy or handle end of path
                 GlobalData.startLives = GlobalData.startLives - damage;

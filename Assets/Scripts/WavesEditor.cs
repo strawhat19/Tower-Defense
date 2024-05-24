@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [CustomEditor(typeof(Waves))]
-public class WavePointsEditor : Editor {
+public class WavesEditor : Editor {
     Waves Waves => target as Waves;
     private Vector3 newWaypointsPoint;
 

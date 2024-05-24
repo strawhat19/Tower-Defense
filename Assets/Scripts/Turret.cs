@@ -13,7 +13,6 @@ public class Turret : MonoBehaviour {
     public float rateOfFire = 1.0f;
     public float damageMin = 5.0f;
     public float damageMax = 15.0f;
-    public string displayName = "Turret";
 
     public GameObject projectile;
     public AudioSource shootSound;
@@ -21,7 +20,8 @@ public class Turret : MonoBehaviour {
     public Transform barrelOfTheGun;
 
     public GameObject preview;
-    public TextMeshProUGUI costText;  // Reference to the TextMeshPro component for displaying the cost
+    private AimAndFire aimAndFire;
+    public GameObject aimAndFireObject;
     public GameObject[] costTexts;
 
     private Transform target;
@@ -34,6 +34,7 @@ public class Turret : MonoBehaviour {
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     void Start() {
+        SetAimAndFire();
         SetTurret();
     }
 
@@ -43,6 +44,10 @@ public class Turret : MonoBehaviour {
 
     public void EnableFiring(bool enable) {
         canFire = enable;
+    }
+
+    void SetAimAndFire() {
+        if (aimAndFireObject != null) aimAndFire = aimAndFireObject.GetComponent<AimAndFire>();
     }
 
     public void ShowRange(bool show) {
@@ -63,7 +68,6 @@ public class Turret : MonoBehaviour {
         // float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
         cost = baseCost * GlobalData.currentWave;
         string costString = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
-        if (costText != null) costText.text = costString;
         if (preview != null) {
             bool userProvidedCostTexts = costTexts != null || costTexts.Length > 0 || costTexts[0] != null;
             if (userProvidedCostTexts) {
@@ -113,6 +117,7 @@ public class Turret : MonoBehaviour {
     }
 
     void Shoot(GameObject target) {
+        if (aimAndFire != null) aimAndFire.canFire = true;
         if (projectile != null && barrelOfTheGun != null) {
             GameObject projectileObject = Instantiate(projectile, barrelOfTheGun.position, barrelOfTheGun.rotation);
             Projectile proj = projectileObject.GetComponent<Projectile>();

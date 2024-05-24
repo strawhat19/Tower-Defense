@@ -466,18 +466,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAim: 1
   canFire: 1
-  baseCost: 200
-  cost: 200
-  rateOfFire: 1.5
-  damageMin: 8.5
-  damageMax: 27.5
-  displayName: Photon Blaster
+  baseCost: 150
+  cost: 150
+  rateOfFire: 3.33
+  damageMin: 15
+  damageMax: 20
   projectile: {fileID: 2002946470007308753, guid: 0a81a0249325c5440a0ff92e3c331a48, type: 3}
   shootSound: {fileID: 2797408216781452634}
   hitSound: {fileID: 4788317278724036376}
   barrelOfTheGun: {fileID: 8880319360398791095}
   preview: {fileID: 3375898112495267148}
-  costText: {fileID: 0}
+  aimAndFireObject: {fileID: 0}
   costTexts:
   - {fileID: 5784171860762819331}
 --- !u!58 &2594251822791856843
@@ -514,7 +513,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 20
 --- !u!212 &2464765506770097064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -556,7 +555,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e707186e096f672438c0ee7857031fae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 603fa0508067c1e44a54a545332381e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
