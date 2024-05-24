@@ -13815,14 +13815,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86e33c68418ba54391b786a0d797f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingTurret: 0
   tilemap: {fileID: 2886952469882459223}
-  turret: {fileID: 9056542536790122158, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
-  turrets:
-  - {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
-  - {fileID: 7117267929761829139, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
-  - {fileID: 1462556330252027798, guid: 6b4b1d32be3048245b2fde7c4893133f, type: 3}
-  - {fileID: 9056542536790122158, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
+  turret: {fileID: 0}
   highlightColor: {r: 0, g: 1, b: 0.7442703, a: 1}
+  activePreviewTurret: {fileID: 0}
 --- !u!19719996 &4395615702559513402
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -14132,6 +14129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileCardsCoinsTextContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 3211290784799232305, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: turretShop
+      value: 
+      objectReference: {fileID: 4047163700834781273}
     - target: {fileID: 3221484744521703800, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14156,6 +14157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PhotonCardsCoinsTextContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 3754814517837573481, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: turretShop
+      value: 
+      objectReference: {fileID: 4047163700834781273}
     - target: {fileID: 3764463183554665760, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14304,6 +14309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletCardsCoinsTextContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 7103079797003817035, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: turretShop
+      value: 
+      objectReference: {fileID: 4047163700834781273}
     - target: {fileID: 7127018484198781718, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -14496,6 +14505,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9046649207859973457, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_Name
+      value: MachineCardsCoinsTextContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106648087934226745, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: turretShop
+      value: 
+      objectReference: {fileID: 4047163700834781273}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

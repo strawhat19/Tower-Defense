@@ -10,6 +10,7 @@ public class Card : MonoBehaviour {
     public GameObject costContainer;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI damageText;
+    public TilemapInteraction turretShop;
     private SpriteRenderer spriteRenderer;
 
     void Start() {
@@ -18,6 +19,23 @@ public class Card : MonoBehaviour {
 
     void Update() {
         SetCard();
+    }
+
+    public void OnCardClicked() {
+        OperateTurretShop();
+    }
+
+    void OperateTurretShop() {
+        if (turretShop != null) {
+            if (turretShop.turret == turret) {
+                if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
+                turretShop.buildingTurret = false;
+            } else {
+                turretShop.turret = turret;
+                if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
+                turretShop.buildingTurret = true;
+            }
+        }
     }
 
     void SetCardImage(Sprite spriteToSet) {

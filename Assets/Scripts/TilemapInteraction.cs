@@ -5,12 +5,12 @@ public class TilemapInteraction : MonoBehaviour {
     public bool buildingTurret = false;
     public Tilemap tilemap;
     public GameObject turret;
-    public GameObject[] turrets;
+    // public GameObject[] turrets;
     public Color highlightColor = Color.cyan;
 
     private Color originalColor;
     private bool canAfford = false;
-    private GameObject activePreviewTurret;
+    public GameObject activePreviewTurret;
     private Vector3Int previousMousePos = new Vector3Int();
 
     void Start() {
