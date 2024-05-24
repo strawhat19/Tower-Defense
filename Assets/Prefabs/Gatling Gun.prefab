@@ -6052,6 +6052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cf40ac121a9344d857d374e02d67cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFire: 0
   shells: {fileID: 6284401130649655351}
   bullets: {fileID: 5856325518555445649}
   fireSound: {fileID: 2882512523977229073}
@@ -6092,7 +6093,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 7.5
 --- !u!1 &5856325518555445649
 GameObject:
   m_ObjectHideFlags: 0

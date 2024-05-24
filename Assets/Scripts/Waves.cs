@@ -81,6 +81,7 @@ public class Waves : MonoBehaviour {
         isWaitingForNextWave = true;
         if (currentWaveIndex < waves.Length - 1) {
             Debug.Log("Starting Next Wave In " + delay + " seconds");
+            // GlobalData.startCoins = GlobalData.startCoins + (100f * GlobalData.currentWave);
         }
         yield return new WaitForSeconds(delay);
         ActivateNextWave();

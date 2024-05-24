@@ -1096,6 +1096,7 @@ MonoBehaviour:
   turret: {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
   costContainer: {fileID: 2255600190976999942}
   costText: {fileID: 4220472285860637592}
+  damageText: {fileID: 6261386415112374065}
 --- !u!222 &8523223570272014766
 CanvasRenderer:
   m_ObjectHideFlags: 0

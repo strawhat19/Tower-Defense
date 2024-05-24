@@ -9,6 +9,7 @@ public class Card : MonoBehaviour {
     public GameObject turret;
     public GameObject costContainer;
     public TextMeshProUGUI costText;
+    public TextMeshProUGUI damageText;
     private SpriteRenderer spriteRenderer;
 
     void Start() {
@@ -46,6 +47,13 @@ public class Card : MonoBehaviour {
             Turret turretSettings = turret.GetComponent<Turret>();
             if (turretSettings != null) {
                 SetCost(turretSettings.baseCost * GlobalData.currentWave);
+                if (GlobalData.currentWave > 1 && damageText != null) {
+                    float scaledDamageMin = GlobalData.CalculateScaled(turretSettings.damageMin);
+                    float scaledDamageMax = GlobalData.CalculateScaled(turretSettings.damageMax);
+                    string scaledDamageMinString = GlobalData.RemoveDotZeroZero(scaledDamageMin.ToString("F2"));
+                    string scaledDamageMaxString = GlobalData.RemoveDotZeroZero(scaledDamageMax.ToString("F2"));
+                    damageText.text = $"Damage: {scaledDamageMinString} - {scaledDamageMaxString}";
+                }
             }
         }
     }

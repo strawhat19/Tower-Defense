@@ -494,8 +494,8 @@ MonoBehaviour:
   baseCost: 175
   cost: 175
   rateOfFire: 5
-  damageMin: 10
-  damageMax: 20
+  damageMin: 5
+  damageMax: 25
   projectile: {fileID: 3012545461551713863, guid: b7b27a1c52d7b7d4591f4d77b1f816a6, type: 3}
   shootSound: {fileID: 0}
   hitSound: {fileID: 4968444347053113493}
@@ -538,7 +538,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 25
 --- !u!212 &2131264176742178706
 SpriteRenderer:
   m_ObjectHideFlags: 0

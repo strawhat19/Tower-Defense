@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapInteraction : MonoBehaviour {
+    public bool buildingTurret = false;
     public Tilemap tilemap;
     public GameObject turret;
     public GameObject[] turrets;
@@ -17,6 +18,13 @@ public class TilemapInteraction : MonoBehaviour {
     }
 
     void Update() {
+        if (!buildingTurret) {
+            if (activePreviewTurret != null) {
+                Destroy(activePreviewTurret);
+            }
+            return;
+        }
+
         Camera.main.orthographic = true;
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0; // Ensure the z position is 0 for 2D

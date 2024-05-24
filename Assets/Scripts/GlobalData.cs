@@ -28,6 +28,12 @@ public static class GlobalData {
         return input;
     }
 
+    public static float CalculateScaled(float initialVal) {
+        float calculatedLevelScalingValue = (float)(initialVal * currentLevel) * (currentWave > 1 ? (currentWave / currentWave + 1) : currentWave);
+        float updatedValue = (float)(calculatedLevelScalingValue / 2) + initialVal;
+        return updatedValue;
+    }
+
     public static float CalculateLevelScaled(float initialVal) {
         float calculatedLevelScalingValue = (float)(initialVal * currentLevel) * (currentWave > 1 ? (currentWave / currentWave + 1) : currentWave);
         return calculatedLevelScalingValue;
