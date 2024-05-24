@@ -32,7 +32,7 @@ public class SimpleTurret : MonoBehaviour {
     }
 
     void OnParticleCollision(GameObject collidedWith) {
-        ParticlePhysicsExtension
+        ParticlePhysicsExtensions.GetCollisionEvents(bulletParticles, collidedWith, particleCollisionEvents);
     }
 
     public void StopFiring() {
