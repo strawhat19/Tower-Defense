@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+// [ExecuteAlways]
 public class Turret : MonoBehaviour {
     public bool canAim = true;
     public bool canFire = true;
@@ -64,9 +65,7 @@ public class Turret : MonoBehaviour {
         if (trigger.CompareTag("Enemy")) enemiesInRange.Remove(trigger.gameObject);
     }
 
-    void ScaleCost() {
-        // float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
-        // cost = baseCost * GlobalData.currentWave;
+    void SetCosts() {
         string costString = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
         if (preview != null) {
             bool userProvidedCostTexts = costTexts != null || costTexts.Length > 0 || costTexts[0] != null;
@@ -77,6 +76,12 @@ public class Turret : MonoBehaviour {
             }
         }
     }
+
+    // void ScaleCost() {
+    //     float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
+    //     cost = baseCost * GlobalData.currentWave;
+    //     SetCosts();
+    // }
 
     void UpdateTurret() {
         // ScaleCost();
@@ -170,14 +175,16 @@ public class Turret : MonoBehaviour {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         foreach (Renderer renderer in renderers) {
             foreach (Material mat in renderer.materials) {
-                Color color = mat.color;
-                if (turretIsPlaced) {
-                    color.a = 1.0f;
-                } else {
-                    if (!transparent) canAfford = true;
-                    color.a = transparent ? 0.35f : 0.75f;
+                if (mat.HasProperty("_Color")) { // Check if the material has a _Color property
+                    Color color = mat.color;
+                    if (turretIsPlaced) {
+                        color.a = 1.0f;
+                    } else {
+                        if (!transparent) canAfford = true;
+                        color.a = transparent ? 0.35f : 0.75f;
+                    }
+                    mat.color = color;
                 }
-                mat.color = color;
             }
         }
 
@@ -214,6 +221,7 @@ public class Turret : MonoBehaviour {
 
     void SetTurret() {
         // ScaleCost();
+        SetCosts();
         GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
         if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
         CircleCollider2D finishcollider = gameObject.AddComponent<CircleCollider2D>();

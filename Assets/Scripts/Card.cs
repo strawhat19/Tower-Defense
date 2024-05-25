@@ -7,9 +7,11 @@ using System.Collections.Generic;
 // [ExecuteAlways]
 public class Card : MonoBehaviour {
     public GameObject turret;
+    private Turret turretSettings;
     public GameObject costContainer;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI damageText;
+    public TextMeshProUGUI fireRateText;
     public TilemapInteraction turretShop;
     private SpriteRenderer spriteRenderer;
 
@@ -18,7 +20,7 @@ public class Card : MonoBehaviour {
     }
 
     void Update() {
-        SetCard();
+        // SetCard();
     }
 
     public void OnCardClicked() {
@@ -55,24 +57,46 @@ public class Card : MonoBehaviour {
         }
     }
 
+    void SetDamage(float damageMinToSet, float damageMaxToSet) {
+        if (damageText != null) {
+            string damageMinString = GlobalData.RemoveDotZeroZero(damageMinToSet.ToString("F2"));
+            string damageMaxString = GlobalData.RemoveDotZeroZero(damageMaxToSet.ToString("F2"));
+            damageText.text = $"Damage: {damageMinString} - {damageMaxString}";
+        }
+    }
+
+    void SetFireRate(float fireRate) {
+        if (fireRateText != null) {
+            string fireRateString = GlobalData.RemoveDotZeroZero(fireRate.ToString("F2"));
+            fireRateText.text = $"Fire Rate: {fireRateString}";
+        }
+    }
+
     void SetCard() {
         if (turret != null) {
+            turretSettings = turret.GetComponent<Turret>();
+            if (turretSettings != null) {
+                SetCost(turretSettings.baseCost);
+                SetFireRate(turretSettings.rateOfFire);
+                SetDamage(turretSettings.damageMin, turretSettings.damageMax);
+            }
+
             SpriteRenderer turretSpriteRenderer = turret.GetComponent<SpriteRenderer>();
             if (turretSpriteRenderer != null) {
                 SetCardImage(turretSpriteRenderer.sprite);
             }
 
-            Turret turretSettings = turret.GetComponent<Turret>();
-            if (turretSettings != null) {
-                // SetCost(turretSettings.baseCost * GlobalData.currentWave);
-                if (GlobalData.currentWave > 1 && damageText != null) {
-                    float scaledDamageMin = GlobalData.CalculateScaled(turretSettings.damageMin);
-                    float scaledDamageMax = GlobalData.CalculateScaled(turretSettings.damageMax);
-                    string scaledDamageMinString = GlobalData.RemoveDotZeroZero(scaledDamageMin.ToString("F2"));
-                    string scaledDamageMaxString = GlobalData.RemoveDotZeroZero(scaledDamageMax.ToString("F2"));
-                    damageText.text = $"Damage: {scaledDamageMinString} - {scaledDamageMaxString}";
-                }
-            }
+            // Turret turretSettings = turret.GetComponent<Turret>();
+            // if (turretSettings != null) {
+            //     // SetCost(turretSettings.baseCost * GlobalData.currentWave);
+            //     if (GlobalData.currentWave > 1 && damageText != null) {
+            //         float scaledDamageMin = GlobalData.CalculateScaled(turretSettings.damageMin);
+            //         float scaledDamageMax = GlobalData.CalculateScaled(turretSettings.damageMax);
+            //         string scaledDamageMinString = GlobalData.RemoveDotZeroZero(scaledDamageMin.ToString("F2"));
+            //         string scaledDamageMaxString = GlobalData.RemoveDotZeroZero(scaledDamageMax.ToString("F2"));
+            //         damageText.text = $"Damage: {scaledDamageMinString} - {scaledDamageMaxString}";
+            //     }
+            // }
         }
     }
 

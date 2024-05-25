@@ -1098,6 +1098,7 @@ MonoBehaviour:
   costContainer: {fileID: 2255600190976999942}
   costText: {fileID: 4220472285860637592}
   damageText: {fileID: 6261386415112374065}
+  fireRateText: {fileID: 99488153698102579}
   turretShop: {fileID: 0}
 --- !u!222 &8523223570272014766
 CanvasRenderer:

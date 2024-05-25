@@ -941,7 +941,7 @@ PrefabInstance:
     - target: {fileID: 23242132840406812, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: turret
       value: 
-      objectReference: {fileID: 9056542536790122158, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
+      objectReference: {fileID: 4364129394535737900, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
     - target: {fileID: 99488153698102579, guid: 78f9ab3376c9de141b7444d92163eaa8, type: 3}
       propertyPath: m_text
       value: 'Fire Rate: 5'
