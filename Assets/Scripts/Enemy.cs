@@ -70,8 +70,8 @@ public class Enemy : MonoBehaviour {
         animator.SetBool("Dead", true);
         currentHealth = 0;
         AddCoins();
-        Invoke("ScaleUp", 0.4f);
-        Invoke("Die", 0.75f);
+        Invoke("ScaleUp", 0.35f);
+        Invoke("Die", 0.55f);
         if (wavePosition == waveMax) {
             // Debug.Log("Last Enemy #" + wavePosition + " In Wave Killed");
             GlobalData.lastEnemyInWaveDied = true;
