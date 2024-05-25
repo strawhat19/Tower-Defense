@@ -3447,7 +3447,7 @@ GameObject:
   - component: {fileID: 1663446236}
   - component: {fileID: 1663446235}
   m_Layer: 0
-  m_Name: Thicc Rhinos
+  m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3480,13 +3480,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.5
+  spawnDelay: 1
   maxObjects: 35
-  enemy: {fileID: 819412901668981562, guid: e32d7ef2ab39839469df4745b8383159, type: 3}
+  enemy: {fileID: 6732601913314294, guid: 52a7d573fd1338641ba8d5dfd26343a5, type: 3}
   health: 500
   reward: 15
   damage: 1
-  speed: 1.5
+  speed: 2
 --- !u!114 &1663446236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14879,10 +14879,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1002159806}
   - {fileID: 52358593}
   - {fileID: 8830354600032440079}
   - {fileID: 940617218}
+  - {fileID: 1002159806}
   - {fileID: 1419289359}
   - {fileID: 2145503278}
   - {fileID: 1663446234}
