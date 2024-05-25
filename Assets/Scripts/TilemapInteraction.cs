@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapInteraction : MonoBehaviour {
-    public bool buildingTurret = false;
+    public bool buildingTurret = true;
     public Tilemap tilemap;
     public GameObject turret;
     // public GameObject[] turrets;
@@ -45,7 +45,7 @@ public class TilemapInteraction : MonoBehaviour {
 
                 // Check affordability and adjust transparency
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
-                if (GlobalData.startCoins >= turretComponent.baseCost * GlobalData.currentWave) {
+                if (GlobalData.startCoins >= turretComponent.baseCost) {
                     turretComponent.SetAffordability(false);  // Less transparent
                 } else {
                     turretComponent.SetAffordability(true);  // More transparent
@@ -90,7 +90,7 @@ public class TilemapInteraction : MonoBehaviour {
 
     void OnTileClicked(Vector3 worldPos) {
         // Get the cost of the turret from its component
-        float turretCost = turret.GetComponent<Turret>().baseCost * GlobalData.currentWave;
+        float turretCost = turret.GetComponent<Turret>().baseCost;
 
         // Check if the player can afford the turret
         canAfford = GlobalData.startCoins >= turretCost;

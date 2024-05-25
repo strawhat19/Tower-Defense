@@ -66,7 +66,7 @@ public class Turret : MonoBehaviour {
 
     void ScaleCost() {
         // float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
-        cost = baseCost * GlobalData.currentWave;
+        // cost = baseCost * GlobalData.currentWave;
         string costString = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
         if (preview != null) {
             bool userProvidedCostTexts = costTexts != null || costTexts.Length > 0 || costTexts[0] != null;
@@ -79,8 +79,9 @@ public class Turret : MonoBehaviour {
     }
 
     void UpdateTurret() {
-        ScaleCost();
+        // ScaleCost();
         if (canAim) {
+            enemiesInRange.RemoveAll(enemy => enemy == null || enemy.GetComponent<Enemy>().currentHealth <= 0);
             FindTarget();
             if (target != null) {
                 RotateTowardsTarget();
@@ -180,7 +181,7 @@ public class Turret : MonoBehaviour {
             }
         }
 
-        if (canAfford) Debug.Log("Can now afford " + gameObject.name);
+        // if (canAfford) Debug.Log("Can now afford " + gameObject.name);
 
         SetHaloTransparency(transparent ? 0.35f : 0.75f);
         ShowRange(!turretIsPlaced); // Show the range indicator only if not fully opaque
@@ -212,7 +213,7 @@ public class Turret : MonoBehaviour {
     }
 
     void SetTurret() {
-        ScaleCost();
+        // ScaleCost();
         GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
         if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();
         CircleCollider2D finishcollider = gameObject.AddComponent<CircleCollider2D>();

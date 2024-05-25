@@ -28,6 +28,7 @@ public class AimAndFire : MonoBehaviour {
     }
 
     void Update() {
+        enemiesInRange.RemoveAll(enemy => enemy == null || enemy.GetComponent<Enemy>().currentHealth <= 0);
         FindTarget();
         if (target != null) {
             Aim();

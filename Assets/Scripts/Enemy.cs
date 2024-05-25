@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     public float reward = GlobalData.defaultReward;
     public float maxHealth = GlobalData.defaultHealth;
     public float currentHealth = GlobalData.defaultHealth;
+    public GameObject health;
     public TextMeshProUGUI healthText;
     public GameObject damageTextContainer;
     public TextMeshProUGUI damageText;
@@ -25,25 +26,56 @@ public class Enemy : MonoBehaviour {
 
     public Waves waves;
     private Animator animator;
+    private bool isDead = false;
     private int waypointIndex = 0;
     private SpriteRenderer spriteRenderer;
 
+// [`bat`,`mushroom`, `ghost`, `rocks`, `skulls`, `slime`, `turtle`]
     void Die() {
+        if (wavePosition == waveMax) {
+            // Debug.Log("Last Enemy #" + wavePosition + " In Wave Died");
+            GlobalData.lastEnemyInWaveDied = true;
+        }
         Destroy(gameObject);
     }
 
     void AddCoins() {
-        GlobalData.startCoins = GlobalData.startCoins + reward;
-        if (wavePosition == waveMax) {
-            Debug.Log("Last Enemy #" + wavePosition + " In Wave Killed, +" + reward + " Points");
-            GlobalData.lastEnemyInWaveDied = true;
-        }
+        GlobalData.startCoins = GlobalData.startCoins + (reward / GlobalData.currentWave);
+    }
+
+    private IEnumerator KillAnimation() {
+        AddCoins();
+        currentHealth = 0;
+        animator.SetBool("Dead", true);
+
+        // Wait for the death animation to complete
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+
+        Destroy(gameObject);
+    }
+
+    public void StartKill() {
+        StartCoroutine(KillAnimation());
+    }
+
+    void ScaleUp() {
+        if (isDead) transform.localScale = new Vector3(1f, 1f, 1f) * 3f;
     }
 
     void Kill() {
+        if (isDead) return;
+        isDead = true;
+        if (health != null) health.SetActive(false);
+        animator.SetBool("Dead", true);
         currentHealth = 0;
-        Destroy(gameObject);
         AddCoins();
+        Invoke("ScaleUp", 0.4f);
+        Invoke("Die", 0.75f);
+        if (wavePosition == waveMax) {
+            // Debug.Log("Last Enemy #" + wavePosition + " In Wave Killed");
+            GlobalData.lastEnemyInWaveDied = true;
+        }
     }
 
     void Start() {
@@ -86,7 +118,7 @@ public class Enemy : MonoBehaviour {
             Move();
         }
 
-        if (currentHealth <= 0) {
+        if (!isDead && currentHealth <= 0) {
             Invoke("Kill", 0.5f);
         }
     }
@@ -120,10 +152,6 @@ public class Enemy : MonoBehaviour {
             if (waypointIndex >= amountOfWaypoints) {
                 // Reached the final waypoint, destroy the enemy or handle end of path
                 GlobalData.startLives = GlobalData.startLives - damage;
-                if (wavePosition == waveMax) {
-                    Debug.Log("Last Enemy #" + wavePosition + " In Wave Died");
-                    GlobalData.lastEnemyInWaveDied = true;
-                }
                 Die();
             }
         }

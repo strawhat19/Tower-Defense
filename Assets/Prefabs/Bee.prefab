@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -631,7 +631,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.21, y: -4.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8192165896554670094}
   m_Father: {fileID: 0}
@@ -656,11 +656,11 @@ MonoBehaviour:
   reward: 7.5
   maxHealth: 75
   currentHealth: 75
+  health: {fileID: 4810428429258799475}
   healthText: {fileID: 5410319321445439012}
   damageTextContainer: {fileID: 6274820992726537471}
   damageText: {fileID: 6275174507944484425}
   healthBarRect: {fileID: 9099369802808930063}
-  waypoints: {fileID: 0}
   HealthDisplay: 2
   waves: {fileID: 0}
 --- !u!58 &6356699953489058156

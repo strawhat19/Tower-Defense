@@ -332,12 +332,13 @@ MonoBehaviour:
   reward: 10
   maxHealth: 100
   currentHealth: 100
+  health: {fileID: 678651395630096685}
   healthText: {fileID: 1582562308044122777}
   damageTextContainer: {fileID: 5801717125574544786}
   damageText: {fileID: 1985796820707170056}
   healthBarRect: {fileID: 4842861243573508581}
-  waypoints: {fileID: 0}
   HealthDisplay: 2
+  waves: {fileID: 0}
 --- !u!58 &2847285415352566207
 CircleCollider2D:
   m_ObjectHideFlags: 0

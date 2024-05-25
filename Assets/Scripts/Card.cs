@@ -29,7 +29,7 @@ public class Card : MonoBehaviour {
         if (turretShop != null) {
             if (turretShop.turret == turret) {
                 if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
-                turretShop.buildingTurret = false;
+                turretShop.buildingTurret = true;
             } else {
                 turretShop.turret = turret;
                 if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
@@ -64,7 +64,7 @@ public class Card : MonoBehaviour {
 
             Turret turretSettings = turret.GetComponent<Turret>();
             if (turretSettings != null) {
-                SetCost(turretSettings.baseCost * GlobalData.currentWave);
+                // SetCost(turretSettings.baseCost * GlobalData.currentWave);
                 if (GlobalData.currentWave > 1 && damageText != null) {
                     float scaledDamageMin = GlobalData.CalculateScaled(turretSettings.damageMin);
                     float scaledDamageMax = GlobalData.CalculateScaled(turretSettings.damageMax);
