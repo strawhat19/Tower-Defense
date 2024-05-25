@@ -184,6 +184,176 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f834d08c1b264db49a1d7cc800d467c9, type: 3}
+--- !u!1 &14285651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5784171860762819331, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+  m_PrefabInstance: {fileID: 196610444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &52358592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 52358593}
+  - component: {fileID: 52358595}
+  - component: {fileID: 52358594}
+  m_Layer: 3
+  m_Name: Ghosts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &52358593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52358592}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7273726612837959879}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52358594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52358592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDelay: 1
+  maxObjects: 15
+  enemy: {fileID: 6130411100527635600, guid: a60deb4a4eaffeb4496a090f902c1859, type: 3}
+  health: 50
+  reward: 5
+  damage: 1
+  speed: 2.5
+--- !u!114 &52358595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52358592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1411e36a612b1134db377ee7586f0a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &196610444
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 1181974206}
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: damageMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: damageMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: rateOfFire
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: costTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: costTexts.Array.data[0]
+      value: 
+      objectReference: {fileID: 14285651}
+    - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: costTexts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1689485574}
+    - target: {fileID: 3375898112495267148, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117267929761829139, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_Name
+      value: Photon Blaster (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117267929761829139, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880319360398791095, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.03
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
 --- !u!1 &213432514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +3128,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &940617217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940617218}
+  - component: {fileID: 940617220}
+  - component: {fileID: 940617219}
+  m_Layer: 3
+  m_Name: Bats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &940617218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940617217}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7273726612837959879}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &940617219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940617217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDelay: 1.33
+  maxObjects: 19
+  enemy: {fileID: 7723692932343303451, guid: cf07c80746848c145a9c7596282bd6f9, type: 3}
+  health: 99
+  reward: 9
+  damage: 1
+  speed: 2.33
+--- !u!114 &940617220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940617217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1411e36a612b1134db377ee7586f0a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1002159805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,7 +3204,7 @@ GameObject:
   - component: {fileID: 1002159808}
   - component: {fileID: 1002159807}
   m_Layer: 0
-  m_Name: Deadly Bees
+  m_Name: Mushrooms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3003,13 +3237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1.5
-  maxObjects: 33
-  enemy: {fileID: 8530932818556487183, guid: 651a7dcbd5fed32498abdda4429e4b86, type: 3}
-  health: 250
-  reward: 12
+  spawnDelay: 1.25
+  maxObjects: 20
+  enemy: {fileID: 683840796517577071, guid: 9f40db637eaecfa4aa1ccc3e5de89728, type: 3}
+  health: 150
+  reward: 8.5
   damage: 1
-  speed: 2.5
+  speed: 2.75
 --- !u!114 &1002159808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3120,7 +3354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14645,10 +14879,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1002159806}
+  - {fileID: 52358593}
   - {fileID: 8830354600032440079}
+  - {fileID: 940617218}
   - {fileID: 1419289359}
   - {fileID: 2145503278}
-  - {fileID: 1002159806}
   - {fileID: 1663446234}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -14696,7 +14932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 1.75
-  maxObjects: 15
+  maxObjects: 17
   enemy: {fileID: 8530932818556487183, guid: 651a7dcbd5fed32498abdda4429e4b86, type: 3}
   health: 75
   reward: 7

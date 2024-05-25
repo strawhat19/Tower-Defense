@@ -181,7 +181,7 @@ public class Turret : MonoBehaviour {
             }
         }
 
-        // if (canAfford) Debug.Log("Can now afford " + gameObject.name);
+        if (canAfford) Debug.Log("Can now afford " + gameObject.name);
 
         SetHaloTransparency(transparent ? 0.35f : 0.75f);
         ShowRange(!turretIsPlaced); // Show the range indicator only if not fully opaque

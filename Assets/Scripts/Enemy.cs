@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void AddCoins() {
-        GlobalData.startCoins = GlobalData.startCoins + (reward / GlobalData.currentWave);
+        GlobalData.startCoins = GlobalData.startCoins + reward;
     }
 
     private IEnumerator KillAnimation() {
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour {
         animator.SetBool("Dead", true);
         currentHealth = 0;
         AddCoins();
-        Invoke("ScaleUp", 0.35f);
+        Invoke("ScaleUp", 0.375f);
         Invoke("Die", 0.55f);
         if (wavePosition == waveMax) {
             // Debug.Log("Last Enemy #" + wavePosition + " In Wave Killed");
