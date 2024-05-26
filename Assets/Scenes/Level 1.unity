@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2338549760502742235, guid: f834d08c1b264db49a1d7cc800d467c9, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2338549760502742235, guid: f834d08c1b264db49a1d7cc800d467c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -237,7 +237,7 @@ MonoBehaviour:
   spawnDelay: 1.5
   maxObjects: 20
   enemy: {fileID: 6130411100527635600, guid: a60deb4a4eaffeb4496a090f902c1859, type: 3}
-  health: 250
+  health: 150
   reward: 7
   damage: 1
   speed: 2
@@ -261,6 +261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 184592331767479339, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: costText
       value: 
@@ -291,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2595,6 +2599,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &293269311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
+  m_PrefabInstance: {fileID: 1218594954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &382525493 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4945484115304752573, guid: cb2387b1b224c364792c115464651dcd, type: 3}
@@ -2686,6 +2695,10 @@ PrefabInstance:
       propertyPath: costTexts.Array.data[1]
       value: 
       objectReference: {fileID: 1058869663}
+    - target: {fileID: 7967222274503021311, guid: 6b4b1d32be3048245b2fde7c4893133f, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2699,6 +2712,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 184592331767479339, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1957874934066737714, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: costText
       value: 
@@ -2725,7 +2742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7117267929761829139, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_RootOrder
@@ -2805,7 +2822,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -2965,7 +2982,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &535193017 stripped
 MonoBehaviour:
@@ -3159,7 +3176,7 @@ MonoBehaviour:
   spawnDelay: 1.33
   maxObjects: 19
   enemy: {fileID: 7723692932343303451, guid: cf07c80746848c145a9c7596282bd6f9, type: 3}
-  health: 300
+  health: 200
   reward: 10
   damage: 1
   speed: 2.33
@@ -3223,7 +3240,7 @@ MonoBehaviour:
   spawnDelay: 1
   maxObjects: 25
   enemy: {fileID: 683840796517577071, guid: 9f40db637eaecfa4aa1ccc3e5de89728, type: 3}
-  health: 250
+  health: 200
   reward: 12
   damage: 1
   speed: 2.75
@@ -3331,13 +3348,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8985757962454046484, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
       propertyPath: m_Name
       value: Bullet Gun
       objectReference: {fileID: 0}
     - target: {fileID: 9216702513879839162, guid: 89545c0572cb2a5498ec9bf461f22677, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3394,13 +3415,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.65
+  spawnDelay: 0.75
   maxObjects: 30
   enemy: {fileID: 2786090958754132184, guid: f4eb80e51b140a847acaa168eb0c0c52, type: 3}
-  health: 250
+  health: 200
   reward: 10
   damage: 1
-  speed: 3.5
+  speed: 3
 --- !u!114 &1419289361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3469,7 +3490,7 @@ MonoBehaviour:
   health: 500
   reward: 11
   damage: 1
-  speed: 2
+  speed: 1
 --- !u!114 &1663446236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3516,7 +3537,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1764997613
 PrefabInstance:
@@ -3532,7 +3553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5355261497040445519, guid: e65b523dce8bf714f90bd74a26da3ba0, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5355261497040445519, guid: e65b523dce8bf714f90bd74a26da3ba0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5885,7 +5906,7 @@ MonoBehaviour:
   spawnDelay: 0.5
   maxObjects: 20
   enemy: {fileID: 819412901668981562, guid: e32d7ef2ab39839469df4745b8383159, type: 3}
-  health: 350
+  health: 250
   reward: 12
   damage: 1
   speed: 2
@@ -14039,7 +14060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTurret: 1
   tilemap: {fileID: 2886952469882459223}
-  turret: {fileID: 9056542537582480809}
+  turret: {fileID: 293269311}
   highlightColor: {r: 0, g: 1, b: 0.7442703, a: 1}
   activePreviewTurret: {fileID: 0}
 --- !u!19719996 &4395615702559513402
@@ -14098,13 +14119,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1136618783505757899, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4364129394535737900, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
       propertyPath: m_Name
       value: Machine Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 4364129394535737900, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4592486760845817267, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4592486760845817267, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14584,6 +14613,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6793278693663739545, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6832793516217436597, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_Name
       value: PhotonCardPicture
@@ -14650,7 +14683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7490142675246253242, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7490142675246253242, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14939,11 +14972,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &9056542537582480809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4364129394535737900, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
-  m_PrefabInstance: {fileID: 5560643015480035640}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9187131745193154040
 GameObject:
   m_ObjectHideFlags: 0

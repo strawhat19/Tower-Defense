@@ -129,9 +129,9 @@ public class Turret : MonoBehaviour {
             Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
                 float damageInRange = Random.Range(damageMin, damageMax);
-                float damage = GlobalData.CalculateLevelScaled(damageInRange);
+                // float damage = GlobalData.CalculateLevelScaled(damageInRange);
                 if (shootSound != null) shootSound.Play();
-                proj.Seek(target, damage, hitSound);
+                proj.Seek(target, damageInRange, hitSound);
             }
         }
     }

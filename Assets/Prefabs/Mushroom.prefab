@@ -110,6 +110,7 @@ RectTransform:
   - {fileID: 4348505026375869641}
   - {fileID: 3549882322185969159}
   - {fileID: 1901553415330725851}
+  - {fileID: 1817857020473281654}
   m_Father: {fileID: 8605884434031696971}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -156,6 +157,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &643247671377127896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876153150180939806}
+  - component: {fileID: 532151955788658047}
+  m_Layer: 0
+  m_Name: DamagePopupLocation (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &876153150180939806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643247671377127896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.715, y: 1.035, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &532151955788658047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643247671377127896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -11.315, y: -2.94315, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
 --- !u!1 &683840796517577071
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +248,7 @@ Transform:
   m_Children:
   - {fileID: 8605884434031696971}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2203790895970367619
 MonoBehaviour:
@@ -205,20 +262,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd84c5d23ce18741ba23c08b5e2f2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves: {fileID: 0}
   waveMax: 15
   wavePosition: 1
   speed: 3
-  damage: 1
   reward: 10
   maxHealth: 99
   currentHealth: 99
+  HealthDisplay: 2
   health: {fileID: 5406489660819694327}
   healthText: {fileID: 1479928226776886285}
-  damageTextContainer: {fileID: 4116836406478502894}
-  damageText: {fileID: 7517519959619951357}
   healthBarRect: {fileID: 4348505026375869641}
-  HealthDisplay: 2
-  waves: {fileID: 0}
+  damage: 1
+  damageText: {fileID: 7517519959619951357}
+  damageTextContainer: {fileID: 4116836406478502894}
+  damageTextAnimation: {fileID: 8389903106796190672, guid: 997c8b84013d3894c83ccb8a9d7c63c5, type: 3}
+  damagePopupLocationsParent: {fileID: 6732427891590452390}
 --- !u!58 &4371422934960544895
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -251,9 +310,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029999971, y: -0.06475794}
+  m_Offset: {x: 0, y: -0.05}
   serializedVersion: 2
-  m_Radius: 0.64
+  m_Radius: 0.13
 --- !u!212 &5098547182411808063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -354,6 +413,174 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &701540176554241826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098540911864516966}
+  - component: {fileID: 6152090208228474819}
+  m_Layer: 0
+  m_Name: DamagePopupLocation (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098540911864516966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701540176554241826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.715, y: 1.035, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6152090208228474819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701540176554241826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -12.745, y: -2.94315, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
+--- !u!1 &835811537019635867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7517034838646415131}
+  - component: {fileID: 1849249090125232065}
+  m_Layer: 0
+  m_Name: DamagePopupLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7517034838646415131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835811537019635867}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.965, y: 0.335, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849249090125232065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835811537019635867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -11.065, y: -3.64315, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
+--- !u!1 &2197152833147452500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659127757801141300}
+  - component: {fileID: 7569890133981346321}
+  m_Layer: 0
+  m_Name: DamagePopupLocation (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &659127757801141300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197152833147452500}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.965, y: 0.335, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7569890133981346321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197152833147452500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -12.995, y: -3.64315, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
 --- !u!1 &2366691575745551078
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +716,62 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3092710855808071240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2501042066907042214}
+  - component: {fileID: 5256194239710388976}
+  m_Layer: 0
+  m_Name: DamagePopupLocation (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2501042066907042214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3092710855808071240}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.035, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5256194239710388976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3092710855808071240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -12.03, y: -2.94315, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
 --- !u!1 &4116836406478502894
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +1055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.241}
+  m_AnchoredPosition: {x: 0, y: 0.16}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5734526226923683142
@@ -798,3 +1081,153 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &6303048847241209295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3549512831833727485}
+  - component: {fileID: 6604337247361222170}
+  m_Layer: 0
+  m_Name: DamagePopupLocation (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3549512831833727485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6303048847241209295}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.778, y: -0.455, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6604337247361222170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6303048847241209295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -11.252, y: -4.4331503, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
+--- !u!1 &6732427891590452390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817857020473281654}
+  m_Layer: 3
+  m_Name: DamagePopupLocations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817857020473281654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732427891590452390}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.685, z: 0}
+  m_LocalScale: {x: 1.010101, y: 1.010101, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7517034838646415131}
+  - {fileID: 876153150180939806}
+  - {fileID: 2501042066907042214}
+  - {fileID: 2098540911864516966}
+  - {fileID: 659127757801141300}
+  - {fileID: 4672665034260250543}
+  - {fileID: 3549512831833727485}
+  m_Father: {fileID: 49244956668613566}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7798420509743833093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4672665034260250543}
+  - component: {fileID: 2418636670770680771}
+  m_Layer: 0
+  m_Name: DamagePopupLocation (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4672665034260250543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798420509743833093}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.778, y: -0.455, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1817857020473281654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2418636670770680771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798420509743833093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -12.808, y: -4.4331503, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1

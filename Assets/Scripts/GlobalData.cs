@@ -9,7 +9,7 @@ public static class GlobalData {
     public static float defaultReward = 10f;
     public static float defaultDamage = 1f;
     public static float defaultSpeed = 2f;
-    public static float startCoins = 0f;
+    public static float startCoins = 100f;
     public static float startLives = 20f;
 
     // Wave Management

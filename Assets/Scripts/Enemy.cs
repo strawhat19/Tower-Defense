@@ -10,27 +10,129 @@ public enum HealthDisplays {
 }
 
 public class Enemy : MonoBehaviour {
+    [Header("Wave Settings")]
+    public Waves waves; // Leave Empty to be set later
     public int waveMax = 15;
     public int wavePosition = 1;
+    
+    [Header("Stats")]
     public float speed = GlobalData.defaultSpeed;
-    public float damage = GlobalData.defaultDamage;
     public float reward = GlobalData.defaultReward;
+
+    [Header("Health")]
     public float maxHealth = GlobalData.defaultHealth;
     public float currentHealth = GlobalData.defaultHealth;
+    public HealthDisplays HealthDisplay = HealthDisplays.ShowHealthPoints;
     public GameObject health;
     public TextMeshProUGUI healthText;
-    public GameObject damageTextContainer;
-    public TextMeshProUGUI damageText;
     public RectTransform healthBarRect;
-    public HealthDisplays HealthDisplay = HealthDisplays.ShowHealthPoints;
 
-    public Waves waves;
+    [Header("Damage")]
+    public float damage = GlobalData.defaultDamage;
+    public TextMeshProUGUI damageText;
+    public GameObject damageTextContainer;
+    public GameObject damageTextAnimation;
+    private GameObject[] damagePopupLocations;
+    public GameObject damagePopupLocationsParent;
+
     private Animator animator;
     private bool isDead = false;
     private int waypointIndex = 0;
     private SpriteRenderer spriteRenderer;
 
-// [`bat`,`mushroom`, `ghost`, `rocks`, `skulls`, `slime`, `turtle`]
+    // [`bat`,`mushroom`, `ghost`, `rocks`, `skulls`, `slime`, `turtle`]
+
+    void Start() {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        RemoveDamageText();
+        if (healthText != null) {
+            if (HealthDisplay == HealthDisplays.ShowPercentages) {
+                healthText.text = $"Health: 100%";
+            } else {
+                healthText.text = $"{currentHealth}";
+            }
+        }
+    }
+
+    void Update() {
+        if (waves != null && waves.waypoints.Length > 0) {
+            Move();
+        }
+
+        if (!isDead && currentHealth <= 0) {
+            Invoke("Kill", 0.5f);
+        }
+    }
+
+    void Move() {
+        Vector3 targetPosition = waves.GetWaypointPosition(waypointIndex);
+        Vector3 direction = targetPosition - transform.position;
+
+        // Flip the sprite based on the direction of movement
+        if (direction.x < 0) {
+            spriteRenderer.flipX = false;
+        } else if (direction.x > 0) {
+            spriteRenderer.flipX = true;
+        }
+
+        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+
+        // Check if the enemy is close to the waypoint
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f) {
+            waypointIndex++;
+            int amountOfWaypoints = waves.waypoints.Length;
+            if (waypointIndex >= amountOfWaypoints) {
+                // Reached the final waypoint, destroy the enemy or handle end of path
+                GlobalData.startLives = GlobalData.startLives - damage;
+                Die();
+            }
+        }
+    }
+
+    public void TakeDamage(float damage) {
+        TriggerHitAnimation();
+        currentHealth -= damage;
+        ShowDamageTextAnimation(damage);
+        currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
+        StartCoroutine(SmoothTransitionToNewHealth(currentHealth - damage, true));
+    }
+
+    void ShowDamageTextAnimation(float damageToSet) {
+        if (damageTextAnimation != null) {
+            if ((damagePopupLocations == null || damagePopupLocations.Length == 0 || damagePopupLocations[0] == null) && damagePopupLocationsParent != null) {
+                List<GameObject> dmgPopupLocations = new List<GameObject>();
+                foreach (Transform child in damagePopupLocationsParent.transform) {
+                    dmgPopupLocations.Add(child.gameObject);
+                }
+                damagePopupLocations = dmgPopupLocations.ToArray();
+            }
+
+            if (damagePopupLocations != null && damagePopupLocations.Length > 0) {
+                int randomIndex = Random.Range(0, damagePopupLocations.Length);
+                Transform randomLocation = damagePopupLocations[randomIndex].transform;
+                
+                GameObject damageTextPopup = Instantiate(damageTextAnimation, randomLocation);
+
+                if (damageTextPopup != null) {
+                    // Set the damage text to show
+                    string damageToShow = $"- {GlobalData.RemoveDotZeroZero(damageToSet.ToString("F2"))}";
+                    TextAnimation damageTextAnim = damageTextPopup.GetComponent<TextAnimation>();
+                    if (damageTextAnim != null) damageTextAnim.textToShow = damageToShow;
+                }
+            }
+        }
+    }
+
+    void TriggerHitAnimation() {
+        animator.SetBool("Hit", true);
+        Invoke("StopHitAnimation", 0.1f);
+    }
+
+    void StopHitAnimation() {
+        animator.SetBool("Hit", false);
+    }
+
     void Die() {
         if (wavePosition == waveMax) {
             // Debug.Log("Last Enemy #" + wavePosition + " In Wave Died");
@@ -78,83 +180,8 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    void Start() {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        RemoveDamageText();
-        if (healthText != null) {
-            if (HealthDisplay == HealthDisplays.ShowPercentages) {
-                healthText.text = $"Health: 100%";
-            } else {
-                healthText.text = $"{currentHealth}";
-            }
-        }
-    }
-
     void RemoveDamageText() {
-        // damageText.SetActive(false);
         if (damageTextContainer != null) damageTextContainer.SetActive(false);
-    }
-    
-    public void TakeDamage(float damage) {
-        // Debug.Log(currentHealth + " - " + damage + " Dmg = " + (currentHealth - damage));
-        TriggerHitAnimation();
-        currentHealth -= damage;
-        if (damageText != null) {
-            damageText.text = $"- {GlobalData.RemoveDotZeroZero(damage.ToString("F2"))}";
-            if (damageTextContainer != null) damageTextContainer.SetActive(true);
-            Invoke("RemoveDamageText", 0.5f);
-            // float damagePosX = Random.Range(-0.75f, 0.75f);
-            // float damagePosY = Random.Range(-0.5f, 0.5f);
-            // GameObject damageMarkerInstance = Instantiate(damageMarkerPrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-            // damageMarkerInstance.SetActive(true);
-        }
-        currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
-        StartCoroutine(SmoothTransitionToNewHealth(currentHealth - damage, true));
-    }
-
-    void Update() {
-        if (waves != null && waves.waypoints.Length > 0) {
-            Move();
-        }
-
-        if (!isDead && currentHealth <= 0) {
-            Invoke("Kill", 0.5f);
-        }
-    }
-
-    void TriggerHitAnimation() {
-        animator.SetBool("Hit", true);
-        Invoke("StopHitAnimation", 0.1f);
-    }
-
-    void StopHitAnimation() {
-        animator.SetBool("Hit", false);
-    }
-
-    void Move() {
-        Vector3 targetPosition = waves.GetWaypointPosition(waypointIndex);
-        Vector3 direction = targetPosition - transform.position;
-
-        // Flip the sprite based on the direction of movement
-        if (direction.x < 0) {
-            spriteRenderer.flipX = false;
-        } else if (direction.x > 0) {
-            spriteRenderer.flipX = true;
-        }
-
-        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
-
-        // Check if the enemy is close to the waypoint
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f) {
-            waypointIndex++;
-            int amountOfWaypoints = waves.waypoints.Length;
-            if (waypointIndex >= amountOfWaypoints) {
-                // Reached the final waypoint, destroy the enemy or handle end of path
-                GlobalData.startLives = GlobalData.startLives - damage;
-                Die();
-            }
-        }
     }
 
     IEnumerator SmoothTransitionToNewHealth(float newHealth, bool damage) {
