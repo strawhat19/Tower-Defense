@@ -1250,7 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241993061297787671}
   m_Layer: 5
-  m_Name: GridContainer
+  m_Name: Stats_GridContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
