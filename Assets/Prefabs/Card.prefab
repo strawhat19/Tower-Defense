@@ -490,7 +490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 11.75 Range
+  m_text: 11.75 Max Range
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 6810492479912028475}
   - component: {fileID: 1173627820879796597}
   m_Layer: 5
-  m_Name: FireRate_Icon
+  m_Name: AttackSpeed_Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,9 +636,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2721460852337164287}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 7.500144, z: 0}
+  m_LocalScale: {x: 2.9, y: 2.2956092, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1542108390219631391}
@@ -646,8 +646,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.39, y: 0}
-  m_SizeDelta: {x: 0.15, y: 0.15}
+  m_AnchoredPosition: {x: -4.45, y: 0}
+  m_SizeDelta: {x: 0.588, y: 0.512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6810492479912028475
 CanvasRenderer:
@@ -670,14 +670,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d9db89a2435b4495b83531ca8cd9c5e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 817b99c239946c147badb7dd6f6b89dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 5391889584970269040}
   - component: {fileID: 5392426389049273230}
   m_Layer: 5
-  m_Name: FireRate_Stat
+  m_Name: AttackSpeed_Stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2.5 Fire Rate
+  m_text: 2% Attack Speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5 - 10% Crit
+  m_text: 10% Critical Strike
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1111,7 +1111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542108390219631391}
   m_Layer: 5
-  m_Name: FireRate_StatTextContainer
+  m_Name: AttackSpeed_StatTextContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5 - 10 Damage
+  m_text: 15 - 25 Damage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1764,7 +1764,8 @@ MonoBehaviour:
   costContainer: {fileID: 2255600190976999942}
   costText: {fileID: 4220472285860637592}
   damageText: {fileID: 6261386415112374065}
-  fireRateText: {fileID: 0}
+  critChanceText: {fileID: 5287495629308861339}
+  attackSpeedText: {fileID: 5391889584970269040}
   turretShop: {fileID: 0}
 --- !u!222 &8523223570272014766
 CanvasRenderer:

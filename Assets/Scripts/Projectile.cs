@@ -6,12 +6,14 @@ public class Projectile : MonoBehaviour {
     private GameObject target;
     private AudioSource hitSound;
     private float damageToDeal = 5f;
+    private bool criticalStrike = false;
     private float speedOfProjectile = 10f;
 
-    public void Seek(GameObject target, float damage, AudioSource hitSnd) {
+    public void Seek(GameObject target, float damage, bool isCriticalStrike, AudioSource hitSnd) {
         this.target = target;
         damageToDeal = damage;
         hitSound = hitSnd;
+        criticalStrike = isCriticalStrike;
     }
 
     void PlayHitSound() {
@@ -38,7 +40,7 @@ public class Projectile : MonoBehaviour {
 
     void HitTarget() {
         Enemy enemySettings = target.GetComponent<Enemy>();
-        if (enemySettings != null) enemySettings.TakeDamage(damageToDeal);
+        if (enemySettings != null) enemySettings.TakeDamage(damageToDeal, criticalStrike);
         Destroy(gameObject); // Destroy the projectile
     }
 

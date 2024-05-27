@@ -90,15 +90,15 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage, bool criticalStrike) {
         TriggerHitAnimation();
         currentHealth -= damage;
-        ShowDamageTextAnimation(damage);
+        ShowDamageTextAnimation(damage, criticalStrike);
         currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
         StartCoroutine(SmoothTransitionToNewHealth(currentHealth - damage, true));
     }
 
-    void ShowDamageTextAnimation(float damageToSet) {
+    void ShowDamageTextAnimation(float damageToSet, bool criticalStrike) {
         if (damageTextAnimation != null) {
             if ((damagePopupLocations == null || damagePopupLocations.Length == 0 || damagePopupLocations[0] == null) && damagePopupLocationsParent != null) {
                 List<GameObject> dmgPopupLocations = new List<GameObject>();
@@ -118,7 +118,10 @@ public class Enemy : MonoBehaviour {
                     // Set the damage text to show
                     string damageToShow = $"- {GlobalData.RemoveDotZeroZero(damageToSet.ToString("F2"))}";
                     TextAnimation damageTextAnim = damageTextPopup.GetComponent<TextAnimation>();
-                    if (damageTextAnim != null) damageTextAnim.textToShow = damageToShow;
+                    if (damageTextAnim != null) {
+                        damageTextAnim.textToShow = damageToShow;
+                        damageTextAnim.isCriticalStrike = criticalStrike;
+                    }
                 }
             }
         }

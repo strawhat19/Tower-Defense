@@ -11,7 +11,8 @@ public class Card : MonoBehaviour {
     public GameObject costContainer;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI damageText;
-    public TextMeshProUGUI fireRateText;
+    public TextMeshProUGUI critChanceText;
+    public TextMeshProUGUI attackSpeedText;
     public TilemapInteraction turretShop;
     private SpriteRenderer spriteRenderer;
 
@@ -19,9 +20,9 @@ public class Card : MonoBehaviour {
         SetCard();
     }
 
-    void Update() {
+    // void Update() {
         // SetCard();
-    }
+    // }
 
     public void OnCardClicked() {
         OperateTurretShop();
@@ -61,14 +62,21 @@ public class Card : MonoBehaviour {
         if (damageText != null) {
             string damageMinString = GlobalData.RemoveDotZeroZero(damageMinToSet.ToString("F2"));
             string damageMaxString = GlobalData.RemoveDotZeroZero(damageMaxToSet.ToString("F2"));
-            damageText.text = $"Damage: {damageMinString} - {damageMaxString}";
+            damageText.text = $"{damageMinString} - {damageMaxString} Damage";
         }
     }
 
-    void SetFireRate(float fireRate) {
-        if (fireRateText != null) {
-            string fireRateString = GlobalData.RemoveDotZeroZero(fireRate.ToString("F2"));
-            fireRateText.text = $"Fire Rate: {fireRateString}";
+    void SetAttackSpeed(float attackSpeed) {
+        if (attackSpeedText != null) {
+            string attackSpeedString = GlobalData.RemoveDotZeroZero(attackSpeed.ToString("F1"));
+            attackSpeedText.text = $"{attackSpeedString}% Attack Speed";
+        }
+    }
+
+    void SetCritChance(float criticalStrikeChance, float criticalCritMultiplier) {
+        if (critChanceText != null) {
+            string critChanceString = GlobalData.RemoveDotZeroZero(criticalStrikeChance.ToString("F2"));
+            critChanceText.text = $"{critChanceString}% Critical Strike";
         }
     }
 
@@ -77,8 +85,9 @@ public class Card : MonoBehaviour {
             turretSettings = turret.GetComponent<Turret>();
             if (turretSettings != null) {
                 SetCost(turretSettings.baseCost);
-                SetFireRate(turretSettings.rateOfFire);
+                SetAttackSpeed(turretSettings.attackSpeed);
                 SetDamage(turretSettings.damageMin, turretSettings.damageMax);
+                SetCritChance(turretSettings.critChance, turretSettings.critMultiplier);
             }
 
             SpriteRenderer turretSpriteRenderer = turret.GetComponent<SpriteRenderer>();

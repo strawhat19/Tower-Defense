@@ -722,11 +722,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAim: 1
   canFire: 1
-  baseCost: 100
-  cost: 100
-  rateOfFire: 2
+  critChance: 25
+  critMultiplier: 2
+  attackSpeed: 2
   damageMin: 15
   damageMax: 25
+  cost: 100
+  baseCost: 100
   projectile: {fileID: 6221885859125074634, guid: fb37b060572a8f642b2b3894a0d8ddf2, type: 3}
   shootSound: {fileID: 8941521720409856224}
   hitSound: {fileID: 8514293792869412411}

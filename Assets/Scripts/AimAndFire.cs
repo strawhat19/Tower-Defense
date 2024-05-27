@@ -35,6 +35,7 @@ public class AimAndFire : MonoBehaviour {
         }
     }
 
+    // Not working right now 
     void OnParticleCollision(GameObject collidedWith) {
         // ParticleSystem bulletImpactParticles = bulletImpact.GetComponent<ParticleSystem>();
         // ParticlePhysicsExtensions.GetCollisionEvents(bulletImpactParticles, collidedWith, particleCollisionEvents);
@@ -44,7 +45,7 @@ public class AimAndFire : MonoBehaviour {
             var objectCollidedWith = particleCollisionEvents[i].colliderComponent;
             if (objectCollidedWith.CompareTag("Enemy")) {
                 Enemy enemySettings = objectCollidedWith.GetComponent<Enemy>();
-                if (enemySettings != null) enemySettings.TakeDamage(35f);
+                if (enemySettings != null) enemySettings.TakeDamage(0f, false);
             }   
         }
 

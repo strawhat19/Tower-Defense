@@ -9,11 +9,13 @@ using System.Collections.Generic;
 public class Turret : MonoBehaviour {
     public bool canAim = true;
     public bool canFire = true;
+    public float critChance = 10.0f;
+    public float critMultiplier = 2.0f;
+    public float attackSpeed = 2.0f;
+    public float damageMin = 15.0f;
+    public float damageMax = 25.0f;
+    public float cost = 100.0f;
     public float baseCost = 100.0f;
-    public float cost;
-    public float rateOfFire = 1.0f;
-    public float damageMin = 5.0f;
-    public float damageMax = 15.0f;
 
     public GameObject projectile;
     public AudioSource shootSound;
@@ -118,7 +120,7 @@ public class Turret : MonoBehaviour {
         cooldown -= Time.deltaTime;
         if (cooldown <= 0f) {
             Shoot(target.gameObject);
-            cooldown = 1.0f / rateOfFire;
+            cooldown = 1.0f / attackSpeed;
         }
     }
 
@@ -128,10 +130,16 @@ public class Turret : MonoBehaviour {
             GameObject projectileObject = Instantiate(projectile, barrelOfTheGun.position, barrelOfTheGun.rotation);
             Projectile proj = projectileObject.GetComponent<Projectile>();
             if (proj != null) {
+                bool isCriticalStrike = false;
+                float randomValueInRange = Random.Range(0f, 100f);
                 float damageInRange = Random.Range(damageMin, damageMax);
+                if (randomValueInRange < critChance) {
+                    isCriticalStrike = true;
+                    damageInRange *= critMultiplier;
+                }
                 // float damage = GlobalData.CalculateLevelScaled(damageInRange);
                 if (shootSound != null) shootSound.Play();
-                proj.Seek(target, damageInRange, hitSound);
+                proj.Seek(target, damageInRange, isCriticalStrike, hitSound);
             }
         }
     }
@@ -188,7 +196,8 @@ public class Turret : MonoBehaviour {
             }
         }
 
-        if (canAfford) Debug.Log("Can now afford " + gameObject.name);
+        bool showLogs = false;
+        if (canAfford && showLogs == true) Debug.Log("Can now afford " + gameObject.name);
 
         SetHaloTransparency(transparent ? 0.35f : 0.75f);
         ShowRange(!turretIsPlaced); // Show the range indicator only if not fully opaque
