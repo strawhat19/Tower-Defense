@@ -12,20 +12,38 @@ public class Card : MonoBehaviour {
     public TextMeshProUGUI costText;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI critChanceText;
-    public TextMeshProUGUI attackSpeedText;
+    public GameObject buttonIsActiveVisual;
     public TilemapInteraction turretShop;
+    public TextMeshProUGUI attackSpeedText;
     private SpriteRenderer spriteRenderer;
 
     void Start() {
         SetCard();
     }
 
-    // void Update() {
-        // SetCard();
-    // }
+    void Update() {
+        UpdateCardLook();
+    }
 
     public void OnCardClicked() {
         OperateTurretShop();
+    }
+
+    void UpdateCardLook() {
+        if (turret != null && turretShop != null) {
+            bool isActiveTurret = turretShop.turret == turret;
+            if (turretSettings != null) {
+                if (turretSettings.baseCost > GlobalData.startCoins) {
+                    GlobalData.SetGameObjectTransparency(gameObject, 0.35f);
+                } else {
+                    GlobalData.SetGameObjectTransparency(gameObject, 1f);
+                }
+            }
+            if (buttonIsActiveVisual != null) {
+                GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.35f);
+                buttonIsActiveVisual.SetActive(isActiveTurret);
+            }
+        }
     }
 
     void OperateTurretShop() {

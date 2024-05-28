@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -45,5 +47,28 @@ public static class GlobalData {
     public static float CalculateLevelScaled(float initialVal) {
         float calculatedLevelScalingValue = (float)(initialVal * currentLevel) * (currentWave > 1 ? (currentWave / currentWave + 1) : currentWave);
         return calculatedLevelScalingValue;
+    }
+
+    public static void SetGameObjectTransparency(GameObject go, float alpha) {
+        Image[] images = go.GetComponentsInChildren<Image>();
+        foreach (Image img in images) {
+            Color color = img.color;
+            color.a = alpha;
+            img.color = color;
+        }
+
+        TextMeshProUGUI[] texts = go.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (TextMeshProUGUI text in texts) {
+            Color color = text.color;
+            color.a = alpha;
+            text.color = color;
+        }
+
+        SpriteRenderer[] sprites = go.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in sprites) {
+            Color color = sprite.color;
+            color.a = alpha;
+            sprite.color = color;
+        }
     }
 }
