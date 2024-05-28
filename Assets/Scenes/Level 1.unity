@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.99974084, g: 0.99974084, b: 0.99974084, a: 1}
+  m_IndirectSpecularColor: {r: 0.99999905, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2570,7 +2570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1462556330252027798, guid: 6b4b1d32be3048245b2fde7c4893133f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7477238509996304817, guid: 6b4b1d32be3048245b2fde7c4893133f, type: 3}
       propertyPath: m_IsActive
@@ -2639,7 +2639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7117267929761829139, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7165033916626072157, guid: 177a5b4a0c698bb45b38a1375bb084bd, type: 3}
       propertyPath: m_RootOrder
@@ -14099,7 +14099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4364129394535737900, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4592486760845817267, guid: a6cb81c42564edc48a1f054e6e46f7de, type: 3}
       propertyPath: m_RootOrder
@@ -14319,6 +14319,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1533884951735456083, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: waves
+      value: 
+      objectReference: {fileID: 3086779910547011929}
     - target: {fileID: 1552422618725366310, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14551,6 +14555,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3817384149205399712, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4136317698413406685, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_Name
       value: PhotonCardsCoinsCount
@@ -14632,6 +14640,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486516747342843142, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618803987919596227, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618803987919596227, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618803987919596227, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618803987919596227, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618803987919596227, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618803987919596227, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -14799,6 +14831,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7157907475338858016, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_Name
+      value: PlasmaCannonCardsCoinsTextContainer
+      objectReference: {fileID: 0}
     - target: {fileID: 7408303231340715304, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14819,6 +14855,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7427038457286195580, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: d5a4cf486dd8943c8a5502158902900d, type: 3}
     - target: {fileID: 7490142675246253242, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14942,6 +14982,10 @@ PrefabInstance:
     - target: {fileID: 7601748421726406457, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619247124662922198, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_Name
+      value: PlasmaCannonCardsCoinsCount
       objectReference: {fileID: 0}
     - target: {fileID: 7671955761238935653, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15107,6 +15151,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8603240389841561767, guid: cb2387b1b224c364792c115464651dcd, type: 3}
+      propertyPath: m_Name
+      value: MachineGunCardsCoinsCount
+      objectReference: {fileID: 0}
     - target: {fileID: 8621873758276944968, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15148,9 +15196,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8956230397995586362, guid: cb2387b1b224c364792c115464651dcd, type: 3}
-      propertyPath: turret
+      propertyPath: turretShop
       value: 
-      objectReference: {fileID: 3024401314028581918, guid: bdae2978e6b5a9249b11dca2e0409114, type: 3}
+      objectReference: {fileID: 4047163700834781273}
     - target: {fileID: 9046649207859973457, guid: cb2387b1b224c364792c115464651dcd, type: 3}
       propertyPath: m_Name
       value: MachineCardsCoinsTextContainer
