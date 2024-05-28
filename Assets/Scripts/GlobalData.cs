@@ -9,7 +9,7 @@ public static class GlobalData {
     public static float defaultReward = 10f;
     public static float defaultDamage = 1f;
     public static float defaultSpeed = 2f;
-    public static float startCoins = 100f;
+    public static float startCoins = 500f;
     public static float startLives = 20f;
 
     // Wave Management
@@ -22,11 +22,19 @@ public static class GlobalData {
     public static bool lastEnemyInWaveDied = false;
 
     public static string RemoveDotZeroZero(string input) {
-        if (input.EndsWith(".00")) {
-            return input.Substring(0, input.Length - 3);  // Remove the last three characters
+        if (decimal.TryParse(input, out decimal number)) {
+            // Remove trailing zeros and the decimal point if unnecessary
+            return number.ToString("0.##");
         }
-        return input;
+        return input; // Return the original input if parsing fails
     }
+
+    // public static string FormatNumber(string input) {
+    //     if (input.EndsWith(".00")) {
+    //         return input.Substring(0, input.Length - 3);  // Remove the last three characters
+    //     }
+    //     return input;
+    // }
 
     public static float CalculateScaled(float initialVal) {
         float calculatedLevelScalingValue = (float)(initialVal * currentLevel) * (currentWave > 1 ? (currentWave / currentWave + 1) : currentWave);

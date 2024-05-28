@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class WavesCount : MonoBehaviour {
     public TextMeshProUGUI wavesCount;
-    private int waves = GlobalData.currentWave;
 
     void Start() {
         SetCount();

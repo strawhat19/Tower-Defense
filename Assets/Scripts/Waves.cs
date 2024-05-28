@@ -15,6 +15,7 @@ public class Waves : MonoBehaviour {
     public GameObject[] waves;
     private int currentWaveIndex = 0;
     private bool gameStarted = false;
+    public bool wavesStarted = false;
     private bool isWaitingForNextWave = false;
 
     [Header("Waypoints Settings")]
@@ -34,9 +35,9 @@ public class Waves : MonoBehaviour {
         StartWaves();
     }
 
-    void Update() {
-        UpdateWaves();
-    }
+    // void Update() {
+        // UpdateWaves();
+    // }
 
     void SetPath() {
         gameStarted = true;
@@ -66,7 +67,7 @@ public class Waves : MonoBehaviour {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         GlobalData.currentLevel = currentSceneIndex + 1;
         for (int i = 0; i < waves.Length; i++) {
-            waves[i].SetActive(i == currentWaveIndex);
+            waves[i].SetActive(false);
         }
     }
 
@@ -90,12 +91,15 @@ public class Waves : MonoBehaviour {
 
     public void ActivateNextWave() {
         if (currentWaveIndex < waves.Length - 1) {
-            waves[currentWaveIndex].SetActive(false);
-            currentWaveIndex++;
+            if (wavesStarted == true) {
+                // waves[currentWaveIndex].SetActive(false);
+                currentWaveIndex++;
+            }
             GlobalData.currentWave = currentWaveIndex + 1;
             GlobalData.lastEnemyInWaveSpawned = false;
             GlobalData.lastEnemyInWaveDied = false;
             waves[currentWaveIndex].SetActive(true);
+            wavesStarted = true;
         } else {
             Debug.Log("All waves are complete!");
         }
