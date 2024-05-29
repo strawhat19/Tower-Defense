@@ -25,18 +25,10 @@ public static class GlobalData {
 
     public static string RemoveDotZeroZero(string input) {
         if (decimal.TryParse(input, out decimal number)) {
-            // Remove trailing zeros and the decimal point if unnecessary
             return number.ToString("0.##");
         }
-        return input; // Return the original input if parsing fails
+        return input;
     }
-
-    // public static string FormatNumber(string input) {
-    //     if (input.EndsWith(".00")) {
-    //         return input.Substring(0, input.Length - 3);  // Remove the last three characters
-    //     }
-    //     return input;
-    // }
 
     public static float CalculateScaled(float initialVal) {
         float calculatedLevelScalingValue = (float)(initialVal * currentLevel) * (currentWave > 1 ? (currentWave / currentWave + 1) : currentWave);

@@ -30,7 +30,7 @@ public class StartWaves : MonoBehaviour {
         GlobalData.SetGameObjectTransparency(gameObject, startWavesButtonEnabled ? 1f : 0.35f);
         if (buttonIsActiveVisual != null) {
             GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.35f);
-            buttonIsActiveVisual.SetActive(true);
+            buttonIsActiveVisual.SetActive(startWavesButtonEnabled);
         }
     }
     
@@ -45,27 +45,4 @@ public class StartWaves : MonoBehaviour {
             }
         }
     }
-
-    // void SetGameObjectTransparency(float alpha) {
-    //     Image[] images = gameObject.GetComponentsInChildren<Image>();
-    //     foreach (Image img in images) {
-    //         Color color = img.color;
-    //         color.a = alpha;
-    //         img.color = color;
-    //     }
-
-    //     TextMeshProUGUI[] texts = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
-    //     foreach (TextMeshProUGUI text in texts) {
-    //         Color color = text.color;
-    //         color.a = alpha;
-    //         text.color = color;
-    //     }
-
-    //     SpriteRenderer[] sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
-    //     foreach (SpriteRenderer sprite in sprites) {
-    //         Color color = sprite.color;
-    //         color.a = alpha;
-    //         sprite.color = color;
-    //     }
-    // }
 }

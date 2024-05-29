@@ -295,14 +295,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAim: 1
   canFire: 1
-  critChance: 25
+  critChance: 10
   critMultiplier: 2
   attackSpeed: 3.5
-  damageMin: 75
-  damageMax: 100
+  damageMin: 35
+  damageMax: 50
+  radiusModifier: 4.15
   cost: 500
   baseCost: 500
-  projectile: {fileID: 8242319030847511347, guid: e7cf8ffc9e733234db82258442a8f5a9, type: 3}
+  projectile: {fileID: 2441546829012412663, guid: 317a457ca2f288944b3edd2b77395bd1, type: 3}
   shootSound: {fileID: 1059503293522834789}
   hitSound: {fileID: 7427157364252438929}
   barrelOfTheGun: {fileID: 4046803814972951224}
@@ -344,7 +345,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 18
 --- !u!212 &4924397108812245564
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -413,7 +414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1393250322933692799
 Transform:
   m_ObjectHideFlags: 0

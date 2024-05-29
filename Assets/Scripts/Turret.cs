@@ -14,6 +14,7 @@ public class Turret : MonoBehaviour {
     public float attackSpeed = 2.0f;
     public float damageMin = 15.0f;
     public float damageMax = 25.0f;
+    public float radiusModifier = 3.33f;
     public float cost = 100.0f;
     public float baseCost = 100.0f;
 
@@ -162,7 +163,7 @@ public class Turret : MonoBehaviour {
         CircleCollider2D collider = GetComponent<CircleCollider2D>();
         if (collider != null) {
             Handles.color = Color.cyan;
-            float colliderRange = (float)collider.radius / 3.33f;
+            float colliderRange = (float)collider.radius / radiusModifier;
             Handles.DrawWireDisc(transform.position, Vector3.forward, colliderRange);
         }
     }
@@ -262,8 +263,8 @@ public class Turret : MonoBehaviour {
 
         for (int i = 0; i <= segments; i++) {
             float angle = i * (2f * Mathf.PI / segments);
-            float x = Mathf.Cos(angle) * (radius / 3.33f);
-            float y = Mathf.Sin(angle) * (radius / 3.33f);
+            float x = Mathf.Cos(angle) * (radius / radiusModifier);
+            float y = Mathf.Sin(angle) * (radius / radiusModifier);
             lineRenderer.SetPosition(i, new Vector3(x, y, 0));
         }
 

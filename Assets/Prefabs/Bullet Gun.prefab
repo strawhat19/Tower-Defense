@@ -413,7 +413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8375637486587878885
 Transform:
   m_ObjectHideFlags: 0
@@ -722,11 +722,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAim: 1
   canFire: 1
-  critChance: 25
+  critChance: 12
   critMultiplier: 2
   attackSpeed: 2
   damageMin: 15
   damageMax: 25
+  radiusModifier: 3.33
   cost: 100
   baseCost: 100
   projectile: {fileID: 6221885859125074634, guid: fb37b060572a8f642b2b3894a0d8ddf2, type: 3}
@@ -771,7 +772,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 11.75
+  m_Radius: 15
 --- !u!212 &7588315389606011740
 SpriteRenderer:
   m_ObjectHideFlags: 0

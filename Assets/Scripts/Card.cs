@@ -98,6 +98,31 @@ public class Card : MonoBehaviour {
         }
     }
 
+    // void MovePositionXAsTextGrows() {
+    //     if (costContainer != null) {
+    //         if (costString.Length == 3) {
+    //             rectTransform.localPosition = initialPosition; 
+    //         } else if (costString.Length > 3) {
+    //             float adjustment = rectTransform.localPosition.x + (costString.Length * 0.03f);
+    //             rectTransform.localPosition = initialPosition + new Vector3(-adjustment, 0, 0); 
+    //         }
+    //     }
+    // }
+
+    // void ScaleTurretDamageAndCost() {
+    //     Turret turretSettings = turret.GetComponent<Turret>();
+    //     if (turretSettings != null) {
+    //         SetCost(turretSettings.baseCost * GlobalData.currentWave);
+    //         if (GlobalData.currentWave > 1 && damageText != null) {
+    //             float scaledDamageMin = GlobalData.CalculateScaled(turretSettings.damageMin);
+    //             float scaledDamageMax = GlobalData.CalculateScaled(turretSettings.damageMax);
+    //             string scaledDamageMinString = GlobalData.RemoveDotZeroZero(scaledDamageMin.ToString("F2"));
+    //             string scaledDamageMaxString = GlobalData.RemoveDotZeroZero(scaledDamageMax.ToString("F2"));
+    //             damageText.text = $"Damage: {scaledDamageMinString} - {scaledDamageMaxString}";
+    //         }
+    //     }
+    // }
+
     void SetCard() {
         if (turret != null) {
             turretSettings = turret.GetComponent<Turret>();
@@ -112,30 +137,9 @@ public class Card : MonoBehaviour {
             if (turretSpriteRenderer != null) {
                 SetCardImage(turretSpriteRenderer.sprite);
             }
-
-            // Turret turretSettings = turret.GetComponent<Turret>();
-            // if (turretSettings != null) {
-            //     // SetCost(turretSettings.baseCost * GlobalData.currentWave);
-            //     if (GlobalData.currentWave > 1 && damageText != null) {
-            //         float scaledDamageMin = GlobalData.CalculateScaled(turretSettings.damageMin);
-            //         float scaledDamageMax = GlobalData.CalculateScaled(turretSettings.damageMax);
-            //         string scaledDamageMinString = GlobalData.RemoveDotZeroZero(scaledDamageMin.ToString("F2"));
-            //         string scaledDamageMaxString = GlobalData.RemoveDotZeroZero(scaledDamageMax.ToString("F2"));
-            //         damageText.text = $"Damage: {scaledDamageMinString} - {scaledDamageMaxString}";
-            //     }
-            // }
         }
     }
 
     // Adjust Position X Based on Character Count of Cost On Scene Edit
-    // void AdjustPositionX() {
-    //     if (costContainer != null) {
-    //         if (costString.Length == 3) {
-    //             rectTransform.localPosition = initialPosition; 
-    //         } else if (costString.Length > 3) {
-    //             float adjustment = rectTransform.localPosition.x + (costString.Length * 0.03f); // Adjust this value to fit your needs
-    //             rectTransform.localPosition = initialPosition + new Vector3(-adjustment, 0, 0); 
-    //         }
-    //     }
-    // }
+    
 }
