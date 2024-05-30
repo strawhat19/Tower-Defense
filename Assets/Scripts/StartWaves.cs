@@ -36,9 +36,9 @@ public class StartWaves : MonoBehaviour {
         if (waves != null) {
             startWavesButtonEnabled = wavesFinished == false && (waves.wavesStarted == false || readyForNextWave);
         }
-        GlobalData.SetGameObjectTransparency(gameObject, startWavesButtonEnabled ? 1f : 0.35f);
+        GlobalData.SetGameObjectTransparency(gameObject, startWavesButtonEnabled ? 1f : 0.5f);
         if (buttonIsActiveVisual != null) {
-            GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.35f);
+            GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.5f);
             buttonIsActiveVisual.SetActive(startWavesButtonEnabled);
         }
     }

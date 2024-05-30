@@ -136,12 +136,14 @@ public class Enemy : MonoBehaviour {
                     }
                 }
 
-                if (currentHealth <= 0 && goldPopupLocation != null) {
-                    // ShowGoldTextAnimation(randomLocation);
-                    ShowGoldTextAnimation(goldPopupLocation.transform);
-                    // StartCoroutine(ShowGoldTextAnimationDelayed(0.5f, randomLocation));
-                }
+                Invoke("ShowGoldPopup", 0.75f);
             }
+        }
+    }
+
+    void ShowGoldPopup() {
+        if (currentHealth <= 0 && goldPopupLocation != null) {
+            ShowGoldTextAnimation(goldPopupLocation.transform);
         }
     }
 

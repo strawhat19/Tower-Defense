@@ -21299,6 +21299,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1411e36a612b1134db377ee7586f0a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1656921090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1656921091}
+  - component: {fileID: 1656921093}
+  - component: {fileID: 1656921092}
+  m_Layer: 0
+  m_Name: Knights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1656921091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656921090}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7273726612837959879}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656921092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656921090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDelay: 1
+  maxObjects: 25
+  enemy: {fileID: 8489220471443959851, guid: 45996f68d6e5e2149a3841c4c862fab5, type: 3}
+  health: 420
+  reward: 15
+  damage: 1
+  speed: 2.5
+--- !u!114 &1656921093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656921090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1411e36a612b1134db377ee7586f0a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1663446233
 GameObject:
   m_ObjectHideFlags: 0
@@ -21348,7 +21412,7 @@ MonoBehaviour:
   maxObjects: 35
   enemy: {fileID: 6732601913314294, guid: 52a7d573fd1338641ba8d5dfd26343a5, type: 3}
   health: 500
-  reward: 15
+  reward: 16
   damage: 1
   speed: 1
 --- !u!114 &1663446236
@@ -41138,6 +41202,7 @@ Transform:
   - {fileID: 1002159806}
   - {fileID: 1419289359}
   - {fileID: 2145503278}
+  - {fileID: 1656921091}
   - {fileID: 1663446234}
   m_Father: {fileID: 0}
   m_RootOrder: 6
