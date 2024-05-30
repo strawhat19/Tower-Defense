@@ -13,6 +13,7 @@ public static class GlobalData {
     public static float defaultSpeed = 2f;
     public static float startCoins = 500f;
     public static float startLives = 20f;
+    public static string Message = "Click Start Waves To Start Game";
 
     // Wave Management
     public static int maxWaves = 3;
@@ -41,22 +42,22 @@ public static class GlobalData {
         return calculatedLevelScalingValue;
     }
 
-    public static void SetGameObjectTransparency(GameObject go, float alpha) {
-        Image[] images = go.GetComponentsInChildren<Image>();
+    public static void SetGameObjectTransparency(GameObject gameObj, float alpha) {
+        Image[] images = gameObj.GetComponentsInChildren<Image>();
         foreach (Image img in images) {
             Color color = img.color;
             color.a = alpha;
             img.color = color;
         }
 
-        TextMeshProUGUI[] texts = go.GetComponentsInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI[] texts = gameObj.GetComponentsInChildren<TextMeshProUGUI>();
         foreach (TextMeshProUGUI text in texts) {
             Color color = text.color;
             color.a = alpha;
             text.color = color;
         }
 
-        SpriteRenderer[] sprites = go.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer[] sprites = gameObj.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer sprite in sprites) {
             Color color = sprite.color;
             color.a = alpha;

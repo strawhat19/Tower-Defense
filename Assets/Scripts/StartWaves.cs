@@ -12,7 +12,7 @@ public class StartWaves : MonoBehaviour {
     public TextMeshProUGUI startWavesButtonText;
 
     void Start() {
-        if (startWavesButtonText != null) startWavesButtonText.text = "Start Waves";
+        if (startWavesButtonText != null) startWavesButtonText.text = "Start First Wave";
         UpdateButtonState();
     }
 
@@ -25,8 +25,17 @@ public class StartWaves : MonoBehaviour {
     }
 
     void UpdateButtonState() {
+        bool wavesFinished = GlobalData.currentWave == GlobalData.maxWaves;
         readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
-        if (waves != null) startWavesButtonEnabled = GlobalData.currentWave != GlobalData.maxWaves && (waves.wavesStarted == false || readyForNextWave);
+        if (readyForNextWave) GlobalData.Message = "Ready for Next Wave";
+        if (wavesFinished && readyForNextWave && startWavesButtonText != null) {
+            string wavesFinishedMessage = "Waves Finished";
+            startWavesButtonText.text = wavesFinishedMessage;
+            GlobalData.Message = wavesFinishedMessage;
+        }
+        if (waves != null) {
+            startWavesButtonEnabled = wavesFinished == false && (waves.wavesStarted == false || readyForNextWave);
+        }
         GlobalData.SetGameObjectTransparency(gameObject, startWavesButtonEnabled ? 1f : 0.35f);
         if (buttonIsActiveVisual != null) {
             GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.35f);

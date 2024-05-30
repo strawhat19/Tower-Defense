@@ -9,6 +9,7 @@ using System.Collections.Generic;
 public class Turret : MonoBehaviour {
     public bool canAim = true;
     public bool canFire = true;
+    public int unlockedAfterWave = 1;
     public float critChance = 10.0f;
     public float critMultiplier = 2.0f;
     public float attackSpeed = 2.0f;
@@ -189,8 +190,14 @@ public class Turret : MonoBehaviour {
                     if (turretIsPlaced) {
                         color.a = 1.0f;
                     } else {
-                        if (!transparent) canAfford = true;
-                        color.a = transparent ? 0.35f : 0.75f;
+                        if (transparent) {
+                            canAfford = true;
+                            color.a = 0.35f;
+                        } else {
+                            // float grayscale = (color.r + color.g + color.b) / 3f;
+                            // color = new Color(grayscale, grayscale, grayscale);
+                            color.a = 0.75f;
+                        }
                     }
                     mat.color = color;
                 }

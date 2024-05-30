@@ -2,11 +2,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 // [ExecuteAlways]
 public class Card : MonoBehaviour {
     public GameObject turret;
+    private bool turretUnlocked;
+    public Sprite coinIconSprite;
+    public Sprite lockIconSprite;
     private Turret turretSettings;
     public GameObject costContainer;
     public TextMeshProUGUI costText;
@@ -25,8 +29,27 @@ public class Card : MonoBehaviour {
         UpdateCardLook();
     }
 
+    public void OnPointerEnter(PointerEventData eventData) {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
     public void OnCardClicked() {
-        OperateTurretShop();
+        if (turretUnlocked) {
+            if (turretShop != null) {
+                if (turretShop.turret == turret) {
+                    if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
+                    turretShop.buildingTurret = true;
+                } else {
+                    turretShop.turret = turret;
+                    if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
+                    turretShop.buildingTurret = true;
+                }
+            }
+        }
     }
 
     void SetCard() {
@@ -50,28 +73,27 @@ public class Card : MonoBehaviour {
         if (turret != null && turretShop != null) {
             bool isActiveTurret = turretShop.turret == turret;
             if (turretSettings != null) {
-                if (turretSettings.baseCost > GlobalData.startCoins) {
-                    GlobalData.SetGameObjectTransparency(gameObject, 0.35f);
+                int turretUnlockedAfterWave = turretSettings.unlockedAfterWave;
+                turretUnlocked = turretUnlockedAfterWave <= GlobalData.currentWave;
+                // bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
+                // bool turretIsReady = (turretUnlockedAfterWave + 1) <= GlobalData.currentWave;
+                if (turretUnlocked) {
+                    SetStatusIcon(coinIconSprite);
+                    SetCost(turretSettings.baseCost);
+                    if (turretSettings.baseCost > GlobalData.startCoins) {
+                        GlobalData.SetGameObjectTransparency(gameObject, 0.55f);
+                    } else {
+                        GlobalData.SetGameObjectTransparency(gameObject, 1f);
+                    }
                 } else {
-                    GlobalData.SetGameObjectTransparency(gameObject, 1f);
+                    SetStatusIcon(lockIconSprite);
+                    SetCost(turretSettings.unlockedAfterWave);
+                    GlobalData.SetGameObjectTransparency(gameObject, 0.35f);
                 }
             }
             if (buttonIsActiveVisual != null) {
-                GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.35f);
+                GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.55f);
                 buttonIsActiveVisual.SetActive(isActiveTurret);
-            }
-        }
-    }
-
-    void OperateTurretShop() {
-        if (turretShop != null) {
-            if (turretShop.turret == turret) {
-                if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
-                turretShop.buildingTurret = true;
-            } else {
-                turretShop.turret = turret;
-                if (turretShop.activePreviewTurret != null) Destroy(turretShop.activePreviewTurret);
-                turretShop.buildingTurret = true;
             }
         }
     }
@@ -81,6 +103,17 @@ public class Card : MonoBehaviour {
             spriteRenderer = costContainer.GetComponent<SpriteRenderer>();
             if (spriteRenderer != null) {
                 spriteRenderer.sprite = spriteToSet;
+            }
+        }
+    }
+
+    void SetStatusIcon(Sprite spriteToPut) {
+        if (costContainer != null) {
+            Image statusIconContainer = costContainer.GetComponent<Image>();
+            if (statusIconContainer != null) {
+                if (spriteToPut != null) {
+                    statusIconContainer.sprite = spriteToPut;
+                }
             }
         }
     }

@@ -100,8 +100,9 @@ public class Waves : MonoBehaviour {
             GlobalData.lastEnemyInWaveDied = false;
             waves[currentWaveIndex].SetActive(true);
             wavesStarted = true;
+            GlobalData.Message = "Wave Started";
         } else {
-            Debug.Log("All waves are complete!");
+            GlobalData.Message = "All waves are complete!";
         }
     }
 

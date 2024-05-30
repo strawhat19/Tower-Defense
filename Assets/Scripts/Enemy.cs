@@ -187,10 +187,9 @@ public class Enemy : MonoBehaviour {
         AddCoins();
         Invoke("ScaleUp", 0.375f);
         Invoke("Die", 0.55f);
-        if (wavePosition == waveMax) {
-            // Debug.Log("Last Enemy #" + wavePosition + " In Wave Killed");
-            GlobalData.lastEnemyInWaveDied = true;
-        }
+        if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
+        string enemyName = gameObject.name.Replace("(Clone)", "");
+        GlobalData.Message = enemyName + " #" + wavePosition + " Killed. +" + reward + " Coins";
     }
 
     void RemoveDamageText() {
