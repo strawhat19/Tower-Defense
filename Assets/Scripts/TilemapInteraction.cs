@@ -110,7 +110,7 @@ public class TilemapInteraction : MonoBehaviour {
             if (activePreviewTurret != null) Destroy(activePreviewTurret);
 
             // Debug log for successful placement
-            Debug.Log(turret.name + " placed at: " + worldPos + ". Remaining coins: " + GlobalData.startCoins);
+            // Debug.Log(turret.name + " placed at: " + worldPos + ". Remaining coins: " + GlobalData.startCoins);
         } else {
             // Debug log for insufficient funds
             Debug.Log("Cannot afford turret " + turret.name + ". Cost: " + turretCost + ", Available: " + GlobalData.startCoins);

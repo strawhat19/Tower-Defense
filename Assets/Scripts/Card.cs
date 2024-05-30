@@ -29,6 +29,23 @@ public class Card : MonoBehaviour {
         OperateTurretShop();
     }
 
+    void SetCard() {
+        if (turret != null) {
+            turretSettings = turret.GetComponent<Turret>();
+            if (turretSettings != null) {
+                SetCost(turretSettings.baseCost);
+                SetAttackSpeed(turretSettings.attackSpeed);
+                SetDamage(turretSettings.damageMin, turretSettings.damageMax);
+                SetCritChance(turretSettings.critChance, turretSettings.critMultiplier);
+            }
+
+            SpriteRenderer turretSpriteRenderer = turret.GetComponent<SpriteRenderer>();
+            if (turretSpriteRenderer != null) {
+                SetCardImage(turretSpriteRenderer.sprite);
+            }
+        }
+    }
+
     void UpdateCardLook() {
         if (turret != null && turretShop != null) {
             bool isActiveTurret = turretShop.turret == turret;
@@ -122,24 +139,4 @@ public class Card : MonoBehaviour {
     //         }
     //     }
     // }
-
-    void SetCard() {
-        if (turret != null) {
-            turretSettings = turret.GetComponent<Turret>();
-            if (turretSettings != null) {
-                SetCost(turretSettings.baseCost);
-                SetAttackSpeed(turretSettings.attackSpeed);
-                SetDamage(turretSettings.damageMin, turretSettings.damageMax);
-                SetCritChance(turretSettings.critChance, turretSettings.critMultiplier);
-            }
-
-            SpriteRenderer turretSpriteRenderer = turret.GetComponent<SpriteRenderer>();
-            if (turretSpriteRenderer != null) {
-                SetCardImage(turretSpriteRenderer.sprite);
-            }
-        }
-    }
-
-    // Adjust Position X Based on Character Count of Cost On Scene Edit
-    
 }

@@ -303,7 +303,7 @@ MonoBehaviour:
   radiusModifier: 4.15
   cost: 500
   baseCost: 500
-  projectile: {fileID: 2441546829012412663, guid: 317a457ca2f288944b3edd2b77395bd1, type: 3}
+  projectile: {fileID: 7743371820764122704, guid: c49e12571f3e76f4195b3ac6c6444b62, type: 3}
   shootSound: {fileID: 1059503293522834789}
   hitSound: {fileID: 7427157364252438929}
   barrelOfTheGun: {fileID: 4046803814972951224}

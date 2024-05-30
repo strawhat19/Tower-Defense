@@ -26,19 +26,6 @@ public class TextAnimation : MonoBehaviour {
         } 
     }
 
-    // private void SetImage() {
-    //     imageComponent = GetComponent<Image>();
-    //     if (difficulty == Difficulties.Easy) {
-    //         imageComponent.sprite = easySprite;
-    //     } else if (difficulty == Difficulties.Medium) {
-    //         imageComponent.sprite = mediumSprite;
-    //     } else if (difficulty == Difficulties.Hard) {
-    //         imageComponent.sprite = hardSprite;
-    //     } else {
-    //         imageComponent.sprite = easySprite;
-    //     }
-    // }
-
     public void DestroyAfterAnimation() {
         Destroy(gameObject);
     }

@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour {
     private bool isDead = false;
     private int waypointIndex = 0;
     private SpriteRenderer spriteRenderer;
+    private Transform previousTextAnimationLocation;
 
     // [`bat`,`mushroom`, `ghost`, `rocks`, `skulls`, `slime`, `turtle`]
 
@@ -97,7 +98,7 @@ public class Enemy : MonoBehaviour {
         currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
         StartCoroutine(SmoothTransitionToNewHealth(currentHealth - damage, true));
     }
-
+    
     void ShowDamageTextAnimation(float damageToSet, bool criticalStrike) {
         if (damageTextAnimation != null) {
             if ((damagePopupLocations == null || damagePopupLocations.Length == 0 || damagePopupLocations[0] == null) && damagePopupLocationsParent != null) {
@@ -109,14 +110,23 @@ public class Enemy : MonoBehaviour {
             }
 
             if (damagePopupLocations != null && damagePopupLocations.Length > 0) {
-                int randomIndex = Random.Range(0, damagePopupLocations.Length);
-                Transform randomLocation = damagePopupLocations[randomIndex].transform;
+                int randomIndex = -1;
+                Transform randomLocation = null;
+
+                // Ensure the new location is different from the previous one
+                do {
+                    randomIndex = Random.Range(0, damagePopupLocations.Length);
+                    randomLocation = damagePopupLocations[randomIndex].transform;
+                } while (randomLocation == previousTextAnimationLocation && damagePopupLocations.Length > 1);
+
+                // Store the current location as the previous location for next time
+                previousTextAnimationLocation = randomLocation;
                 
                 GameObject damageTextPopup = Instantiate(damageTextAnimation, randomLocation);
 
                 if (damageTextPopup != null) {
                     // Set the damage text to show
-                    string damageToShow = $"- {GlobalData.RemoveDotZeroZero(damageToSet.ToString("F2"))}";
+                    string damageToShow = $"{GlobalData.RemoveDotZeroZero(damageToSet.ToString("F2"))}";
                     TextAnimation damageTextAnim = damageTextPopup.GetComponent<TextAnimation>();
                     if (damageTextAnim != null) {
                         damageTextAnim.textToShow = damageToShow;

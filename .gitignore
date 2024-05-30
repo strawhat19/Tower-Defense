@@ -22,6 +22,9 @@
 !Packages/**
 !MySpecialFolder/**
 
+# Ignore all .meta files
+*.meta
+
 # Keep ignoring some specific files that might still be included
 # These lines are optional based on your project needs
 Library/

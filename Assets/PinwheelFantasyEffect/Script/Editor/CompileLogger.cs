@@ -26,7 +26,7 @@ namespace Pinwheel.FantasyEffect
         [DidReloadScripts]
         public static void ShowMessageOnCompileSucceeded()
         {
-            ValidatePackageAndNamespace();
+            // ValidatePackageAndNamespace();
             if (Random.value<LOG_MESSAGE_PROBABIILITY)
             {
                 if (messages.Length == 0)
@@ -36,21 +36,18 @@ namespace Pinwheel.FantasyEffect
                     .Replace(PACKAGE_NAME_PLACEHOLDER, PACKAGE_NAME)
                     .Replace(WEBSITE_PLACEHOLDER, WEBSITE)
                     .Replace(PATREON_PLACEHOLDER, PATREON);
-                Debug.Log(msg);
+                // Debug.Log(msg);
             }
         }
 
-        private static void ValidatePackageAndNamespace()
-        {
+        private static void ValidatePackageAndNamespace() {
             bool isPackageNameInvalid = PACKAGE_NAME.Equals("PACKAGE_NAME");
             bool isNamespaceInvalid = typeof(CompileLogger).Namespace.Contains("PACKAGE_NAME");
-            if (isPackageNameInvalid)
-            {
+            if (isPackageNameInvalid) {
                 string message = "<color=red>Invalid PACKAGE_NAME in CompileLogger, fix it before release!</color>";
                 Debug.Log(message);
             }
-            if(isNamespaceInvalid)
-            {
+            if (isNamespaceInvalid) {
                 string message = "<color=red>Invalid NAMESPACE in CompileLogger, fix it before release!</color>";
                 Debug.Log(message);
             }
