@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour {
     [Header("Stats")]
     public float speed = GlobalData.defaultSpeed;
     public float reward = GlobalData.defaultReward;
+    public GameObject goldTextAnimation;
+    public GameObject goldPopupLocation;
 
     [Header("Health")]
     public float maxHealth = GlobalData.defaultHealth;
@@ -132,6 +134,32 @@ public class Enemy : MonoBehaviour {
                         damageTextAnim.textToShow = damageToShow;
                         damageTextAnim.isCriticalStrike = criticalStrike;
                     }
+                }
+
+                if (currentHealth <= 0 && goldPopupLocation != null) {
+                    // ShowGoldTextAnimation(randomLocation);
+                    ShowGoldTextAnimation(goldPopupLocation.transform);
+                    // StartCoroutine(ShowGoldTextAnimationDelayed(0.5f, randomLocation));
+                }
+            }
+        }
+    }
+
+    private IEnumerator ShowGoldTextAnimationDelayed(float delay, Transform location) {
+        yield return new WaitForSeconds(delay);
+        ShowGoldTextAnimation(location);
+    }
+
+    void ShowGoldTextAnimation(Transform location) {
+        if (isDead) return;
+        if (goldTextAnimation != null) {
+            GameObject goldTextPopup = Instantiate(goldTextAnimation, location);
+
+            if (goldTextPopup != null) {
+                string goldToShow = $"{GlobalData.RemoveDotZeroZero(reward.ToString("F2"))}";
+                GoldTextAnimation goldTextAnim = goldTextPopup.GetComponent<GoldTextAnimation>();
+                if (goldTextAnim != null) {
+                    goldTextAnim.textToShow = goldToShow;
                 }
             }
         }

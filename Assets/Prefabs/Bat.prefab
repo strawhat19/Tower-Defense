@@ -412,6 +412,7 @@ Transform:
   m_LocalScale: {x: 1.010101, y: 1.010101, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7897038329403921311}
   - {fileID: 6173877559562889833}
   - {fileID: 7582822364748762189}
   - {fileID: 4315202084875572785}
@@ -559,6 +560,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5723108712684159016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7897038329403921311}
+  - component: {fileID: 1877095405677474298}
+  m_Layer: 0
+  m_Name: GoldPopupLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7897038329403921311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5723108712684159016}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.635, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 9127739400288874421}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1877095405677474298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5723108712684159016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -11.99, y: -4.58645, z: -3}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
 --- !u!1 &6251470909832553216
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +954,8 @@ MonoBehaviour:
   wavePosition: 1
   speed: 3
   reward: 10
+  goldTextAnimation: {fileID: 136554868641308931, guid: 35481c759b5f3284c99f0b3b29594466, type: 3}
+  goldPopupLocation: {fileID: 5723108712684159016}
   maxHealth: 99
   currentHealth: 99
   HealthDisplay: 2

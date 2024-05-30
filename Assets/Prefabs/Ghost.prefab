@@ -847,6 +847,7 @@ Transform:
   m_LocalScale: {x: 1.010101, y: 1.010101, z: 1.010101}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5673035610242255818}
   - {fileID: 2786629333162664288}
   - {fileID: 755338538719986588}
   - {fileID: 1279565567489252440}
@@ -911,6 +912,8 @@ MonoBehaviour:
   wavePosition: 1
   speed: 2.5
   reward: 5
+  goldTextAnimation: {fileID: 136554868641308931, guid: 35481c759b5f3284c99f0b3b29594466, type: 3}
+  goldPopupLocation: {fileID: 6254381684692860542}
   maxHealth: 50
   currentHealth: 50
   HealthDisplay: 2
@@ -1057,6 +1060,62 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &6254381684692860542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5673035610242255818}
+  - component: {fileID: 3234538431737694268}
+  m_Layer: 0
+  m_Name: GoldPopupLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5673035610242255818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254381684692860542}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.808, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3339903166198123524}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3234538431737694268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254381684692860542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPosition: {x: -11.998294, y: -4.7214427, z: 0}
+  alwaysShowPoints: 1
+  points:
+  - {x: 0, y: 0, z: 0}
+  fontSize: 16
+  radius: 0.45
+  handleSize: 0.25
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
+  pathColor: {r: 0, g: 0, b: 0, a: 1}
+  handleColor: {r: 0, g: 0, b: 0, a: 1}
+  wireCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  handleShape: 1
 --- !u!1 &6836836282992974019
 GameObject:
   m_ObjectHideFlags: 0
