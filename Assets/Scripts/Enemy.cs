@@ -45,8 +45,6 @@ public class Enemy : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private Transform previousTextAnimationLocation;
 
-    // [`bat`,`mushroom`, `ghost`, `rocks`, `skulls`, `slime`, `turtle`]
-
     void Start() {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
