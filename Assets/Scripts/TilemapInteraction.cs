@@ -42,6 +42,12 @@ public class TilemapInteraction : MonoBehaviour {
                 turretComponent.SetAffordability(true);
                 turretComponent.ShowRange(true);
                 turretComponent.EnableFiring(false);
+                
+                // Set the sorting order of the turret's SpriteRenderer
+                SpriteRenderer sr = activePreviewTurret.GetComponent<SpriteRenderer>();
+                if (sr != null) {
+                    sr.sortingOrder = 10; // Set to a value higher than the terrain
+                }
             } else {
                 // Move the semi-transparent turret preview to follow the mouse
                 activePreviewTurret.transform.position = cellCenterPos;
@@ -118,6 +124,12 @@ public class TilemapInteraction : MonoBehaviour {
             turretComponent.EnableFiring(true);
             // Deduct the cost from the player's coins
             GlobalData.startCoins -= turretCost;
+
+            // Set the sorting order of the turret's SpriteRenderer
+            SpriteRenderer sr = newTurret.GetComponent<SpriteRenderer>();
+            if (sr != null) {
+                sr.sortingOrder = 10; // Set to a value higher than the terrain
+            }
 
             // Mark the tile as occupied
             occupiedTiles.Add(cellPos);
