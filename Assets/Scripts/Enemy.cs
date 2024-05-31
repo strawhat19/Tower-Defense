@@ -11,7 +11,9 @@ public enum HealthDisplays {
 
 public class Enemy : MonoBehaviour {
     [Header("Wave Settings")]
-    public Waves waves; // Leave Empty to be set later
+    public bool flipSprite = true;
+    public bool flipInverse = false;
+    public Waves waves;
     public int waveMax = 15;
     public int wavePosition = 1;
     
@@ -73,10 +75,12 @@ public class Enemy : MonoBehaviour {
         Vector3 direction = targetPosition - transform.position;
 
         // Flip the sprite based on the direction of movement
-        if (direction.x < 0) {
-            spriteRenderer.flipX = false;
-        } else if (direction.x > 0) {
-            spriteRenderer.flipX = true;
+        if (flipSprite == true) {
+            if (direction.x < 0) {
+                spriteRenderer.flipX = flipInverse ? true : false;
+            } else if (direction.x > 0) {
+                spriteRenderer.flipX = flipInverse ? false : true;
+            }
         }
 
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -13.3442, y: -5.22552, z: -1}
+  currentPosition: {x: -12.8534, y: -4.787466, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -11.8906, y: -1.74792, z: -1}
+  currentPosition: {x: -11.858399, y: -2.407021, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -13.8226, y: -4.2411203, z: -1}
+  currentPosition: {x: -13.180869, y: -4.1136365, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -441,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4874997421251947505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 0.46, z: 0}
+  m_LocalPosition: {x: 0.824, y: -0.197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -11.209801, y: -4.0111203, z: -1}
+  currentPosition: {x: -10.820576, y: -4.7836876, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -537,7 +537,7 @@ RectTransform:
   m_GameObject: {fileID: 5293598991302795998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.84974, y: 0.84974, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1951722139049468630}
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -13.6386, y: -3.2015202, z: -1}
+  currentPosition: {x: -13.054919, y: -3.402022, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -10.9706, y: -2.52072, z: -1}
+  currentPosition: {x: -11.228652, y: -2.936009, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -12.7738, y: -2.5207205, z: -1}
+  currentPosition: {x: -12.462957, y: -2.936009, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -1057,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7688859070932889325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.05, y: 0.54, z: 0}
+  m_LocalPosition: {x: 0.933, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -9.958601, y: -3.8639202, z: -1}
+  currentPosition: {x: -10.6832905, y: -3.8554401, z: -1}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -1118,7 +1118,7 @@ Transform:
   m_GameObject: {fileID: 8489220471443959851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.725, y: -4.07, z: -1}
-  m_LocalScale: {x: 1.84, y: 1.84, z: 0}
+  m_LocalScale: {x: 1.482212, y: 1.482212, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8948069154472462130}
@@ -1137,6 +1137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd84c5d23ce18741ba23c08b5e2f2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipSprite: 1
+  flipInverse: 1
   waves: {fileID: 0}
   waveMax: 15
   wavePosition: 1
