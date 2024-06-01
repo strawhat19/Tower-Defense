@@ -8,6 +8,7 @@ using System.Collections.Generic;
 // [ExecuteAlways]
 public class Card : MonoBehaviour {
     public GameObject turret;
+    private Button cardButton;
     private bool turretUnlocked;
     public Sprite coinIconSprite;
     public Sprite lockIconSprite;
@@ -22,6 +23,7 @@ public class Card : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
 
     void Start() {
+        cardButton = gameObject.GetComponent<Button>();
         SetCard();
     }
 
@@ -77,6 +79,7 @@ public class Card : MonoBehaviour {
                 turretUnlocked = turretUnlockedAfterWave <= GlobalData.currentWave;
                 // bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
                 // bool turretIsReady = (turretUnlockedAfterWave + 1) <= GlobalData.currentWave;
+                if (cardButton != null) cardButton.interactable = turretUnlocked;
                 if (turretUnlocked) {
                     SetStatusIcon(coinIconSprite);
                     SetCost(turretSettings.baseCost);

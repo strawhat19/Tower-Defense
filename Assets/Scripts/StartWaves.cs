@@ -7,11 +7,13 @@ using System.Collections.Generic;
 public class StartWaves : MonoBehaviour {
     public Waves waves;
     private bool readyForNextWave;
+    private Button startWavesButton;
     private bool startWavesButtonEnabled;
     public GameObject buttonIsActiveVisual;
     public TextMeshProUGUI startWavesButtonText;
 
     void Start() {
+        startWavesButton = gameObject.GetComponent<Button>();
         if (startWavesButtonText != null) startWavesButtonText.text = "Start First Wave";
         UpdateButtonState();
     }
@@ -22,6 +24,18 @@ public class StartWaves : MonoBehaviour {
 
     void SetButtonText() {
         if (startWavesButtonText != null) startWavesButtonText.text = "Start Next Wave";
+    }
+
+    public void OnStartWavesClicked() {
+        if (waves != null) {
+            if (startWavesButtonEnabled) {
+                waves.ActivateNextWave();
+                SetButtonText();
+            } else {
+                if (startWavesButtonText != null) startWavesButtonText.text = "Not Ready Yet!";
+                Invoke("SetButtonText", 1.5f);
+            }
+        }
     }
 
     void UpdateButtonState() {
@@ -41,17 +55,8 @@ public class StartWaves : MonoBehaviour {
             GlobalData.SetGameObjectTransparency(buttonIsActiveVisual, 0.5f);
             buttonIsActiveVisual.SetActive(startWavesButtonEnabled);
         }
-    }
-    
-    public void OnStartWavesClicked() {
-        if (waves != null) {
-            if (startWavesButtonEnabled) {
-                waves.ActivateNextWave();
-                SetButtonText();
-            } else {
-                if (startWavesButtonText != null) startWavesButtonText.text = "Not Ready Yet!";
-                Invoke("SetButtonText", 1.5f);
-            }
+        if (startWavesButton != null) {
+            startWavesButton.interactable = startWavesButtonEnabled;
         }
     }
 }
