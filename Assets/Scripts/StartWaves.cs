@@ -2,17 +2,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class StartWaves : MonoBehaviour {
+public class StartWaves : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public Waves waves;
     private bool readyForNextWave;
     private Button startWavesButton;
+    private GameSettings gameSettings;
     private bool startWavesButtonEnabled;
     public GameObject buttonIsActiveVisual;
     public TextMeshProUGUI startWavesButtonText;
 
     void Start() {
+        gameSettings = FindObjectOfType<GameSettings>();
         startWavesButton = gameObject.GetComponent<Button>();
         if (startWavesButtonText != null) startWavesButtonText.text = "Start First Wave";
         UpdateButtonState();
@@ -24,6 +27,22 @@ public class StartWaves : MonoBehaviour {
 
     void SetButtonText() {
         if (startWavesButtonText != null) startWavesButtonText.text = "Start Next Wave";
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        if (gameSettings != null) {
+            if (startWavesButtonEnabled) {
+                gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+            } else {
+                gameSettings.SetCursor(gameSettings.disabledCursorTexture);
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        if (gameSettings != null) {
+            gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+        }
     }
 
     public void OnStartWavesClicked() {

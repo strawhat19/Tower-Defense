@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 // [ExecuteAlways]
-public class Card : MonoBehaviour {
+public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public GameObject turret;
     private Button cardButton;
     private bool turretUnlocked;
@@ -16,6 +16,7 @@ public class Card : MonoBehaviour {
     public GameObject costContainer;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI damageText;
+    private GameSettings gameSettings;
     public TextMeshProUGUI critChanceText;
     public GameObject buttonIsActiveVisual;
     public TilemapInteraction turretShop;
@@ -23,6 +24,7 @@ public class Card : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
 
     void Start() {
+        gameSettings = FindObjectOfType<GameSettings>();
         cardButton = gameObject.GetComponent<Button>();
         SetCard();
     }
@@ -32,11 +34,19 @@ public class Card : MonoBehaviour {
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        if (gameSettings != null) {
+            if (turretUnlocked) {
+                gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+            } else {
+                gameSettings.SetCursor(gameSettings.disabledCursorTexture);
+            }
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        if (gameSettings != null) {
+            gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+        }
     }
 
     public void OnCardClicked() {

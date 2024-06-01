@@ -12,11 +12,13 @@ public class TilemapInteraction : MonoBehaviour {
     private Color originalColor;
     private bool turretUnlocked;
     private bool canAfford = false;
+    private GameSettings gameSettings;
     public GameObject activePreviewTurret;
     private Vector3Int previousMousePos = new Vector3Int();
     private HashSet<Vector3Int> occupiedTiles = new HashSet<Vector3Int>();
 
     void Start() {
+        gameSettings = FindObjectOfType<GameSettings>();
         if (tilemap == null) tilemap = GetComponent<Tilemap>();
     }
 
@@ -61,17 +63,29 @@ public class TilemapInteraction : MonoBehaviour {
                 if (turretUnlocked) {
                     if (GlobalData.startCoins >= turretComponent.baseCost) {
                         turretComponent.SetAffordability(false);  // Less transparent
+                        if (gameSettings != null) {
+                            gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+                        }
                     } else {
                         turretComponent.SetAffordability(true);  // More transparent
+                        if (gameSettings != null) {
+                            gameSettings.SetCursor(gameSettings.disabledCursorTexture);
+                        }
                     }
                 } else {
                     turretComponent.SetAffordability(false);
+                    if (gameSettings != null) {
+                        gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+                    }
                 }
             }
         } else {
             if (activePreviewTurret != null) {
                 // Hide the semi-transparent turret preview if not over a tile
                 activePreviewTurret.SetActive(false);
+            }
+            if (gameSettings != null) {
+                gameSettings.SetCursor(gameSettings.defaultCursorTexture);
             }
         }
 
