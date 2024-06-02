@@ -27,10 +27,10 @@ public class Turret : MonoBehaviour {
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
 
-    public Vector3Int cellPos;
     public GameObject preview;
     private AimAndFire aimAndFire;
     public GameObject aimAndFireObject;
+    public Vector3Int cellPos;
     public GameObject[] costTexts;
 
     private Transform target;

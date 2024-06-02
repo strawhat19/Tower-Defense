@@ -10,6 +10,8 @@ public class SellTurretCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private Button cardButton;
     private GameSettings gameSettings;
 
+    public GameObject[] turretSprites;
+
     void Start() {
         gameSettings = FindObjectOfType<GameSettings>();
         cardButton = gameObject.GetComponent<Button>();
@@ -17,6 +19,20 @@ public class SellTurretCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void SellTurret() {
         if (GlobalData.activeTurret != null) GlobalData.activeTurret.Sell();
+    }
+
+    public void SetCardForSale() {
+        string activeTurretName = GlobalData.activeTurret.name.Replace("(Clone)", "");
+        SetTexts($"Sell {activeTurretName} for {GlobalData.activeTurret.cost}");
+        if (turretSprites != null && turretSprites.Length > 0) {
+            foreach (var turretSprite in turretSprites) {
+                if (turretSprite.name == $"{activeTurretName} Sprite") {
+                    turretSprite.SetActive(true);
+                } else {
+                    turretSprite.SetActive(false);
+                }
+            }
+        }
     }
 
     public void SetTexts(string textToSet) {

@@ -19,7 +19,7 @@ public class GameSettings : MonoBehaviour {
         if (GlobalData.activeTurret != null) {
             if (sellTurretButtonCard != null) {
                 SellTurretCard sellTurretCard = sellTurretButtonCard.GetComponent<SellTurretCard>();
-                if (sellTurretCard != null) sellTurretCard.SetTexts($"Sell Turret for {GlobalData.activeTurret.cost}");
+                if (sellTurretCard != null) sellTurretCard.SetCardForSale();
                 sellTurretButtonCard.SetActive(true);
             }
         } else {
