@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 // [ExecuteAlways]
 public class Turret : MonoBehaviour {
     public bool canAim = true;
     public bool canFire = true;
+    public bool alwaysShowRangeIndicator = false;
     public int unlockedAfterWave = 1;
     public float critChance = 10.0f;
     public float critMultiplier = 2.0f;
@@ -35,17 +37,36 @@ public class Turret : MonoBehaviour {
     private float cooldown = 0.0f;
     private bool canAfford = false;
     private GameObject rangeIndicator;
-    private bool alwaysShowRangeIndicator = false;
+    private GameSettings gameSettings;
+    private static List<Turret> allTurrets = new List<Turret>();
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     void Start() {
+        gameSettings = FindObjectOfType<GameSettings>();
+        allTurrets.Add(this);
         SetAimAndFire();
         SetTurret();
+    }
+
+    void OnDestroy() {
+        allTurrets.Remove(this);
     }
 
     void Update() {
         UpdateTurret();
     }
+    
+    // public void OnPointerEnter(PointerEventData eventData) {
+    //     if (gameSettings != null) {
+    //         gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+    //     }
+    // }
+
+    // public void OnPointerExit(PointerEventData eventData) {
+    //     if (gameSettings != null) {
+    //         gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+    //     }
+    // }
 
     public void EnableFiring(bool enable) {
         canFire = enable;
@@ -55,11 +76,52 @@ public class Turret : MonoBehaviour {
         if (aimAndFireObject != null) aimAndFire = aimAndFireObject.GetComponent<AimAndFire>();
     }
 
-    public void ShowRange(bool show) {
-        bool ifShowRange = alwaysShowRangeIndicator ? true : show;
-        if (rangeIndicator != null) rangeIndicator.SetActive(ifShowRange);
-        if (preview != null) preview.SetActive(show);
+    // void OnMouseDown() {
+    //     ShowUI(!alwaysShowRangeIndicator);
+    // }
+
+    public void ToggleUI() {
+        bool show = !alwaysShowRangeIndicator;
+        ShowUI(show);
+        CloseOtherTurretsUI();
     }
+
+    public void ShowUI(bool show = true) {
+        alwaysShowRangeIndicator = show;
+        ShowRange(alwaysShowRangeIndicator);
+        if (show) {
+            CloseOtherTurretsUI();
+        }
+    }
+
+    public void ShowRange(bool show = true) {
+        bool ifShowRange = alwaysShowRangeIndicator ? true : show;
+        if (rangeIndicator != null) {
+            // Set the position of the rangeIndicator
+            rangeIndicator.transform.localPosition = new Vector3(0, 0, -0.001f);
+            rangeIndicator.SetActive(ifShowRange);
+        }
+        if (preview != null) {
+            preview.SetActive(show);
+        }
+    }
+
+    private void CloseOtherTurretsUI() {
+        foreach (var turret in allTurrets) {
+            if (turret != this) {
+                turret.ShowUI(false);
+            }
+        }
+    }
+
+    // private void SetSortingLayerAndOrder(GameObject obj, string sortingLayerName, int orderInLayer) {
+    //     var spriteRenderer = obj.GetComponent<SpriteRenderer>();
+    //     if (spriteRenderer == null) {
+    //         spriteRenderer = obj.AddComponent<SpriteRenderer>();
+    //     }
+    //     spriteRenderer.sortingLayerName = sortingLayerName;
+    //     spriteRenderer.sortingOrder = orderInLayer;
+    // }
 
     private void OnTriggerEnter2D(Collider2D trigger) {
         if (trigger.CompareTag("Enemy")) enemiesInRange.Add(trigger.gameObject);
@@ -68,6 +130,26 @@ public class Turret : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D trigger) {
         if (trigger.CompareTag("Enemy")) enemiesInRange.Remove(trigger.gameObject);
     }
+
+    // public void OnPointerClick(PointerEventData eventData) {
+    //     // Check which mouse button was clicked (left or right)
+    //     if (eventData.button == PointerEventData.InputButton.Left) {
+    //         UpgradeTurret();
+    //     } else if (eventData.button == PointerEventData.InputButton.Right) {
+    //         SellTurret();
+    //     }
+    // }
+
+    // void UpgradeTurret() {
+    //     // Implement your upgrade logic here
+    //     Debug.Log("Upgrade turret");
+    // }
+
+    // void SellTurret() {
+    //     // Implement your sell logic here
+    //     Debug.Log("Sell turret");
+    //     Destroy(gameObject); // Example: Destroy the turret
+    // }
 
     void SetCosts() {
         string costString = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
@@ -217,24 +299,24 @@ public class Turret : MonoBehaviour {
         // }
     }
 
-    private Sprite CreateCircleSprite() {
-        int size = 256;
-        Texture2D texture = new Texture2D(size, size, TextureFormat.ARGB32, false);
-        float radius = size / 2f;
-        Vector2 center = new Vector2(radius, radius);
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
-                Vector2 pos = new Vector2(x, y);
-                if (Vector2.Distance(pos, center) <= radius) {
-                    texture.SetPixel(x, y, Color.cyan); // Set the color to cyan
-                } else {
-                    texture.SetPixel(x, y, Color.clear);
-                }
-            }
-        }
-        texture.Apply();
-        return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
-    }
+    // private Sprite CreateCircleSprite() {
+    //     int size = 256;
+    //     Texture2D texture = new Texture2D(size, size, TextureFormat.ARGB32, false);
+    //     float radius = size / 2f;
+    //     Vector2 center = new Vector2(radius, radius);
+    //     for (int y = 0; y < size; y++) {
+    //         for (int x = 0; x < size; x++) {
+    //             Vector2 pos = new Vector2(x, y);
+    //             if (Vector2.Distance(pos, center) <= radius) {
+    //                 texture.SetPixel(x, y, Color.cyan); // Set the color to cyan
+    //             } else {
+    //                 texture.SetPixel(x, y, Color.clear);
+    //             }
+    //         }
+    //     }
+    //     texture.Apply();
+    //     return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    // }
 
     void SetTurret() {
         // ScaleCost();

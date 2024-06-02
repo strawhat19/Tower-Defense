@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class TilemapInteraction : MonoBehaviour {
@@ -10,6 +12,7 @@ public class TilemapInteraction : MonoBehaviour {
     public Color highlightColor = Color.cyan;
 
     private Color originalColor;
+    // private int turretLayerMask;
     private bool turretUnlocked;
     private bool canAfford = false;
     private GameSettings gameSettings;
@@ -18,6 +21,7 @@ public class TilemapInteraction : MonoBehaviour {
     private HashSet<Vector3Int> occupiedTiles = new HashSet<Vector3Int>();
 
     void Start() {
+        // turretLayerMask = LayerMask.GetMask("Turrets");
         gameSettings = FindObjectOfType<GameSettings>();
         if (tilemap == null) tilemap = GetComponent<Tilemap>();
     }
@@ -37,7 +41,9 @@ public class TilemapInteraction : MonoBehaviour {
         Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cellPos);
 
         if (tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)) {
+            // Debug.Log("tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)");
             if (activePreviewTurret == null) {
+                // Debug.Log("activePreviewTurret == null");
                 // Instantiate the semi-transparent turret preview
                 activePreviewTurret = Instantiate(turret, cellCenterPos, Quaternion.identity);
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
@@ -48,9 +54,10 @@ public class TilemapInteraction : MonoBehaviour {
                 // Set the sorting order of the turret's SpriteRenderer
                 SpriteRenderer sr = activePreviewTurret.GetComponent<SpriteRenderer>();
                 if (sr != null) {
-                    sr.sortingOrder = 10; // Set to a value higher than the terrain
+                    sr.sortingOrder = 9; // Set to a value higher than the terrain
                 }
             } else {
+                // Debug.Log("Turret Can Be Placed");
                 // Move the semi-transparent turret preview to follow the mouse
                 activePreviewTurret.transform.position = cellCenterPos;
                 activePreviewTurret.SetActive(true);
@@ -80,12 +87,17 @@ public class TilemapInteraction : MonoBehaviour {
                 }
             }
         } else {
+            // Debug.Log("Cell Is Occupied or Not In Interactable Shop Terrain");
             if (activePreviewTurret != null) {
                 // Hide the semi-transparent turret preview if not over a tile
                 activePreviewTurret.SetActive(false);
             }
             if (gameSettings != null) {
-                gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+                if (occupiedTiles.Contains(cellPos)) {
+                    gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+                } else {
+                    gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+                }
             }
         }
 
@@ -100,6 +112,8 @@ public class TilemapInteraction : MonoBehaviour {
         }
 
         if (Input.GetMouseButtonDown(0) && tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)) {
+            // Debug.Log("Input.GetMouseButtonDown(0) && tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)");
+            // if (IsPointerOverUIObject()) return;
             OnTileClicked(cellCenterPos, cellPos);
         }
     }
@@ -142,9 +156,16 @@ public class TilemapInteraction : MonoBehaviour {
             // Set the sorting order of the turret's SpriteRenderer
             SpriteRenderer sr = newTurret.GetComponent<SpriteRenderer>();
             if (sr != null) {
-                sr.sortingOrder = 10; // Set to a value higher than the terrain
+                sr.sortingOrder = 9; // Set to a value higher than the terrain
             }
 
+             // Enable the Collider2D component for interaction
+            Collider2D collider = newTurret.GetComponent<Collider2D>();
+            if (collider != null) {
+                collider.enabled = true;
+            }
+
+            // Debug.Log("Tile Clicked");
             // Mark the tile as occupied
             occupiedTiles.Add(cellPos);
 
@@ -159,5 +180,20 @@ public class TilemapInteraction : MonoBehaviour {
             string cantAffordTurretMessage = "Cannot afford " + turret.name + ". Cost: " + turretCost + ", Available: " + GlobalData.startCoins;
             GlobalData.Message = cantAffordTurretMessage;
         }
+
+        // Debug.Log("Turret Clicked from Tile Click");
     }
+
+    // bool IsPointerOverUIObject() {
+    //     PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+    //     eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+    //     List<RaycastResult> results = new List<RaycastResult>();
+    //     EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+    //     foreach (RaycastResult result in results) {
+    //         if (result.gameObject.layer == LayerMask.NameToLayer("Turrets")) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 }

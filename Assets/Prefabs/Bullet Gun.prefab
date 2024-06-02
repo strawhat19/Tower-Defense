@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7026067088731002735}
   - component: {fileID: 5740250460989250659}
   - component: {fileID: 8985757962454046484}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: TurretCostText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 5574192968286111044}
   - component: {fileID: 8362347708169121412}
   - component: {fileID: 5216834167344419300}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: TextCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1291250945
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8362347708169121412
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 1608034970971720831}
   - component: {fileID: 2418284252938987195}
   - component: {fileID: 3999904084812688937}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1291250945
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2418284252938987195
@@ -469,6 +469,96 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &3867595664287951165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5526179606783620591}
+  - component: {fileID: 8018189206948666758}
+  - component: {fileID: 3804456935958147094}
+  m_Layer: 0
+  m_Name: OpenUITrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5526179606783620591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867595664287951165}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0.2}
+  m_LocalScale: {x: 3.3333333, y: 3.3333333, z: 0}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7279312890254842302}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8018189206948666758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867595664287951165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1447f00ee40d1c499042f6171b37057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &3804456935958147094
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867595664287951165}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0015621185, y: 0.009372592}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7656851, y: 1.0187451}
+  m_EdgeRadius: 0
 --- !u!1 &4932698894958439689
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +570,7 @@ GameObject:
   - component: {fileID: 776929994539796320}
   - component: {fileID: 6110187297461947532}
   - component: {fileID: 1980500497252023741}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewNameText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8375637486587878885}
   - component: {fileID: 1301286802743726109}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PreviewOnHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5334210120859846586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -835,7 +925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610552440426730581}
   - component: {fileID: 1698953900686251271}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,8 +985,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1291250945
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 529851681, guid: 24d91ca91631e4c4da0691901c74ffb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -923,7 +1013,7 @@ GameObject:
   - component: {fileID: 7588315389606011740}
   m_Layer: 0
   m_Name: Bullet Gun
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,6 +1030,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 5526179606783620591}
   - {fileID: 893039140659431119}
   - {fileID: 7224461738105387612}
   - {fileID: 647093385502263145}
@@ -961,6 +1052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAim: 1
   canFire: 1
+  alwaysShowRangeIndicator: 0
   unlockedAfterWave: 1
   critChance: 12
   critMultiplier: 2
