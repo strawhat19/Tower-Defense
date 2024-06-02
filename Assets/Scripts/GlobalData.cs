@@ -7,6 +7,8 @@ using System.Collections.Generic;
 public static class GlobalData {
 
     // Start Values
+    public static Turret activeTurret;
+    public static bool overrideCursor = false;
     public static float defaultHealth = 100f;
     public static float defaultReward = 10f;
     public static float defaultDamage = 1f;
@@ -21,6 +23,7 @@ public static class GlobalData {
     public static int currentLevel = 1;
     public static float finishLineX = 0;
     public static Vector3 waypointPosition;
+    public static bool hasActiveTurret = false;
     public static bool lastEnemyInWaveSpawned = false;
     public static bool lastEnemyInWaveDied = false;
 

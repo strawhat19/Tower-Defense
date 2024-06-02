@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameSettings : MonoBehaviour {
+    [Header("Turret Settings")]
+    public GameObject sellTurretButtonCard;
+
     [Header("Cursor Settings")]
     public Texture2D defaultCursorTexture;
     public Texture2D hoverCursorTexture;
@@ -10,6 +13,18 @@ public class GameSettings : MonoBehaviour {
 
     void Start() {
         SetCursor(defaultCursorTexture);
+    }
+
+    void Update() {
+        if (GlobalData.activeTurret != null) {
+            if (sellTurretButtonCard != null) {
+                SellTurretCard sellTurretCard = sellTurretButtonCard.GetComponent<SellTurretCard>();
+                if (sellTurretCard != null) sellTurretCard.SetTexts($"Sell Turret for {GlobalData.activeTurret.cost}");
+                sellTurretButtonCard.SetActive(true);
+            }
+        } else {
+            if (sellTurretButtonCard != null) sellTurretButtonCard.SetActive(false);
+        }
     }
 
     public void SetCursor(Texture2D textureToSet) {

@@ -8,11 +8,9 @@ public class TilemapInteraction : MonoBehaviour {
     public bool buildingTurret = true;
     public Tilemap tilemap;
     public GameObject turret;
-    // public GameObject[] turrets;
     public Color highlightColor = Color.cyan;
 
     private Color originalColor;
-    // private int turretLayerMask;
     private bool turretUnlocked;
     private bool canAfford = false;
     private GameSettings gameSettings;
@@ -21,9 +19,12 @@ public class TilemapInteraction : MonoBehaviour {
     private HashSet<Vector3Int> occupiedTiles = new HashSet<Vector3Int>();
 
     void Start() {
-        // turretLayerMask = LayerMask.GetMask("Turrets");
         gameSettings = FindObjectOfType<GameSettings>();
         if (tilemap == null) tilemap = GetComponent<Tilemap>();
+    }
+
+    public void VacantGridCell(Vector3Int cellPosition) {
+        occupiedTiles.Remove(cellPosition);
     }
 
     void Update() {
@@ -41,9 +42,7 @@ public class TilemapInteraction : MonoBehaviour {
         Vector3 cellCenterPos = tilemap.GetCellCenterWorld(cellPos);
 
         if (tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)) {
-            // Debug.Log("tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)");
             if (activePreviewTurret == null) {
-                // Debug.Log("activePreviewTurret == null");
                 // Instantiate the semi-transparent turret preview
                 activePreviewTurret = Instantiate(turret, cellCenterPos, Quaternion.identity);
                 Turret turretComponent = activePreviewTurret.GetComponent<Turret>();
@@ -57,7 +56,6 @@ public class TilemapInteraction : MonoBehaviour {
                     sr.sortingOrder = 9; // Set to a value higher than the terrain
                 }
             } else {
-                // Debug.Log("Turret Can Be Placed");
                 // Move the semi-transparent turret preview to follow the mouse
                 activePreviewTurret.transform.position = cellCenterPos;
                 activePreviewTurret.SetActive(true);
@@ -87,7 +85,6 @@ public class TilemapInteraction : MonoBehaviour {
                 }
             }
         } else {
-            // Debug.Log("Cell Is Occupied or Not In Interactable Shop Terrain");
             if (activePreviewTurret != null) {
                 // Hide the semi-transparent turret preview if not over a tile
                 activePreviewTurret.SetActive(false);
@@ -96,7 +93,9 @@ public class TilemapInteraction : MonoBehaviour {
                 if (occupiedTiles.Contains(cellPos)) {
                     gameSettings.SetCursor(gameSettings.hoverCursorTexture);
                 } else {
-                    gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+                    if (GlobalData.overrideCursor == false) {
+                        gameSettings.SetCursor(gameSettings.defaultCursorTexture);
+                    }
                 }
             }
         }
@@ -112,8 +111,6 @@ public class TilemapInteraction : MonoBehaviour {
         }
 
         if (Input.GetMouseButtonDown(0) && tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)) {
-            // Debug.Log("Input.GetMouseButtonDown(0) && tilemap.HasTile(cellPos) && !occupiedTiles.Contains(cellPos)");
-            // if (IsPointerOverUIObject()) return;
             OnTileClicked(cellCenterPos, cellPos);
         }
     }
@@ -150,6 +147,8 @@ public class TilemapInteraction : MonoBehaviour {
             turretComponent.SetAffordability(false, canAfford);
             turretComponent.ShowRange(false);
             turretComponent.EnableFiring(true);
+            turretComponent.cellPos = cellPos;
+
             // Deduct the cost from the player's coins
             GlobalData.startCoins -= turretCost;
 
@@ -165,7 +164,6 @@ public class TilemapInteraction : MonoBehaviour {
                 collider.enabled = true;
             }
 
-            // Debug.Log("Tile Clicked");
             // Mark the tile as occupied
             occupiedTiles.Add(cellPos);
 
@@ -180,8 +178,6 @@ public class TilemapInteraction : MonoBehaviour {
             string cantAffordTurretMessage = "Cannot afford " + turret.name + ". Cost: " + turretCost + ", Available: " + GlobalData.startCoins;
             GlobalData.Message = cantAffordTurretMessage;
         }
-
-        // Debug.Log("Turret Clicked from Tile Click");
     }
 
     // bool IsPointerOverUIObject() {

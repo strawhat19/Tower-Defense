@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public class Turret : MonoBehaviour {
     public bool canAim = true;
     public bool canFire = true;
+    public bool turretPlaced = false;
     public bool alwaysShowRangeIndicator = false;
     public int unlockedAfterWave = 1;
     public float critChance = 10.0f;
@@ -26,6 +27,7 @@ public class Turret : MonoBehaviour {
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
 
+    public Vector3Int cellPos;
     public GameObject preview;
     private AimAndFire aimAndFire;
     public GameObject aimAndFireObject;
@@ -38,10 +40,14 @@ public class Turret : MonoBehaviour {
     private bool canAfford = false;
     private GameObject rangeIndicator;
     private GameSettings gameSettings;
+    private TilemapInteraction shopTerrain;
+    private GameObject sellTurretButtonCard;
     private static List<Turret> allTurrets = new List<Turret>();
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     void Start() {
+        sellTurretButtonCard = GameObject.FindGameObjectWithTag("SellTurretButtonCard");
+        shopTerrain = FindObjectOfType<TilemapInteraction>();
         gameSettings = FindObjectOfType<GameSettings>();
         allTurrets.Add(this);
         SetAimAndFire();
@@ -55,18 +61,13 @@ public class Turret : MonoBehaviour {
     void Update() {
         UpdateTurret();
     }
-    
-    // public void OnPointerEnter(PointerEventData eventData) {
-    //     if (gameSettings != null) {
-    //         gameSettings.SetCursor(gameSettings.hoverCursorTexture);
-    //     }
-    // }
 
-    // public void OnPointerExit(PointerEventData eventData) {
-    //     if (gameSettings != null) {
-    //         gameSettings.SetCursor(gameSettings.defaultCursorTexture);
-    //     }
-    // }
+    public void Sell() {
+        if (shopTerrain != null && cellPos != null) shopTerrain.VacantGridCell(cellPos);
+        GlobalData.startCoins = GlobalData.startCoins + cost;
+        GlobalData.activeTurret = null;
+        Destroy(gameObject);
+    }
 
     public void EnableFiring(bool enable) {
         canFire = enable;
@@ -76,33 +77,24 @@ public class Turret : MonoBehaviour {
         if (aimAndFireObject != null) aimAndFire = aimAndFireObject.GetComponent<AimAndFire>();
     }
 
-    // void OnMouseDown() {
-    //     ShowUI(!alwaysShowRangeIndicator);
-    // }
-
     public void ToggleUI() {
         bool show = !alwaysShowRangeIndicator;
         ShowUI(show);
-        CloseOtherTurretsUI();
+        GlobalData.activeTurret = show && turretPlaced ? this : null;
+        if (show) CloseOtherTurretsUI();
     }
 
     public void ShowUI(bool show = true) {
         alwaysShowRangeIndicator = show;
         ShowRange(alwaysShowRangeIndicator);
-        if (show) {
-            CloseOtherTurretsUI();
-        }
     }
 
     public void ShowRange(bool show = true) {
         bool ifShowRange = alwaysShowRangeIndicator ? true : show;
+        if (preview != null) preview.SetActive(show);
         if (rangeIndicator != null) {
-            // Set the position of the rangeIndicator
             rangeIndicator.transform.localPosition = new Vector3(0, 0, -0.001f);
             rangeIndicator.SetActive(ifShowRange);
-        }
-        if (preview != null) {
-            preview.SetActive(show);
         }
     }
 
@@ -114,15 +106,6 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    // private void SetSortingLayerAndOrder(GameObject obj, string sortingLayerName, int orderInLayer) {
-    //     var spriteRenderer = obj.GetComponent<SpriteRenderer>();
-    //     if (spriteRenderer == null) {
-    //         spriteRenderer = obj.AddComponent<SpriteRenderer>();
-    //     }
-    //     spriteRenderer.sortingLayerName = sortingLayerName;
-    //     spriteRenderer.sortingOrder = orderInLayer;
-    // }
-
     private void OnTriggerEnter2D(Collider2D trigger) {
         if (trigger.CompareTag("Enemy")) enemiesInRange.Add(trigger.gameObject);
     }
@@ -130,26 +113,6 @@ public class Turret : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D trigger) {
         if (trigger.CompareTag("Enemy")) enemiesInRange.Remove(trigger.gameObject);
     }
-
-    // public void OnPointerClick(PointerEventData eventData) {
-    //     // Check which mouse button was clicked (left or right)
-    //     if (eventData.button == PointerEventData.InputButton.Left) {
-    //         UpgradeTurret();
-    //     } else if (eventData.button == PointerEventData.InputButton.Right) {
-    //         SellTurret();
-    //     }
-    // }
-
-    // void UpgradeTurret() {
-    //     // Implement your upgrade logic here
-    //     Debug.Log("Upgrade turret");
-    // }
-
-    // void SellTurret() {
-    //     // Implement your sell logic here
-    //     Debug.Log("Sell turret");
-    //     Destroy(gameObject); // Example: Destroy the turret
-    // }
 
     void SetCosts() {
         string costString = GlobalData.RemoveDotZeroZero(cost.ToString("F2"));
@@ -271,6 +234,7 @@ public class Turret : MonoBehaviour {
                     Color color = mat.color;
                     if (turretIsPlaced) {
                         color.a = 1.0f;
+                        turretPlaced = true;
                     } else {
                         if (transparent) {
                             canAfford = true;
