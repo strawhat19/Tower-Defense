@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4249358980378108832}
   - component: {fileID: 660251485594198861}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -13.235, y: -3.9250002, z: 0}
+  currentPosition: {x: -13.235, y: -3.9250002, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -66,7 +66,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8562235180917288873}
   - component: {fileID: 1762440095241146852}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -13.235, y: -4.5200005, z: 0}
+  currentPosition: {x: -13.235, y: -4.5200005, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5633543107856190056}
   - component: {fileID: 3709160464237354405}
   - component: {fileID: 8556778530430262730}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3433839814140850613}
   - component: {fileID: 2226523134548135766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -12.21, y: -2.921, z: 0}
+  currentPosition: {x: -12.21, y: -2.921, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5586563773220578610}
   - component: {fileID: 4664397162947043855}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -10.962, y: -3.9250002, z: 0}
+  currentPosition: {x: -10.962, y: -3.9250002, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -310,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963546218361391800}
   - component: {fileID: 8858899582567856413}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -12.925, y: -3.2000003, z: 0}
+  currentPosition: {x: -12.925, y: -3.2000003, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 9099369802808930063}
   - component: {fileID: 7710796068726217257}
   - component: {fileID: 6129546709111629151}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8192165896554670094}
   - component: {fileID: 7681443605069506792}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4810428429258799475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -502,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1997131573054771708}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: DamagePopupLocations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 7496812021056559628}
   - component: {fileID: 7267794033254008628}
   - component: {fileID: 4930610444766996744}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2214877095905898819}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: DamageTextContainer
   m_TagString: DamageTextContainer
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120593133985801593}
   - component: {fileID: 6901558517310116136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -11.495, y: -3.2000003, z: 0}
+  currentPosition: {x: -11.495, y: -3.2000003, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -716,7 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6842907134432708042}
   - component: {fileID: 4229355922370772902}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldPopupLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -12.21, y: -4.9820004, z: 0}
+  currentPosition: {x: -12.21, y: -4.9820004, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 4493307902525916328}
   - component: {fileID: 4957450947470672918}
   - component: {fileID: 5410319321445439012}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6073037057881457898}
   - component: {fileID: 8901532602576897182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c8be76970a049a680bf05782889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPosition: {x: -10.962, y: -4.5200005, z: 0}
+  currentPosition: {x: -10.962, y: -4.5200005, z: -0.2}
   alwaysShowPoints: 1
   points:
   - {x: 0, y: 0, z: 0}
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 7742131815863014600}
   - component: {fileID: 5391626653990221634}
   - component: {fileID: 6275174507944484425}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 3983849221869271010}
   - component: {fileID: 8583990753018427758}
   - component: {fileID: 2713344825326178199}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Bee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1137,6 +1137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd84c5d23ce18741ba23c08b5e2f2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipSprite: 1
+  flipInverse: 0
   waves: {fileID: 0}
   waveMax: 15
   wavePosition: 1

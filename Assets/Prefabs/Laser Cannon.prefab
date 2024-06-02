@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4046803814972951224}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel Of The Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 991790739071444834}
   - component: {fileID: 7855577251145676578}
   - component: {fileID: 4115215454805673425}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OpenUITrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3457871775253478756}
   - component: {fileID: 7427157364252438929}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751864048901124555}
   - component: {fileID: 7401427682177967614}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 8678011102450678494}
   - component: {fileID: 7792599513436938760}
   - component: {fileID: 4924397108812245564}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Laser Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393250322933692799}
   - component: {fileID: 396986793784539541}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PreviewOnHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8247720986051397836}
   - component: {fileID: 1059503293522834789}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shoot Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 8045746496787923708}
   - component: {fileID: 8439317470037858629}
   - component: {fileID: 9048350250258260173}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostTextCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 6975425747517673739}
   - component: {fileID: 5271215018522144100}
   - component: {fileID: 1473122589297553788}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewNameText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 2860852390436000390}
   - component: {fileID: 1812052521732889781}
   - component: {fileID: 8110803238909190967}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 1521635612307885845}
   - component: {fileID: 6218809808935874075}
   - component: {fileID: 7623971991519898282}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewName
   m_TagString: Untagged
   m_Icon: {fileID: 0}

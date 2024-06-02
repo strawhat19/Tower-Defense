@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5776815868481145243}
   - component: {fileID: 541820537637943416}
   - component: {fileID: 3561993778182986178}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: BulletImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,7 +4851,7 @@ GameObject:
   - component: {fileID: 1183135205337419021}
   - component: {fileID: 4547718791963077185}
   - component: {fileID: 3205535629465949591}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: BulletShells_ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9691,7 +9691,7 @@ GameObject:
   - component: {fileID: 9142794395584495038}
   - component: {fileID: 1448189197406626118}
   - component: {fileID: 5032111398063407730}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bullets_ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14532,7 +14532,7 @@ GameObject:
   - component: {fileID: 2645437365474411012}
   - component: {fileID: 3091717293687602837}
   - component: {fileID: 4603323526360928762}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Machine Gun Fire Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

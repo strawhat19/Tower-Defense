@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5039543950439981078}
   - component: {fileID: 5995650138497539740}
   - component: {fileID: 2011815913894217105}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostTextCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3072391954970121842}
   - component: {fileID: 915076051029202758}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PreviewOnHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 5633344582891142756}
   - component: {fileID: 5077265741122494354}
   - component: {fileID: 2493704901509499532}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OpenUITrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2775688971518976984}
   - component: {fileID: 95204824545468967}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 887822729720577353}
   - component: {fileID: 1372076830261578836}
   - component: {fileID: 1582621551786362728}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 1731374349061854544}
   - component: {fileID: 7330337443343115078}
   - component: {fileID: 184592331767479339}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 3918259727880262677}
   - component: {fileID: 4396867280287978418}
   - component: {fileID: 6623750256055536535}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewNameText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8880319360398791095}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel Of The Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 1957874934066737714}
   - component: {fileID: 2594251822791856843}
   - component: {fileID: 2464765506770097064}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Photon Blaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5488451920862254000}
   - component: {fileID: 4788317278724036376}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7849820009344941705}
   - component: {fileID: 2797408216781452634}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shoot Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

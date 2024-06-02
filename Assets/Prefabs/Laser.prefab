@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6398439243515951756}
   - component: {fileID: 331620538152834420}
   - component: {fileID: -7452402765738797230}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1291250945
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 210dd99a96c1e184d9cb13f340f9f31e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3581882014560863535}
   - component: {fileID: 3102576928842949369}
   - component: {fileID: 7878209271267957433}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ProjectileParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

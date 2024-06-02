@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8661262388832151378}
   - component: {fileID: 139467941634156132}
   - component: {fileID: 2772273959306679505}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GoldTextAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,8 +184,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1291250945
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &2772273959306679505

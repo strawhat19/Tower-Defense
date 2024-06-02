@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1103501482335484347}
   - component: {fileID: 6820686395026890296}
   - component: {fileID: 4913482652666533478}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd84c5d23ce18741ba23c08b5e2f2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipSprite: 1
+  flipInverse: 0
   waves: {fileID: 0}
   waveMax: 50
   wavePosition: 1
@@ -212,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7327724290846510965}
   - component: {fileID: 4352200528429385845}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +229,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424328714551562548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -273,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5367517050132854441}
   - component: {fileID: 4316199066228067670}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +332,7 @@ GameObject:
   - component: {fileID: 1690242283893512272}
   - component: {fileID: 2073433078901750326}
   - component: {fileID: 300098782859809129}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2312557119901985819}
   - component: {fileID: 9048744834219906741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366376009035653952}
   - component: {fileID: 8573684343279904211}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434893244469131559}
   - component: {fileID: 3853390171443553887}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2784494819755532444}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamageTextContainer
   m_TagString: DamageTextContainer
   m_Icon: {fileID: 0}
@@ -670,7 +672,7 @@ GameObject:
   - component: {fileID: 4054664901976330768}
   - component: {fileID: 3465300145653369443}
   - component: {fileID: 766919103204233722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +748,7 @@ GameObject:
   - component: {fileID: 9194612722586798037}
   - component: {fileID: 2040815429504058772}
   - component: {fileID: 8343878863946943165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 303682596785144473}
   - component: {fileID: 4267466430172925617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +885,7 @@ GameObject:
   - component: {fileID: 3900564021347267133}
   - component: {fileID: 1343903884700829866}
   - component: {fileID: 5574650151572807558}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7553495150736870501}
   - component: {fileID: 5976868534398260056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3579756834513443869}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: DamagePopupLocations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1115,7 @@ GameObject:
   - component: {fileID: 7719061780573510722}
   - component: {fileID: 218661063743655671}
   - component: {fileID: 5640980602845692588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3868018440372692316}
   - component: {fileID: 427532600111543166}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DamagePopupLocation (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2039889955354041128}
   - component: {fileID: 8623501505023271816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldPopupLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

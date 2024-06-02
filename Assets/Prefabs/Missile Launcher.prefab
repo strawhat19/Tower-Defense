@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 498274869141839631}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel Of The Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7489490291052468577}
   - component: {fileID: 5421062861525877212}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 7733694700447289498}
   - component: {fileID: 4624484233970162599}
   - component: {fileID: 7971199176285532290}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Missile Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7873629464242477040}
   - component: {fileID: 349382945194007842}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 5514074566342560737}
   - component: {fileID: 7266879876537211740}
   - component: {fileID: 7018173607857771064}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OpenUITrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 2933012416858921334}
   - component: {fileID: 3434359364626343911}
   - component: {fileID: 7967222274503021311}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 7609883369579322662}
   - component: {fileID: 7437139947212914825}
   - component: {fileID: 7941324133966345332}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostTextCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6271682004700474024}
   - component: {fileID: 6143733164065864471}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shoot Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 9170207643351690626}
   - component: {fileID: 1818167791038922912}
   - component: {fileID: 7615594694487000847}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewNameText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 5496169020971847388}
   - component: {fileID: 2006070442053960390}
   - component: {fileID: 4879025114496589753}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131331143375652737}
   - component: {fileID: 3982377508802176646}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PreviewOnHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}

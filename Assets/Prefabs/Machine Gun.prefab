@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4153052900899603655}
   - component: {fileID: 1085776905592785497}
   - component: {fileID: 5461911545888555171}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Machine Gun Fire Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4852,7 +4852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3967560262898811358}
   - component: {fileID: 2569724493207830431}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RotatingGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 68918930240770591}
   - component: {fileID: 9039104543147388368}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Gatling Gun Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4985,7 +4985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6806341672314213363}
   - component: {fileID: 4215607559085632919}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5069,7 +5069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3257119905581468826}
   - component: {fileID: 7302292079358810008}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Fire Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5198,7 +5198,7 @@ GameObject:
   - component: {fileID: 8491224225458055369}
   - component: {fileID: 7705183545797363197}
   - component: {fileID: 3630022153926705999}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OpenUITrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5287,7 +5287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5232117592228159607}
   - component: {fileID: 5776619286590484582}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PreviewOnHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5348,7 +5348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5349468348169684810}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Gatling Gun Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5382,7 +5382,7 @@ GameObject:
   - component: {fileID: 7705950952499775106}
   - component: {fileID: 9003967862150179353}
   - component: {fileID: 3071884920383399375}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewNameText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5517,7 +5517,7 @@ GameObject:
   - component: {fileID: 875879948630759274}
   - component: {fileID: 8364934908464622918}
   - component: {fileID: 8470051979292650594}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Gatling Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5606,7 +5606,7 @@ GameObject:
   - component: {fileID: 2938646934142212445}
   - component: {fileID: 7396678200936493905}
   - component: {fileID: 7395724803993475182}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Machine Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5765,7 +5765,7 @@ GameObject:
   - component: {fileID: 7928768568438641435}
   - component: {fileID: 2169841291574270773}
   - component: {fileID: 5544217096765046642}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: BulletShells_ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10604,7 +10604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1288953767901913966}
   - component: {fileID: 6661672025979728427}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10733,7 +10733,7 @@ GameObject:
   - component: {fileID: 5914872221293916721}
   - component: {fileID: 2844796085558160670}
   - component: {fileID: 1136618783505757899}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10868,7 +10868,7 @@ GameObject:
   - component: {fileID: 2529064714341425166}
   - component: {fileID: 9005418336852524591}
   - component: {fileID: 3732627796093796622}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bullets_ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15706,7 +15706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5527670846417964288}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrel Of The Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15740,7 +15740,7 @@ GameObject:
   - component: {fileID: 3526585985321285425}
   - component: {fileID: 342070817894980558}
   - component: {fileID: 249374512715595820}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15843,7 +15843,7 @@ GameObject:
   - component: {fileID: 2898694059759939453}
   - component: {fileID: 778571719765206523}
   - component: {fileID: 8029393473969801006}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviewCostTextCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
