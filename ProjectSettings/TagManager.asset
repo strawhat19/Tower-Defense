@@ -10,6 +10,7 @@ TagManager:
   - Waves
   - GameSettings
   - Turret
+  - SellTurretButtonCard
   layers:
   - Default
   - TransparentFX
