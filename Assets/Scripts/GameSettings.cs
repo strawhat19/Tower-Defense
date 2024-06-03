@@ -23,10 +23,12 @@ public class GameSettings : MonoBehaviour {
                 if (sellTurretCard != null) sellTurretCard.SetCardForSale();
                 sellTurretButtonCard.SetActive(true);
             }
-            if (upgradeTurretButtonCard != null) {
+            if (GlobalData.activeTurret.level < 3 && upgradeTurretButtonCard != null) {
                 UpgradeTurret[] upgradeTurretOptions = upgradeTurretButtonCard.GetComponentsInChildren<UpgradeTurret>();
                 if (upgradeTurretOptions != null) upgradeTurretOptions[0].SetUpgradeOptions();
                 upgradeTurretButtonCard.SetActive(true);
+            } else {
+                if (upgradeTurretButtonCard != null) upgradeTurretButtonCard.SetActive(false);
             }
         } else {
             if (sellTurretButtonCard != null) sellTurretButtonCard.SetActive(false);

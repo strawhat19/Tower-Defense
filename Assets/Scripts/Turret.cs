@@ -70,6 +70,17 @@ public class Turret : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public void Upgrade(Dictionary<string, object> upgradedTurretStats) {
+        level = level + 1;
+        GlobalData.startCoins = GlobalData.startCoins - (float)upgradedTurretStats["Cost"];
+        damageMin = (float)upgradedTurretStats["DamageMin"];
+        damageMax = (float)upgradedTurretStats["DamageMax"];
+        attackSpeed = (float)upgradedTurretStats["AttackSpeed"];
+        critChance = (float)upgradedTurretStats["CriticalStrike"];
+        CircleCollider2D maxRangeIndicator = gameObject.GetComponent<CircleCollider2D>();
+        maxRangeIndicator.radius = (float)upgradedTurretStats["MaxRange"];
+    }
+
     public void EnableFiring(bool enable) {
         canFire = enable;
     }
@@ -135,6 +146,7 @@ public class Turret : MonoBehaviour {
 
     void UpdateTurret() {
         // ScaleCost();
+        SetRangeIndicator();
         if (canAim) {
             enemiesInRange.RemoveAll(enemy => enemy == null || enemy.GetComponent<Enemy>().currentHealth <= 0);
             FindTarget();
@@ -283,6 +295,46 @@ public class Turret : MonoBehaviour {
     //     return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
     // }
 
+    void SetRangeIndicator() {
+        if (rangeIndicator == null) {
+            // Create and configure the range indicator
+            rangeIndicator = new GameObject("RangeIndicator");
+            rangeIndicator.transform.SetParent(transform);
+            rangeIndicator.transform.localPosition = Vector3.zero;
+            var lineRenderer = rangeIndicator.AddComponent<LineRenderer>();
+            lineRenderer.startWidth = 0.05f;
+            lineRenderer.endWidth = 0.05f;
+            lineRenderer.loop = true;
+            lineRenderer.useWorldSpace = false;
+        }
+
+        var existingLineRenderer = rangeIndicator.GetComponent<LineRenderer>();
+
+        // Create a material and set it to the LineRenderer
+        Material lineMaterial = new Material(Shader.Find("Unlit/Color"));
+        Color cyanColor = new Color(0, 1, 1, 0.5f);
+        Color greenColor = new Color(0, 1, 0, 0.5f);
+        Color redColor = new Color(1, 0, 0, 0.5f);
+        Color colorToUse = level == 1 ? cyanColor : level >= 3 ? redColor : greenColor;
+        lineMaterial.color = colorToUse;
+        existingLineRenderer.material = lineMaterial;
+        existingLineRenderer.startColor = lineMaterial.color;
+        existingLineRenderer.endColor = lineMaterial.color;
+
+        int segments = 100;
+        existingLineRenderer.positionCount = segments + 1;
+
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        float radius = collider.radius;
+
+        for (int i = 0; i <= segments; i++) {
+            float angle = i * (2f * Mathf.PI / segments);
+            float x = Mathf.Cos(angle) * (radius / radiusModifier);
+            float y = Mathf.Sin(angle) * (radius / radiusModifier);
+            existingLineRenderer.SetPosition(i, new Vector3(x, y, 0));
+        }
+    }
+
     void SetTurret() {
         // ScaleCost();
         SetCosts();
@@ -292,35 +344,7 @@ public class Turret : MonoBehaviour {
         finishcollider.isTrigger = true;
         finishcollider.radius = range;
 
-        // Create and configure the range indicator
-        rangeIndicator = new GameObject("RangeIndicator");
-        rangeIndicator.transform.SetParent(transform);
-        rangeIndicator.transform.localPosition = Vector3.zero;
-        var lineRenderer = rangeIndicator.AddComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
-        lineRenderer.loop = true;
-        lineRenderer.useWorldSpace = false;
-
-        // Create a material and set it to the LineRenderer
-        Material lineMaterial = new Material(Shader.Find("Unlit/Color"));
-        lineMaterial.color = new Color(0, 1, 1, 0.5f); // Cyan with semi-transparency
-        lineRenderer.material = lineMaterial;
-        lineRenderer.startColor = lineMaterial.color;
-        lineRenderer.endColor = lineMaterial.color;
-
-        int segments = 100;
-        lineRenderer.positionCount = segments + 1;
-
-        CircleCollider2D collider = GetComponent<CircleCollider2D>();
-        float radius = collider.radius;
-
-        for (int i = 0; i <= segments; i++) {
-            float angle = i * (2f * Mathf.PI / segments);
-            float x = Mathf.Cos(angle) * (radius / radiusModifier);
-            float y = Mathf.Sin(angle) * (radius / radiusModifier);
-            lineRenderer.SetPosition(i, new Vector3(x, y, 0));
-        }
+        SetRangeIndicator();
 
         bool ifShowRange = alwaysShowRangeIndicator ? true : false;
         rangeIndicator.SetActive(ifShowRange);
