@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour {
     public bool canFire = true;
     public bool turretPlaced = false;
     public bool alwaysShowRangeIndicator = false;
+    public int level = 1;
     public int unlockedAfterWave = 1;
     public float critChance = 10.0f;
     public float critMultiplier = 2.0f;

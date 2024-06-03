@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameSettings : MonoBehaviour {
     [Header("Turret Settings")]
     public GameObject sellTurretButtonCard;
+    public GameObject upgradeTurretButtonCard;
 
     [Header("Cursor Settings")]
     public Texture2D defaultCursorTexture;
@@ -22,8 +23,14 @@ public class GameSettings : MonoBehaviour {
                 if (sellTurretCard != null) sellTurretCard.SetCardForSale();
                 sellTurretButtonCard.SetActive(true);
             }
+            if (upgradeTurretButtonCard != null) {
+                UpgradeTurret[] upgradeTurretOptions = upgradeTurretButtonCard.GetComponentsInChildren<UpgradeTurret>();
+                if (upgradeTurretOptions != null) upgradeTurretOptions[0].SetUpgradeOptions();
+                upgradeTurretButtonCard.SetActive(true);
+            }
         } else {
             if (sellTurretButtonCard != null) sellTurretButtonCard.SetActive(false);
+            if (upgradeTurretButtonCard != null) upgradeTurretButtonCard.SetActive(false);
         }
     }
 
