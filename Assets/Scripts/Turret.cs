@@ -78,33 +78,6 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    public void Sell() {
-        if (shopTerrain != null && cellPos != null) shopTerrain.VacantGridCell(cellPos);
-        float upgradeCostOfTrt = baseCost * level;
-        GlobalData.startCoins = GlobalData.startCoins + upgradeCostOfTrt;
-        GlobalData.activeTurret = null;
-        Destroy(gameObject);
-        string turretPlacedMessage = displayName + $" Sold! +{upgradeCostOfTrt}";
-        GlobalData.Message = turretPlacedMessage;
-    }
-
-    public void Upgrade(Dictionary<string, object> upgradedTurretStats) {
-        level = level + 1;
-        displayName = (string)upgradedTurretStats["Name"];
-        GlobalData.startCoins = GlobalData.startCoins - (float)upgradedTurretStats["Cost"];
-        damageMin = (float)upgradedTurretStats["DamageMin"];
-        damageMax = (float)upgradedTurretStats["DamageMax"];
-        attackSpeed = (float)upgradedTurretStats["AttackSpeed"];
-        critChance = (float)upgradedTurretStats["CriticalStrike"];
-        CircleCollider2D maxRangeIndicator = gameObject.GetComponent<CircleCollider2D>();
-        maxRangeIndicator.radius = (float)upgradedTurretStats["MaxRange"];
-        UpdateTurretNameAndCost();
-        UpdateTurretLevelIcon();
-        SetRangeIndicator();
-        string turretPlacedMessage = displayName + $" Upgraded! -{upgradedTurretStats["Cost"]}";
-        GlobalData.Message = turretPlacedMessage;
-    }
-
     public void EnableFiring(bool enable) {
         canFire = enable;
     }
@@ -400,5 +373,48 @@ public class Turret : MonoBehaviour {
         // float colliderRange = (float)collider.radius * 2f;
         // rangeIndicator.transform.localScale = new Vector3(colliderRange, colliderRange, 1);
         // rangeIndicator.SetActive(false);
+    }
+
+    public void Sell() {
+        if (shopTerrain != null && cellPos != null) shopTerrain.VacantGridCell(cellPos);
+        float upgradeCostOfTrt = baseCost * level;
+        GlobalData.startCoins = GlobalData.startCoins + upgradeCostOfTrt;
+        GlobalData.activeTurret = null;
+        Destroy(gameObject);
+        string turretPlacedMessage = displayName + $" Sold! +{upgradeCostOfTrt}";
+        GlobalData.Message = turretPlacedMessage;
+    }
+
+    public void Upgrade(Dictionary<string, object> upgradedTurretStats) {
+        level = level + 1;
+        displayName = (string)upgradedTurretStats["Name"];
+        GlobalData.startCoins = GlobalData.startCoins - (float)upgradedTurretStats["Cost"];
+        damageMin = (float)upgradedTurretStats["DamageMin"];
+        damageMax = (float)upgradedTurretStats["DamageMax"];
+        attackSpeed = (float)upgradedTurretStats["AttackSpeed"];
+        critChance = (float)upgradedTurretStats["CriticalStrike"];
+        float newOuterRange = (float)upgradedTurretStats["MaxRange"];
+        CircleCollider2D maxRangeIndicator = gameObject.GetComponent<CircleCollider2D>();
+        if (aimAndFireObject != null) {
+            CircleCollider2D aimAndFireCollider = aimAndFireObject.GetComponent<CircleCollider2D>();
+                float newRadius = CalculateProportionalValue(maxRangeIndicator.radius, aimAndFireCollider.radius, newOuterRange);
+                if (aimAndFireCollider != null) {
+                    aimAndFireCollider.radius = (float)newRadius;
+                }
+        }
+        if (maxRangeIndicator != null) maxRangeIndicator.radius = newOuterRange;
+        UpdateTurretNameAndCost();
+        UpdateTurretLevelIcon();
+        SetRangeIndicator();
+        string turretPlacedMessage = displayName + $" Upgraded! -{upgradedTurretStats["Cost"]}";
+        GlobalData.Message = turretPlacedMessage;
+    }
+
+    public float CalculateProportionalValue(float originalFirstValue, float originalSecondValue, float newFirstValue) {
+        // Calculate the ratio
+        float ratio = originalSecondValue / originalFirstValue;
+        // Calculate the new second value based on the ratio
+        float newSecondValue = newFirstValue * ratio;
+        return newSecondValue;
     }
 }

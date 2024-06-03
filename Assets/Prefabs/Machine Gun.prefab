@@ -5734,7 +5734,7 @@ MonoBehaviour:
   turretPlaced: 0
   alwaysShowRangeIndicator: 0
   level: 1
-  unlockedAfterWave: 4
+  unlockedAfterWave: 1
   critChance: 5
   critMultiplier: 2
   attackSpeed: 15
@@ -10850,8 +10850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 12}
+  m_AnchoredPosition: {x: 2.7, y: 0}
+  m_SizeDelta: {x: 30.717, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2844796085558160670
 CanvasRenderer:
@@ -10915,7 +10915,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 3
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -10924,7 +10924,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

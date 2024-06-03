@@ -13,7 +13,7 @@ public static class GlobalData {
     public static float defaultReward = 10f;
     public static float defaultDamage = 1f;
     public static float defaultSpeed = 2f;
-    public static float startCoins = 500f;
+    public static float startCoins = 1000f;
     public static float startLives = 20f;
     public static string Message = "Click Start Waves To Start Game";
 

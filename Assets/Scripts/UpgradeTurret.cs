@@ -61,7 +61,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Name", "Bullets Gunner" }, 
             { "DamageMin", 30f }, 
             { "DamageMax", 35f }, 
-            { "AttackSpeed", 3.33f },
+            { "AttackSpeed", 3.5f },
             { "MaxRange", 19f },
             { "CriticalStrike", 18f },
         }},
