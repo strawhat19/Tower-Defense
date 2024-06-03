@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1.5
+  spawnDelay: 0.5
   maxObjects: 20
   enemy: {fileID: 6130411100527635600, guid: a60deb4a4eaffeb4496a090f902c1859, type: 3}
   health: 150
@@ -23677,7 +23677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1.33
+  spawnDelay: 0.75
   maxObjects: 19
   enemy: {fileID: 7723692932343303451, guid: cf07c80746848c145a9c7596282bd6f9, type: 3}
   health: 200
@@ -26048,6 +26048,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510692266}
   m_CullTransparentMesh: 1
+--- !u!1 &1516746672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516746673}
+  - component: {fileID: 1516746675}
+  - component: {fileID: 1516746674}
+  m_Layer: 6
+  m_Name: Chameleons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516746673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516746672}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7273726612837959879}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1516746674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516746672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDelay: 0.75
+  maxObjects: 20
+  enemy: {fileID: 2081689204272873879, guid: ce3e8be5e7988504c9f5307ce180814b, type: 3}
+  health: 75
+  reward: 3
+  damage: 1
+  speed: 1.5
+--- !u!114 &1516746675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516746672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1411e36a612b1134db377ee7586f0a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1572201798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58770,8 +58834,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 945059706283258914}
-  - component: {fileID: 7733694700468886438}
-  - component: {fileID: 4624484233926152347}
   - component: {fileID: 7971199176343894974}
   m_Layer: 5
   m_Name: Missile Launcher Sprite
@@ -64108,46 +64170,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276962826536695866}
   m_CullTransparentMesh: 1
---- !u!114 &1728251374988976856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9216702514538758112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5532c58ee3d29d24da9d349bbbe54e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAim: 0
-  canFire: 0
-  turretPlaced: 0
-  alwaysShowRangeIndicator: 0
-  level: 1
-  unlockedAfterWave: 1
-  critChance: 12
-  critMultiplier: 2
-  attackSpeed: 2
-  damageMin: 15
-  damageMax: 25
-  radiusModifier: 3.33
-  cost: 100
-  baseCost: 100
-  displayName: Bullet Gun
-  projectile: {fileID: 6221885859125074634, guid: fb37b060572a8f642b2b3894a0d8ddf2, type: 3}
-  preview: {fileID: 5334210120218626528}
-  aimAndFireObject: {fileID: 0}
-  shootSound: {fileID: 8941521719054685882}
-  hitSound: {fileID: 8514293794567528545}
-  barrelOfTheGun: {fileID: 647093383777995059}
-  levelIcon: {fileID: 0}
-  nameText: {fileID: 0}
-  costText: {fileID: 0}
-  cellPos: {x: 0, y: 0, z: 0}
-  costTexts:
-  - {fileID: 1731939585557187313}
-  levelIcons: []
 --- !u!224 &1731374350050641025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64443,46 +64465,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1957874935234012131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7117267930995753154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5532c58ee3d29d24da9d349bbbe54e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAim: 0
-  canFire: 0
-  turretPlaced: 0
-  alwaysShowRangeIndicator: 0
-  level: 1
-  unlockedAfterWave: 3
-  critChance: 8
-  critMultiplier: 2
-  attackSpeed: 10
-  damageMin: 5
-  damageMax: 10
-  radiusModifier: 3.33
-  cost: 300
-  baseCost: 300
-  displayName: Bullet Gun
-  projectile: {fileID: 2002946470007308753, guid: 0a81a0249325c5440a0ff92e3c331a48, type: 3}
-  preview: {fileID: 3375898111598853277}
-  aimAndFireObject: {fileID: 0}
-  shootSound: {fileID: 2797408217770468491}
-  hitSound: {fileID: 4788317279907858121}
-  barrelOfTheGun: {fileID: 8880319361368965222}
-  levelIcon: {fileID: 0}
-  nameText: {fileID: 0}
-  costText: {fileID: 0}
-  cellPos: {x: 0, y: 0, z: 0}
-  costTexts:
-  - {fileID: 5784171859585018578}
-  levelIcons: []
 --- !u!222 &1979930895978426346
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -70336,41 +70318,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!58 &2594251823969256218
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7117267930995753154}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 12
 --- !u!114 &2617232706034148831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71914,46 +71861,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 25, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2938646934734581355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4364129392869760282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5532c58ee3d29d24da9d349bbbe54e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAim: 0
-  canFire: 0
-  turretPlaced: 0
-  alwaysShowRangeIndicator: 0
-  level: 1
-  unlockedAfterWave: 4
-  critChance: 5
-  critMultiplier: 2
-  attackSpeed: 15
-  damageMin: 10
-  damageMax: 15
-  radiusModifier: 3.33
-  cost: 400
-  baseCost: 400
-  displayName: Bullet Gun
-  projectile: {fileID: 3012545461551713863, guid: b7b27a1c52d7b7d4591f4d77b1f816a6, type: 3}
-  preview: {fileID: 3119723497200604200}
-  aimAndFireObject: {fileID: 3600826174243745159}
-  shootSound: {fileID: 0}
-  hitSound: {fileID: 6661672027383842077}
-  barrelOfTheGun: {fileID: 5527670848111376950}
-  levelIcon: {fileID: 0}
-  nameText: {fileID: 0}
-  costText: {fileID: 0}
-  cellPos: {x: 0, y: 0, z: 0}
-  costTexts:
-  - {fileID: 6354728565680603250}
-  levelIcons: []
 --- !u!1 &2941142334922132576
 GameObject:
   m_ObjectHideFlags: 0
@@ -72078,8 +71985,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4803319138466529069}
-  - component: {fileID: 8678011103139288336}
-  - component: {fileID: 7792599512219831750}
   - component: {fileID: 4924397107579864562}
   m_Layer: 5
   m_Name: Laser Cannon Sprite
@@ -72088,41 +71993,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!58 &3025074590219697108
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9216702514538758112}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 15
 --- !u!224 &3045026174663215346
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84021,8 +83891,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4592486759020184197}
-  - component: {fileID: 2938646934734581355}
-  - component: {fileID: 7396678199117251687}
   - component: {fileID: 7395724802446651224}
   m_Layer: 5
   m_Name: Machine Gun Sprite
@@ -89188,41 +89056,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!58 &4624484233926152347
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462556330292432042}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 20
 --- !u!1 &4631029366995677246
 GameObject:
   m_ObjectHideFlags: 0
@@ -93947,8 +93780,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7165033917612598156}
-  - component: {fileID: 1957874935234012131}
-  - component: {fileID: 2594251823969256218}
   - component: {fileID: 2464765505858765433}
   m_Layer: 5
   m_Name: Photon Blaster Sprite
@@ -94142,6 +93973,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1516746673}
   - {fileID: 8830354600032440079}
   - {fileID: 52358593}
   - {fileID: 940617218}
@@ -94514,41 +94346,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7396678199117251687
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4364129392869760282}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 10
 --- !u!212 &7401427683118238256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -95167,46 +94964,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923251721063592722}
   m_CullTransparentMesh: 1
---- !u!114 &7733694700468886438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462556330292432042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5532c58ee3d29d24da9d349bbbe54e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAim: 0
-  canFire: 0
-  turretPlaced: 0
-  alwaysShowRangeIndicator: 0
-  level: 1
-  unlockedAfterWave: 2
-  critChance: 15
-  critMultiplier: 2
-  attackSpeed: 1
-  damageMin: 55
-  damageMax: 85
-  radiusModifier: 3.33
-  cost: 200
-  baseCost: 200
-  displayName: Bullet Gun
-  projectile: {fileID: 6295518927219759172, guid: 3211b164a5abfda4c8223119e93dbb26, type: 3}
-  preview: {fileID: 7477238510018945677}
-  aimAndFireObject: {fileID: 0}
-  shootSound: {fileID: 6143733164038762539}
-  hitSound: {fileID: 5421062861519555296}
-  barrelOfTheGun: {fileID: 498274869080462387}
-  levelIcon: {fileID: 0}
-  nameText: {fileID: 0}
-  costText: {fileID: 0}
-  cellPos: {x: 0, y: 0, z: 0}
-  costTexts:
-  - {fileID: 4942397651686202709}
-  levelIcons: []
 --- !u!1 &7745636322600367072
 GameObject:
   m_ObjectHideFlags: 0
@@ -95376,41 +95133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins: 0
   coinsCount: {fileID: 8299278406271663160}
---- !u!58 &7792599512219831750
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3024401314702515152}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 18
 --- !u!1 &7804061509536910775
 GameObject:
   m_ObjectHideFlags: 0
@@ -97601,46 +97323,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &8678011103139288336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3024401314702515152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5532c58ee3d29d24da9d349bbbe54e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAim: 0
-  canFire: 0
-  turretPlaced: 0
-  alwaysShowRangeIndicator: 0
-  level: 1
-  unlockedAfterWave: 5
-  critChance: 10
-  critMultiplier: 2
-  attackSpeed: 3.5
-  damageMin: 35
-  damageMax: 50
-  radiusModifier: 4.15
-  cost: 500
-  baseCost: 500
-  displayName: Bullet Gun
-  projectile: {fileID: 7743371820764122704, guid: c49e12571f3e76f4195b3ac6c6444b62, type: 3}
-  preview: {fileID: 4068258982987058503}
-  aimAndFireObject: {fileID: 0}
-  shootSound: {fileID: 1059503292590873259}
-  hitSound: {fileID: 7427157365721783903}
-  barrelOfTheGun: {fileID: 4046803813491549558}
-  levelIcon: {fileID: 0}
-  nameText: {fileID: 0}
-  costText: {fileID: 0}
-  cellPos: {x: 0, y: 0, z: 0}
-  costTexts:
-  - {fileID: 5587567078061323569}
-  levelIcons: []
 --- !u!1 &8694838172580504914
 GameObject:
   m_ObjectHideFlags: 0
@@ -98148,7 +97830,7 @@ Animator:
   m_GameObject: {fileID: 8955928799864572237}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 307386793ed534347872c98d70d60791, type: 2}
+  m_Controller: {fileID: 9100000, guid: 12fb46409ac8b6049864899a06cc2115, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -103361,8 +103043,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7279312891575408612}
-  - component: {fileID: 1728251374988976856}
-  - component: {fileID: 3025074590219697108}
   - component: {fileID: 7588315388225613062}
   m_Layer: 5
   m_Name: Bullet Gun Sprite

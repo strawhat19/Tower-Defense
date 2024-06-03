@@ -5734,7 +5734,7 @@ MonoBehaviour:
   turretPlaced: 0
   alwaysShowRangeIndicator: 0
   level: 1
-  unlockedAfterWave: 1
+  unlockedAfterWave: 4
   critChance: 5
   critMultiplier: 2
   attackSpeed: 15

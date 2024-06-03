@@ -381,14 +381,15 @@ public class Turret : MonoBehaviour {
         GlobalData.startCoins = GlobalData.startCoins + upgradeCostOfTrt;
         GlobalData.activeTurret = null;
         Destroy(gameObject);
-        string turretPlacedMessage = displayName + $" Sold! +{upgradeCostOfTrt}";
-        GlobalData.Message = turretPlacedMessage;
+        string turretSoldMessage = displayName + $" Sold! +{upgradeCostOfTrt}";
+        GlobalData.Message = turretSoldMessage;
     }
 
     public void Upgrade(Dictionary<string, object> upgradedTurretStats) {
         level = level + 1;
+        float upgradeCost = (float)((level * baseCost) / 2);
         displayName = (string)upgradedTurretStats["Name"];
-        GlobalData.startCoins = GlobalData.startCoins - (float)upgradedTurretStats["Cost"];
+        GlobalData.startCoins = GlobalData.startCoins - upgradeCost;
         damageMin = (float)upgradedTurretStats["DamageMin"];
         damageMax = (float)upgradedTurretStats["DamageMax"];
         attackSpeed = (float)upgradedTurretStats["AttackSpeed"];
@@ -406,8 +407,8 @@ public class Turret : MonoBehaviour {
         UpdateTurretNameAndCost();
         UpdateTurretLevelIcon();
         SetRangeIndicator();
-        string turretPlacedMessage = displayName + $" Upgraded! -{upgradedTurretStats["Cost"]}";
-        GlobalData.Message = turretPlacedMessage;
+        string turretUpgradedMessage = displayName + $" Upgraded! -{upgradeCost}";
+        GlobalData.Message = turretUpgradedMessage;
     }
 
     public float CalculateProportionalValue(float originalFirstValue, float originalSecondValue, float newFirstValue) {

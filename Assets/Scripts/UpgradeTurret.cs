@@ -327,10 +327,11 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     if (costGraphic.transform.parent != null) {
                         string parentName = costGraphic.transform.parent.name.ToLower();
                         if (parentName.Contains("upgrade")) {
-                            costToUpgrade = activeTrt.baseCost * (activeTrt.level + 1);
+                            costToUpgrade = activeTrt.baseCost * (activeTrt.level * 1f);
                             string upgradeCostText = $"{costToUpgrade}";
+                            string upgradeCostTextDoubled = $"{costToUpgrade * 2f}";
                             if (upgradeCost != null) upgradeCost.text = upgradeCostText;
-                            SetTexts(upgradeCostText, costGraphic);
+                            SetTexts(upgradeCostTextDoubled, costGraphic);
                         } else {
                             SetTexts($"{activeTrt.baseCost * activeTrt.level}", costGraphic);
                         }
