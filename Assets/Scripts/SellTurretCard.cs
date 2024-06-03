@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 // [ExecuteAlways]
 public class SellTurretCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    private Turret activeTrt;
     private Button cardButton;
     private GameSettings gameSettings;
 
@@ -22,8 +23,9 @@ public class SellTurretCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     public void SetCardForSale() {
-        string activeTurretName = GlobalData.activeTurret.name.Replace("(Clone)", "");
-        SetTexts($"Sell {activeTurretName} for {GlobalData.activeTurret.cost}");
+        activeTrt = GlobalData.activeTurret;
+        string activeTurretName = activeTrt.name.Replace("(Clone)", "");
+        SetTexts($"Sell {activeTrt.displayName} for {activeTrt.baseCost * activeTrt.level}");
         if (turretSprites != null && turretSprites.Length > 0) {
             foreach (var turretSprite in turretSprites) {
                 if (turretSprite.name == $"{activeTurretName} Sprite") {

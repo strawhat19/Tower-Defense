@@ -23,20 +23,26 @@ public class Turret : MonoBehaviour {
     public float cost = 100.0f;
     public float baseCost = 100.0f;
 
+    public string displayName = "Bullet Gun";
     public GameObject projectile;
+    public GameObject preview;
+    public GameObject aimAndFireObject;
     public AudioSource shootSound;
     public AudioSource hitSound;
     public Transform barrelOfTheGun;
+    public SpriteRenderer levelIcon;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI costText;
 
-    public GameObject preview;
-    private AimAndFire aimAndFire;
-    public GameObject aimAndFireObject;
     public Vector3Int cellPos;
+
     public GameObject[] costTexts;
+    public Sprite[] levelIcons;
 
     private Transform target;
     private float range = 1.0f;
     private Transform finishLine;
+    private AimAndFire aimAndFire;
     private float cooldown = 0.0f;
     private bool canAfford = false;
     private GameObject rangeIndicator;
@@ -60,18 +66,31 @@ public class Turret : MonoBehaviour {
     }
 
     void Update() {
-        UpdateTurret();
+        if (canAim) {
+            enemiesInRange.RemoveAll(enemy => enemy == null || enemy.GetComponent<Enemy>().currentHealth <= 0);
+            FindTarget();
+            if (target != null) {
+                RotateTowardsTarget();
+                if (canFire) {
+                    ShootAtTarget();
+                }
+            }
+        }
     }
 
     public void Sell() {
         if (shopTerrain != null && cellPos != null) shopTerrain.VacantGridCell(cellPos);
-        GlobalData.startCoins = GlobalData.startCoins + cost;
+        float upgradeCostOfTrt = baseCost * level;
+        GlobalData.startCoins = GlobalData.startCoins + upgradeCostOfTrt;
         GlobalData.activeTurret = null;
         Destroy(gameObject);
+        string turretPlacedMessage = displayName + $" Sold! +{upgradeCostOfTrt}";
+        GlobalData.Message = turretPlacedMessage;
     }
 
     public void Upgrade(Dictionary<string, object> upgradedTurretStats) {
         level = level + 1;
+        displayName = (string)upgradedTurretStats["Name"];
         GlobalData.startCoins = GlobalData.startCoins - (float)upgradedTurretStats["Cost"];
         damageMin = (float)upgradedTurretStats["DamageMin"];
         damageMax = (float)upgradedTurretStats["DamageMax"];
@@ -79,6 +98,11 @@ public class Turret : MonoBehaviour {
         critChance = (float)upgradedTurretStats["CriticalStrike"];
         CircleCollider2D maxRangeIndicator = gameObject.GetComponent<CircleCollider2D>();
         maxRangeIndicator.radius = (float)upgradedTurretStats["MaxRange"];
+        UpdateTurretNameAndCost();
+        UpdateTurretLevelIcon();
+        SetRangeIndicator();
+        string turretPlacedMessage = displayName + $" Upgraded! -{upgradedTurretStats["Cost"]}";
+        GlobalData.Message = turretPlacedMessage;
     }
 
     public void EnableFiring(bool enable) {
@@ -138,23 +162,15 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    // void ScaleCost() {
-    //     float newCostScaledByWaveAndLevel = GlobalData.CalculateLevelScaled(baseCost);
-    //     cost = baseCost * GlobalData.currentWave;
-    //     SetCosts();
-    // }
+    void UpdateTurretNameAndCost() {
+        if (nameText != null) nameText.text = $"{displayName}";
+        if (costText != null) costText.text = $"{baseCost * level}";
+    }
 
-    void UpdateTurret() {
-        // ScaleCost();
-        SetRangeIndicator();
-        if (canAim) {
-            enemiesInRange.RemoveAll(enemy => enemy == null || enemy.GetComponent<Enemy>().currentHealth <= 0);
-            FindTarget();
-            if (target != null) {
-                RotateTowardsTarget();
-                if (canFire) {
-                    ShootAtTarget();
-                }
+    void UpdateTurretLevelIcon() {
+        if (levelIcon != null) {
+            if (levelIcons != null && levelIcons.Length > 0) {
+                levelIcon.sprite = levelIcons[level - 1];
             }
         }
     }
@@ -337,6 +353,8 @@ public class Turret : MonoBehaviour {
 
     void SetTurret() {
         // ScaleCost();
+
+        displayName = gameObject.name.Replace("(Clone)", "");
         SetCosts();
         GameObject finishLineObject = GameObject.FindGameObjectWithTag("Finish");
         if (finishLineObject != null) finishLine = finishLineObject.GetComponent<Transform>();

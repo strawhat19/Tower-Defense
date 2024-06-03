@@ -370,13 +370,14 @@ RectTransform:
   m_LocalScale: {x: 0.28719997, y: 0.28719997, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6719362634931261796}
   - {fileID: 3918259727880262677}
   m_Father: {fileID: 3072391954970121842}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4.42}
+  m_AnchoredPosition: {x: 0.49, y: 4.42}
   m_SizeDelta: {x: 7.5, y: 3.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &887822729720577353
@@ -577,6 +578,90 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6010181187514997716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6719362634931261796}
+  - component: {fileID: 3241257985336521478}
+  m_Layer: 15
+  m_Name: LevelIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6719362634931261796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010181187514997716}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.36, y: 0.4, z: 0}
+  m_LocalScale: {x: 2.305594, y: 2.305594, z: 0}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2487570781780532848}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3241257985336521478
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010181187514997716}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1291250945
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 890805b98acac6a49b16bb58585d944b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.21, y: 1.35}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6274389151135078058
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9, y: 0.4}
+  m_AnchoredPosition: {x: -1.54, y: 0.4}
   m_SizeDelta: {x: 51.378, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4396867280287978418
@@ -677,7 +762,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 3
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -798,6 +883,7 @@ MonoBehaviour:
   canFire: 1
   turretPlaced: 0
   alwaysShowRangeIndicator: 0
+  level: 1
   unlockedAfterWave: 3
   critChance: 8
   critMultiplier: 2
@@ -807,15 +893,23 @@ MonoBehaviour:
   radiusModifier: 3.33
   cost: 300
   baseCost: 300
+  displayName: Bullet Gun
   projectile: {fileID: 2002946470007308753, guid: 0a81a0249325c5440a0ff92e3c331a48, type: 3}
+  preview: {fileID: 3375898112495267148}
+  aimAndFireObject: {fileID: 0}
   shootSound: {fileID: 2797408216781452634}
   hitSound: {fileID: 4788317278724036376}
   barrelOfTheGun: {fileID: 8880319360398791095}
-  preview: {fileID: 3375898112495267148}
-  aimAndFireObject: {fileID: 0}
+  levelIcon: {fileID: 3241257985336521478}
+  nameText: {fileID: 6623750256055536535}
+  costText: {fileID: 184592331767479339}
   cellPos: {x: 0, y: 0, z: 0}
   costTexts:
   - {fileID: 5784171860762819331}
+  levelIcons:
+  - {fileID: 21300000, guid: 890805b98acac6a49b16bb58585d944b, type: 3}
+  - {fileID: 21300000, guid: eba2374e4071c004ca61cd0c1883723a, type: 3}
+  - {fileID: 21300000, guid: c8dd722087acf4640b4a91cee9885695, type: 3}
 --- !u!58 &2594251822791856843
 CircleCollider2D:
   m_ObjectHideFlags: 0

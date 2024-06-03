@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 // [ExecuteAlways]
 public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public Image shortIcon;
+    public Image longIcon;
     public TextMeshProUGUI upgradeCost;
     public TextMeshProUGUI currentNameText;
     public GameObject currentCostGraphicsContainer;
@@ -20,6 +22,9 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public TextMeshProUGUI upgradedAttackSpeedText;
     public TextMeshProUGUI upgradedMaxRangeText;
     public TextMeshProUGUI upgradedCritChanceText;
+    public GameObject upgradeStatTextContainer;
+    public Sprite[] shortIcons;
+    public Sprite[] longIcons;
     public GameObject[] costGraphics;
 
     private Button cardButton;
@@ -205,7 +210,8 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         string activeTurretName = activeTrt.name.Replace("(Clone)", "");
 
         if (activeTrt.level < 3) {
-            var upgradedTurretStats = GetTurretLevel(activeTurretName, activeTrt.level + 1);
+            int levelToGoTo = activeTrt.level + 1;
+            var upgradedTurretStats = GetTurretLevel(activeTurretName, levelToGoTo);
             if (upgradedTurretStats != null) activeTrt.Upgrade(upgradedTurretStats);
         }
     }
@@ -224,6 +230,41 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         SetCurrentCard();
         SetUpgradeCard();
         SetUpgradeCosts();
+        SetUpgradeLook();
+    }
+
+    public Color HexToColor(string hex) {
+        Color color;
+        if (ColorUtility.TryParseHtmlString(hex, out color)) {
+            return color;
+        } else {
+            Debug.LogWarning("Invalid hex color code");
+            return Color.white; // Return white if hex code is invalid
+        }
+    }
+
+    public void SetUpgradeLook() {
+        Turret activeTrt = GlobalData.activeTurret;
+        if (activeTrt != null) {
+            if (shortIcon != null) {
+                if (shortIcons != null && shortIcons.Length > 0) {
+                    shortIcon.sprite = shortIcons[activeTrt.level - 1];
+                }
+            }
+            if (longIcon != null) {
+                if (longIcons != null && longIcons.Length > 0) {
+                    longIcon.sprite = longIcons[activeTrt.level - 1];
+                }
+            }
+        }
+        if (upgradeStatTextContainer != null) {
+            if (activeTrt.level > 1) {
+                SetTextColors(Color.red, upgradeStatTextContainer);
+            } else {
+                Color customGreenColor = HexToColor("#C3FF00");
+                SetTextColors(customGreenColor, upgradeStatTextContainer);
+            }
+        }
     }
 
     public void SetCurrentCard() {
@@ -235,7 +276,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         CircleCollider2D maxRangeIndicator = activeTrtObj.GetComponent<CircleCollider2D>();
         if (maxRangeIndicator != null) maxRangeString = $"{maxRangeIndicator.radius}";
 
-        if (currentNameText != null) currentNameText.text = $"{activeTurretName}";
+        if (currentNameText != null) currentNameText.text = $"{activeTrt.displayName}";
         if (currentDamageText != null) {
             currentDamageText.text = $"{activeTrt.damageMin} - {activeTrt.damageMax} Damage";
         }
@@ -291,7 +332,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                             if (upgradeCost != null) upgradeCost.text = upgradeCostText;
                             SetTexts(upgradeCostText, costGraphic);
                         } else {
-                            SetTexts($"{activeTrt.cost}", costGraphic);
+                            SetTexts($"{activeTrt.baseCost * activeTrt.level}", costGraphic);
                         }
                     }
                     costGraphic.SetActive(true);
@@ -300,12 +341,22 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 }
             }
         }
+        bool upgradeAffordable = costToUpgrade <= GlobalData.startCoins;
+        GlobalData.SetGameObjectTransparency(gameObject, upgradeAffordable ? 1f : 0.5f);
+        cardButton.interactable = upgradeAffordable;
     }
 
     public void SetTexts(string textToSet, GameObject gameObj) {
         TextMeshProUGUI[] texts = gameObj.GetComponentsInChildren<TextMeshProUGUI>();
         foreach (TextMeshProUGUI text in texts) {
             text.text = textToSet;
+        }
+    }
+    
+    public void SetTextColors(Color colorToSet, GameObject gameObj) {
+        TextMeshProUGUI[] texts = gameObj.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (TextMeshProUGUI text in texts) {
+            text.color = colorToSet;
         }
     }
 

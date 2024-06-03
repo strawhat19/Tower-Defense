@@ -21472,6 +21472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9913356188b4d0a4d986c1e6c41e9f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shortIcon: {fileID: 1316079295}
+  longIcon: {fileID: 527343726}
   upgradeCost: {fileID: 504355592}
   currentNameText: {fileID: 1622694258}
   currentCostGraphicsContainer: {fileID: 1023184011}
@@ -21485,6 +21487,13 @@ MonoBehaviour:
   upgradedAttackSpeedText: {fileID: 1118664627}
   upgradedMaxRangeText: {fileID: 1898957152}
   upgradedCritChanceText: {fileID: 231175714}
+  upgradeStatTextContainer: {fileID: 921549989}
+  shortIcons:
+  - {fileID: 21300000, guid: 3ddb7a063d9090b4c9a0597d0b041a80, type: 3}
+  - {fileID: 21300000, guid: 1333268335121934b930dda9055f876c, type: 3}
+  longIcons:
+  - {fileID: 21300000, guid: a9217524a62ecc6488ba0d630c1b6f7b, type: 3}
+  - {fileID: 21300000, guid: 283bfcbe25baa5643a31357393a45a1b, type: 3}
   costGraphics:
   - {fileID: 1203094859}
   - {fileID: 329784529}
@@ -21910,7 +21919,7 @@ GameObject:
   - component: {fileID: 527343727}
   - component: {fileID: 527343726}
   m_Layer: 5
-  m_Name: UpgradeArrow
+  m_Name: UpgradeLongIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23530,7 +23539,7 @@ GameObject:
   - component: {fileID: 921549990}
   - component: {fileID: 921549991}
   m_Layer: 5
-  m_Name: Stats_Grid
+  m_Name: Upgrade_Stats_Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24998,7 +25007,7 @@ GameObject:
   - component: {fileID: 1316079296}
   - component: {fileID: 1316079295}
   m_Layer: 5
-  m_Name: UpgradeArrow (1)
+  m_Name: UpgradeShortIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64125,15 +64134,20 @@ MonoBehaviour:
   radiusModifier: 3.33
   cost: 100
   baseCost: 100
+  displayName: Bullet Gun
   projectile: {fileID: 6221885859125074634, guid: fb37b060572a8f642b2b3894a0d8ddf2, type: 3}
+  preview: {fileID: 5334210120218626528}
+  aimAndFireObject: {fileID: 0}
   shootSound: {fileID: 8941521719054685882}
   hitSound: {fileID: 8514293794567528545}
   barrelOfTheGun: {fileID: 647093383777995059}
-  preview: {fileID: 5334210120218626528}
-  aimAndFireObject: {fileID: 0}
+  levelIcon: {fileID: 0}
+  nameText: {fileID: 0}
+  costText: {fileID: 0}
   cellPos: {x: 0, y: 0, z: 0}
   costTexts:
   - {fileID: 1731939585557187313}
+  levelIcons: []
 --- !u!224 &1731374350050641025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64455,15 +64469,20 @@ MonoBehaviour:
   radiusModifier: 3.33
   cost: 300
   baseCost: 300
+  displayName: Bullet Gun
   projectile: {fileID: 2002946470007308753, guid: 0a81a0249325c5440a0ff92e3c331a48, type: 3}
+  preview: {fileID: 3375898111598853277}
+  aimAndFireObject: {fileID: 0}
   shootSound: {fileID: 2797408217770468491}
   hitSound: {fileID: 4788317279907858121}
   barrelOfTheGun: {fileID: 8880319361368965222}
-  preview: {fileID: 3375898111598853277}
-  aimAndFireObject: {fileID: 0}
+  levelIcon: {fileID: 0}
+  nameText: {fileID: 0}
+  costText: {fileID: 0}
   cellPos: {x: 0, y: 0, z: 0}
   costTexts:
   - {fileID: 5784171859585018578}
+  levelIcons: []
 --- !u!222 &1979930895978426346
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71921,15 +71940,20 @@ MonoBehaviour:
   radiusModifier: 3.33
   cost: 400
   baseCost: 400
+  displayName: Bullet Gun
   projectile: {fileID: 3012545461551713863, guid: b7b27a1c52d7b7d4591f4d77b1f816a6, type: 3}
+  preview: {fileID: 3119723497200604200}
+  aimAndFireObject: {fileID: 3600826174243745159}
   shootSound: {fileID: 0}
   hitSound: {fileID: 6661672027383842077}
   barrelOfTheGun: {fileID: 5527670848111376950}
-  preview: {fileID: 3119723497200604200}
-  aimAndFireObject: {fileID: 3600826174243745159}
+  levelIcon: {fileID: 0}
+  nameText: {fileID: 0}
+  costText: {fileID: 0}
   cellPos: {x: 0, y: 0, z: 0}
   costTexts:
   - {fileID: 6354728565680603250}
+  levelIcons: []
 --- !u!1 &2941142334922132576
 GameObject:
   m_ObjectHideFlags: 0
@@ -95169,15 +95193,20 @@ MonoBehaviour:
   radiusModifier: 3.33
   cost: 200
   baseCost: 200
+  displayName: Bullet Gun
   projectile: {fileID: 6295518927219759172, guid: 3211b164a5abfda4c8223119e93dbb26, type: 3}
+  preview: {fileID: 7477238510018945677}
+  aimAndFireObject: {fileID: 0}
   shootSound: {fileID: 6143733164038762539}
   hitSound: {fileID: 5421062861519555296}
   barrelOfTheGun: {fileID: 498274869080462387}
-  preview: {fileID: 7477238510018945677}
-  aimAndFireObject: {fileID: 0}
+  levelIcon: {fileID: 0}
+  nameText: {fileID: 0}
+  costText: {fileID: 0}
   cellPos: {x: 0, y: 0, z: 0}
   costTexts:
   - {fileID: 4942397651686202709}
+  levelIcons: []
 --- !u!1 &7745636322600367072
 GameObject:
   m_ObjectHideFlags: 0
@@ -97598,15 +97627,20 @@ MonoBehaviour:
   radiusModifier: 4.15
   cost: 500
   baseCost: 500
+  displayName: Bullet Gun
   projectile: {fileID: 7743371820764122704, guid: c49e12571f3e76f4195b3ac6c6444b62, type: 3}
+  preview: {fileID: 4068258982987058503}
+  aimAndFireObject: {fileID: 0}
   shootSound: {fileID: 1059503292590873259}
   hitSound: {fileID: 7427157365721783903}
   barrelOfTheGun: {fileID: 4046803813491549558}
-  preview: {fileID: 4068258982987058503}
-  aimAndFireObject: {fileID: 0}
+  levelIcon: {fileID: 0}
+  nameText: {fileID: 0}
+  costText: {fileID: 0}
   cellPos: {x: 0, y: 0, z: 0}
   costTexts:
   - {fileID: 5587567078061323569}
+  levelIcons: []
 --- !u!1 &8694838172580504914
 GameObject:
   m_ObjectHideFlags: 0
