@@ -149,7 +149,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Name", "Machine Guns" }, 
             { "DamageMin", 15f }, 
             { "DamageMax", 25f }, 
-            { "AttackSpeed", 17.5f },
+            { "AttackSpeed", 18f },
             { "MaxRange", 12.5f },
             { "CriticalStrike", 10f },
         }},
