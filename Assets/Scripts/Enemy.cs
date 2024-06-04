@@ -182,6 +182,15 @@ public class Enemy : MonoBehaviour {
         if (wavePosition == waveMax) {
             // Debug.Log("Last Enemy #" + wavePosition + " In Wave Died");
             GlobalData.lastEnemyInWaveDied = true;
+            bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
+            if (readyForNextWave) {
+                GlobalData.Message = "Ready for Next Wave";
+                bool wavesFinished = GlobalData.currentWave == GlobalData.maxWaves;
+                if (wavesFinished) {
+                    string wavesFinishedMessage = "Waves Finished";
+                    GlobalData.Message = wavesFinishedMessage;
+                }
+            }
         }
         Destroy(gameObject);
     }

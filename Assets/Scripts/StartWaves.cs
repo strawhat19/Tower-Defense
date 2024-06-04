@@ -60,11 +60,9 @@ public class StartWaves : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     void UpdateButtonState() {
         bool wavesFinished = GlobalData.currentWave == GlobalData.maxWaves;
         readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
-        if (readyForNextWave) GlobalData.Message = "Ready for Next Wave";
         if (wavesFinished && readyForNextWave && startWavesButtonText != null) {
             string wavesFinishedMessage = "Waves Finished";
             startWavesButtonText.text = wavesFinishedMessage;
-            GlobalData.Message = wavesFinishedMessage;
         }
         if (waves != null) {
             startWavesButtonEnabled = wavesFinished == false && (waves.wavesStarted == false || readyForNextWave);

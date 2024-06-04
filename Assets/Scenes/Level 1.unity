@@ -21218,7 +21218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 60
+  spawnDelay: 25
   maxObjects: 5
   enemy: {fileID: 7151867049166236396, guid: 6dba153bdf3894148a2db3c21b045495, type: 3}
   health: 66666
@@ -22438,7 +22438,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -26060,7 +26060,7 @@ GameObject:
   - component: {fileID: 1516746675}
   - component: {fileID: 1516746674}
   m_Layer: 6
-  m_Name: Chameleons
+  m_Name: Bees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26093,10 +26093,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.75
-  maxObjects: 20
-  enemy: {fileID: 2081689204272873879, guid: ce3e8be5e7988504c9f5307ce180814b, type: 3}
-  health: 75
+  spawnDelay: 1
+  maxObjects: 35
+  enemy: {fileID: 8530932818556487183, guid: 651a7dcbd5fed32498abdda4429e4b86, type: 3}
+  health: 50
   reward: 3
   damage: 1
   speed: 1.5
@@ -26423,7 +26423,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -31791,7 +31791,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21fd3fcdd3bf074a94beb211a76c14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradeTurretCostPercentage: 0.5
   sellTurretButtonCard: {fileID: 1311049618}
+  currentStatsCard: {fileID: 1707028357}
+  upgradeButton: {fileID: 467113717}
+  upgradeStatsCard: {fileID: 1102377307}
   upgradeTurretButtonCard: {fileID: 739908012}
   defaultCursorTexture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
   hoverCursorTexture: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
@@ -47818,7 +47822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wave 1 / 11
+  m_text: Wave 1 / 15
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -48350,7 +48354,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -58783,7 +58787,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -70990,7 +70994,7 @@ GameObject:
   - component: {fileID: 5472067990485688291}
   - component: {fileID: 8830354600032440080}
   m_Layer: 6
-  m_Name: Bees
+  m_Name: Chameleons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89202,7 +89206,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -89719,7 +89723,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -93263,7 +93267,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -97546,7 +97550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelay: 0.5
   maxObjects: 20
-  enemy: {fileID: 8530932818556487183, guid: 651a7dcbd5fed32498abdda4429e4b86, type: 3}
+  enemy: {fileID: 2081689204272873879, guid: ce3e8be5e7988504c9f5307ce180814b, type: 3}
   health: 100
   reward: 5
   damage: 1

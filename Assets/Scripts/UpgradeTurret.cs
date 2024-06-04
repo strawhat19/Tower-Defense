@@ -29,7 +29,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private Button cardButton;
     private GameSettings gameSettings;
-    private float costToUpgrade = 200f;
+    private float costToUpgrade = 100f;
 
     public Dictionary<string, Dictionary<string, object>> TurretLevels = new Dictionary<string, Dictionary<string, object>> {
         { "Bullet_Gun", new Dictionary<string, object> {
@@ -186,11 +186,11 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "MaxRange", 20f },
             { "CriticalStrike", 12f },
         }},
-        { "Disintegration_Ray", new Dictionary<string, object> {
+        { "Disintegration", new Dictionary<string, object> {
             { "Level", 3 }, 
             { "Cost", 1500f }, 
             { "Type", "Laser Cannon" }, 
-            { "Name", "Disintegration Ray" }, 
+            { "Name", "Disintegration" }, 
             { "DamageMin", 75f }, 
             { "DamageMax", 100f }, 
             { "AttackSpeed", 7.5f },
@@ -209,14 +209,21 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         GameObject activeTrtObj = activeTrt.gameObject;
         string activeTurretName = activeTrt.name.Replace("(Clone)", "");
 
-        if (activeTrt.level < 3) {
-            int levelToGoTo = activeTrt.level + 1;
-            var upgradedTurretStats = GetTurretLevel(activeTurretName, levelToGoTo);
-            if (upgradedTurretStats != null) activeTrt.Upgrade(upgradedTurretStats);
+        int levelToGoTo = activeTrt.level;
+        if (activeTrt.level < 3) levelToGoTo = activeTrt.level + 1; 
+        var upgradedTurretStats = GetTurretLevel(activeTurretName, levelToGoTo);
+        if (upgradedTurretStats != null) {
+            if (GlobalData.startCoins >= costToUpgrade) {
+                activeTrt.Upgrade(upgradedTurretStats, costToUpgrade);
+            } else {
+                string cantAffordUpgradeMessage = "Cannot Afford This Upgrade";
+                GlobalData.Message = cantAffordUpgradeMessage;
+            }
         }
     }
 
     public Dictionary<string, object> GetTurretLevel(string type, int level) {
+        if (level > 3) return null;
         foreach (var turret in TurretLevels) {
             var turretData = turret.Value;
             if ((string)turretData["Type"] == type && (int)turretData["Level"] == level) {
@@ -246,14 +253,17 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void SetUpgradeLook() {
         Turret activeTrt = GlobalData.activeTurret;
         if (activeTrt != null) {
+            int levelToUse = activeTrt.level - 1;
             if (shortIcon != null) {
                 if (shortIcons != null && shortIcons.Length > 0) {
-                    shortIcon.sprite = shortIcons[activeTrt.level - 1];
+                    int indexToCheck = levelToUse >= 0 && levelToUse <= (shortIcons.Length - 1) ? levelToUse : (shortIcons.Length - 1);
+                    shortIcon.sprite = shortIcons[indexToCheck];
                 }
             }
             if (longIcon != null) {
                 if (longIcons != null && longIcons.Length > 0) {
-                    longIcon.sprite = longIcons[activeTrt.level - 1];
+                    int indexToCheck = levelToUse >= 0 && levelToUse <= (longIcons.Length - 1) ? levelToUse : (longIcons.Length - 1);
+                    longIcon.sprite = longIcons[indexToCheck];
                 }
             }
         }
@@ -327,13 +337,13 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     if (costGraphic.transform.parent != null) {
                         string parentName = costGraphic.transform.parent.name.ToLower();
                         if (parentName.Contains("upgrade")) {
-                            costToUpgrade = activeTrt.baseCost * (activeTrt.level * 1f);
+                            costToUpgrade = activeTrt.baseCost * (activeTrt.level * gameSettings.UpgradeTurretCostPercentage);
                             string upgradeCostText = $"{costToUpgrade}";
-                            string upgradeCostTextDoubled = $"{costToUpgrade * 2f}";
+                            string upgradeCostTextOnCard = $"{activeTrt.cost + costToUpgrade}";
                             if (upgradeCost != null) upgradeCost.text = upgradeCostText;
-                            SetTexts(upgradeCostTextDoubled, costGraphic);
+                            SetTexts(upgradeCostTextOnCard, costGraphic);
                         } else {
-                            SetTexts($"{activeTrt.baseCost * activeTrt.level}", costGraphic);
+                            SetTexts($"{activeTrt.cost}", costGraphic);
                         }
                     }
                     costGraphic.SetActive(true);
@@ -343,8 +353,8 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             }
         }
         bool upgradeAffordable = costToUpgrade <= GlobalData.startCoins;
-        GlobalData.SetGameObjectTransparency(gameObject, upgradeAffordable ? 1f : 0.5f);
         cardButton.interactable = upgradeAffordable;
+        GlobalData.SetGameObjectTransparency(gameObject, upgradeAffordable ? 1f : 0.5f);
     }
 
     public void SetTexts(string textToSet, GameObject gameObj) {
@@ -363,8 +373,10 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData) {
         if (gameSettings != null) {
-            GlobalData.overrideCursor = true;
-            gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+            if (cardButton != null && cardButton.interactable == true) {
+                GlobalData.overrideCursor = true;
+                gameSettings.SetCursor(gameSettings.hoverCursorTexture);
+            }
         }
     }
 

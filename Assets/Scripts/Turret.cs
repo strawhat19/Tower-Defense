@@ -90,6 +90,9 @@ public class Turret : MonoBehaviour {
         bool show = !alwaysShowRangeIndicator;
         ShowUI(show);
         GlobalData.activeTurret = show && turretPlaced ? this : null;
+        if (GlobalData.activeTurret != null) {
+            GlobalData.Message = $"{GlobalData.activeTurret.displayName} Selected";
+        }
         if (show) CloseOtherTurretsUI();
     }
 
@@ -136,8 +139,9 @@ public class Turret : MonoBehaviour {
     }
 
     void UpdateTurretNameAndCost() {
-        if (nameText != null) nameText.text = $"{displayName}";
-        if (costText != null) costText.text = $"{baseCost * level}";
+        string displayNameToShow = displayName == "MOAB" ? "Mother Of All Bombs" : displayName;
+        if (nameText != null) nameText.text = $"{displayNameToShow}";
+        if (costText != null) costText.text = $"{cost}";
     }
 
     void UpdateTurretLevelIcon() {
@@ -377,19 +381,18 @@ public class Turret : MonoBehaviour {
 
     public void Sell() {
         if (shopTerrain != null && cellPos != null) shopTerrain.VacantGridCell(cellPos);
-        float upgradeCostOfTrt = baseCost * level;
-        GlobalData.startCoins = GlobalData.startCoins + upgradeCostOfTrt;
+        GlobalData.startCoins = GlobalData.startCoins + cost;
         GlobalData.activeTurret = null;
         Destroy(gameObject);
-        string turretSoldMessage = displayName + $" Sold! +{upgradeCostOfTrt}";
+        string turretSoldMessage = displayName + $" Sold! +{cost}";
         GlobalData.Message = turretSoldMessage;
     }
 
-    public void Upgrade(Dictionary<string, object> upgradedTurretStats) {
+    public void Upgrade(Dictionary<string, object> upgradedTurretStats, float costToUpgrade) {
         level = level + 1;
-        float upgradeCost = (float)((level * baseCost) / 2);
         displayName = (string)upgradedTurretStats["Name"];
-        GlobalData.startCoins = GlobalData.startCoins - upgradeCost;
+        GlobalData.startCoins = GlobalData.startCoins - costToUpgrade;
+        cost = cost + costToUpgrade;
         damageMin = (float)upgradedTurretStats["DamageMin"];
         damageMax = (float)upgradedTurretStats["DamageMax"];
         attackSpeed = (float)upgradedTurretStats["AttackSpeed"];
@@ -407,7 +410,7 @@ public class Turret : MonoBehaviour {
         UpdateTurretNameAndCost();
         UpdateTurretLevelIcon();
         SetRangeIndicator();
-        string turretUpgradedMessage = displayName + $" Upgraded! -{upgradeCost}";
+        string turretUpgradedMessage = displayName + $" Upgraded! -{costToUpgrade}";
         GlobalData.Message = turretUpgradedMessage;
     }
 

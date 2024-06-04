@@ -25,7 +25,7 @@ public class SellTurretCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void SetCardForSale() {
         activeTrt = GlobalData.activeTurret;
         string activeTurretName = activeTrt.name.Replace("(Clone)", "");
-        SetTexts($"Sell {activeTrt.displayName} for {activeTrt.baseCost * activeTrt.level}");
+        SetTexts($"Sell {activeTrt.displayName} for {activeTrt.cost}");
         if (turretSprites != null && turretSprites.Length > 0) {
             foreach (var turretSprite in turretSprites) {
                 if (turretSprite.name == $"{activeTurretName} Sprite") {
