@@ -1141,7 +1141,7 @@ MonoBehaviour:
   alwaysShowRangeIndicator: 0
   level: 1
   unlockedAfterWave: 1
-  critChance: 12
+  critChance: 15
   critMultiplier: 2
   attackSpeed: 2
   damageMin: 15

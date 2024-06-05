@@ -13,9 +13,9 @@ public static class GlobalData {
     public static float defaultReward = 10f;
     public static float defaultDamage = 1f;
     public static float defaultSpeed = 2f;
-    public static float startCoins = 500f;
-    public static float startLives = 20f;
     public static string Message = "Click Start Waves To Start Game";
+    public static float startLives = GameSettings.Instance != null ? GameSettings.Instance.startLives : 20f;
+    public static float startCoins = GameSettings.Instance != null ? GameSettings.Instance.startCoins : 300f;
 
     // Wave Management
     public static int maxWaves = 3;

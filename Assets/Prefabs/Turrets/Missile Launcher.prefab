@@ -215,12 +215,12 @@ MonoBehaviour:
   turretPlaced: 0
   alwaysShowRangeIndicator: 0
   level: 1
-  unlockedAfterWave: 1
-  critChance: 15
+  unlockedAfterWave: 2
+  critChance: 20
   critMultiplier: 2
   attackSpeed: 1
-  damageMin: 55
-  damageMax: 85
+  damageMin: 30
+  damageMax: 50
   radiusModifier: 3.33
   cost: 200
   baseCost: 200

@@ -4,6 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameSettings : MonoBehaviour {
+    public static GameSettings Instance;
+    [Header("Game Settings")]
+    public float startLives = 20f;
+    public float startCoins = 300f;
+
     [Header("Turret Settings")]
     public float UpgradeTurretCostPercentage = 0.5f;
     public GameObject sellTurretButtonCard;
@@ -16,6 +21,14 @@ public class GameSettings : MonoBehaviour {
     public Texture2D defaultCursorTexture;
     public Texture2D hoverCursorTexture;
     public Texture2D disabledCursorTexture;
+
+    void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
 
     void Start() {
         SetCursor(defaultCursorTexture);

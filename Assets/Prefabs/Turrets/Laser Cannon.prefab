@@ -392,9 +392,9 @@ MonoBehaviour:
   unlockedAfterWave: 5
   critChance: 10
   critMultiplier: 2
-  attackSpeed: 3.5
-  damageMin: 35
-  damageMax: 50
+  attackSpeed: 5
+  damageMin: 33
+  damageMax: 55
   radiusModifier: 4.15
   cost: 500
   baseCost: 500

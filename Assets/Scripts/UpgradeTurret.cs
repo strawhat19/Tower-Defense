@@ -28,9 +28,17 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public GameObject[] costGraphics;
 
     private Button cardButton;
+    private Turret activeTrt;
+    private GameObject activeTrtObj;
     private GameSettings gameSettings;
+    private bool buttonEnabled = false;
     private float costToUpgrade = 100f;
+    private bool hasActiveTurret = false;
+    private bool upgradeUnlocked = false;
+    private bool upgradeAffordable = false;
+    private string activeTurretType = "Turret";
 
+    // Turret Upgrades
     public Dictionary<string, Dictionary<string, object>> TurretLevels = new Dictionary<string, Dictionary<string, object>> {
         { "Bullet_Gun", new Dictionary<string, object> {
             { "Level", 1 }, 
@@ -41,7 +49,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "DamageMax", 25f }, 
             { "AttackSpeed", 2f },
             { "MaxRange", 15f },
-            { "CriticalStrike", 12f },
+            { "CriticalStrike", 15f },
         }},
         { "Bullets_Gun", new Dictionary<string, object> { 
             { "Level", 2 }, 
@@ -50,9 +58,9 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Name", "Bullets Gun" }, 
             { "DamageMin", 20f }, 
             { "DamageMax", 30f }, 
-            { "AttackSpeed", 3f },
+            { "AttackSpeed", 2.33f },
             { "MaxRange", 17.5f },
-            { "CriticalStrike", 15f },
+            { "CriticalStrike", 20f },
         }},
         { "Bullets_Gunner", new Dictionary<string, object> { 
             { "Level", 3 }, 
@@ -61,53 +69,53 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Name", "Bullets Gunner" }, 
             { "DamageMin", 30f }, 
             { "DamageMax", 35f }, 
-            { "AttackSpeed", 3.5f },
+            { "AttackSpeed", 2.5f },
             { "MaxRange", 19f },
-            { "CriticalStrike", 18f },
+            { "CriticalStrike", 25f },
         }},
         { "Missile_Launcher", new Dictionary<string, object> {
             { "Level", 1 }, 
             { "Cost", 200f }, 
             { "Type", "Missile Launcher" }, 
             { "Name", "Missile Launcher" }, 
-            { "DamageMin", 55f }, 
-            { "DamageMax", 85f }, 
+            { "DamageMin", 30f }, 
+            { "DamageMax", 50f }, 
             { "AttackSpeed", 1f },
             { "MaxRange", 20f },
-            { "CriticalStrike", 15f },
+            { "CriticalStrike", 20f },
         }},
         { "Mortar_Launcher", new Dictionary<string, object> {
             { "Level", 2 }, 
             { "Cost", 400f }, 
             { "Type", "Missile Launcher" }, 
             { "Name", "Mortar Launcher" }, 
-            { "DamageMin", 75f }, 
+            { "DamageMin", 55f }, 
             { "DamageMax", 95f }, 
             { "AttackSpeed", 1.5f },
             { "MaxRange", 22f },
-            { "CriticalStrike", 20f },
+            { "CriticalStrike", 30f },
         }},
         { "MOAB", new Dictionary<string, object> {
             { "Level", 3 }, 
             { "Cost", 600f }, 
             { "Type", "Missile Launcher" }, 
             { "Name", "MOAB" }, 
-            { "DamageMin", 85f }, 
-            { "DamageMax", 115f }, 
+            { "DamageMin", 105f }, 
+            { "DamageMax", 155f }, 
             { "AttackSpeed", 2f },
             { "MaxRange", 25f },
-            { "CriticalStrike", 25f },
+            { "CriticalStrike", 40f },
         }},
         { "Photon_Blaster", new Dictionary<string, object> {
             { "Level", 1 }, 
             { "Cost", 300f }, 
             { "Type", "Photon Blaster" }, 
             { "Name", "Photon Blaster" }, 
-            { "DamageMin", 5f }, 
-            { "DamageMax", 10f }, 
+            { "DamageMin", 7.5f }, 
+            { "DamageMax", 12.5f }, 
             { "AttackSpeed", 10f },
             { "MaxRange", 12f },
-            { "CriticalStrike", 8f },
+            { "CriticalStrike", 10f },
         }},
         { "Photon_Gunner", new Dictionary<string, object> {
             { "Level", 2 }, 
@@ -118,7 +126,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "DamageMax", 15f }, 
             { "AttackSpeed", 12f },
             { "MaxRange", 15f },
-            { "CriticalStrike", 10f },
+            { "CriticalStrike", 15f },
         }},
         { "Photon_Beams", new Dictionary<string, object> {
             { "Level", 3 }, 
@@ -129,7 +137,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "DamageMax", 25f }, 
             { "AttackSpeed", 15f },
             { "MaxRange", 17.5f },
-            { "CriticalStrike", 15f },
+            { "CriticalStrike", 20f },
         }},
         { "Machine_Gun", new Dictionary<string, object> {
             { "Level", 1 }, 
@@ -169,9 +177,9 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Cost", 500f }, 
             { "Type", "Laser Cannon" }, 
             { "Name", "Laser Cannon" }, 
-            { "DamageMin", 35f }, 
-            { "DamageMax", 50f }, 
-            { "AttackSpeed", 3.5f },
+            { "DamageMin", 33f }, 
+            { "DamageMax", 55f }, 
+            { "AttackSpeed", 5f },
             { "MaxRange", 18f },
             { "CriticalStrike", 10f },
         }},
@@ -182,7 +190,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Name", "Laser Phaser" }, 
             { "DamageMin", 50f }, 
             { "DamageMax", 75f }, 
-            { "AttackSpeed", 5f },
+            { "AttackSpeed", 7.5f },
             { "MaxRange", 20f },
             { "CriticalStrike", 12f },
         }},
@@ -193,31 +201,38 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "Name", "Disintegration" }, 
             { "DamageMin", 75f }, 
             { "DamageMax", 100f }, 
-            { "AttackSpeed", 7.5f },
+            { "AttackSpeed", 10f },
             { "MaxRange", 25f },
             { "CriticalStrike", 15f },
         }},
     };
 
     void Start() {
-        gameSettings = FindObjectOfType<GameSettings>();
+        SetAndUpdateRequiredParameters();
         cardButton = gameObject.GetComponent<Button>();
+        gameSettings = FindObjectOfType<GameSettings>();
     }
 
-    public void UpgradeActiveTurret() {
-        Turret activeTrt = GlobalData.activeTurret;
-        GameObject activeTrtObj = activeTrt.gameObject;
-        string activeTurretName = activeTrt.name.Replace("(Clone)", "");
+    void SetAndUpdateRequiredParameters() {
+        hasActiveTurret = GlobalData.activeTurret != null;
+        activeTrt = hasActiveTurret ? GlobalData.activeTurret : null;
+        activeTrtObj = activeTrt != null ? activeTrt.gameObject : null;
+        activeTurretType = activeTrt != null ? activeTrt.name.Replace("(Clone)", "") : "Turret";
+    }
 
-        int levelToGoTo = activeTrt.level;
-        if (activeTrt.level < 3) levelToGoTo = activeTrt.level + 1; 
-        var upgradedTurretStats = GetTurretLevel(activeTurretName, levelToGoTo);
-        if (upgradedTurretStats != null) {
-            if (GlobalData.startCoins >= costToUpgrade) {
-                activeTrt.Upgrade(upgradedTurretStats, costToUpgrade);
-            } else {
-                string cantAffordUpgradeMessage = "Cannot Afford This Upgrade";
-                GlobalData.Message = cantAffordUpgradeMessage;
+    // On Upgrade Button Click
+    public void UpgradeActiveTurret() {
+        if (hasActiveTurret && activeTurretType != "Turret") {
+            int levelToGoTo = activeTrt.level;
+            if (activeTrt.level < 3) levelToGoTo = activeTrt.level + 1; 
+            var upgradedTurretStats = GetTurretLevel(activeTurretType, levelToGoTo);
+            if (upgradedTurretStats != null) {
+                if (buttonEnabled) {
+                    activeTrt.Upgrade(upgradedTurretStats, costToUpgrade);
+                } else {
+                    string cantUpgradeYetMessage = "Can't Upgrade Yet";
+                    GlobalData.Message = cantUpgradeYetMessage;
+                }
             }
         }
     }
@@ -230,14 +245,25 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 return turretData;
             }
         }
-        return null; // Return null if no match is found
+        return null;
     }
 
     public void SetUpgradeOptions() {
+        SetAndUpdateRequiredParameters();
         SetCurrentCard();
         SetUpgradeCard();
         SetUpgradeCosts();
         SetUpgradeLook();
+        SetButtonEnabled();
+    }
+
+    public void SetButtonEnabled() {
+        upgradeUnlocked = GlobalData.currentWave > activeTrt.level;
+        upgradeAffordable = costToUpgrade <= GlobalData.startCoins;
+        buttonEnabled = upgradeAffordable && upgradeUnlocked;
+
+        cardButton.interactable = buttonEnabled;
+        GlobalData.SetGameObjectTransparency(gameObject, buttonEnabled ? 1f : 0.5f);
     }
 
     public Color HexToColor(string hex) {
@@ -246,13 +272,12 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return color;
         } else {
             Debug.LogWarning("Invalid hex color code");
-            return Color.white; // Return white if hex code is invalid
+            return Color.white;
         }
     }
 
     public void SetUpgradeLook() {
-        Turret activeTrt = GlobalData.activeTurret;
-        if (activeTrt != null) {
+        if (hasActiveTurret) {
             int levelToUse = activeTrt.level - 1;
             if (shortIcon != null) {
                 if (shortIcons != null && shortIcons.Length > 0) {
@@ -278,83 +303,78 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     public void SetCurrentCard() {
-        Turret activeTrt = GlobalData.activeTurret;
-        GameObject activeTrtObj = activeTrt.gameObject;
-        string activeTurretName = activeTrt.name.Replace("(Clone)", "");
+        if (hasActiveTurret) {
+            string maxRangeString = "15";
+            CircleCollider2D maxRangeIndicator = activeTrtObj.GetComponent<CircleCollider2D>();
+            if (maxRangeIndicator != null) maxRangeString = $"{maxRangeIndicator.radius}";
 
-        string maxRangeString = "15";
-        CircleCollider2D maxRangeIndicator = activeTrtObj.GetComponent<CircleCollider2D>();
-        if (maxRangeIndicator != null) maxRangeString = $"{maxRangeIndicator.radius}";
-
-        if (currentNameText != null) currentNameText.text = $"{activeTrt.displayName}";
-        if (currentDamageText != null) {
-            currentDamageText.text = $"{activeTrt.damageMin} - {activeTrt.damageMax} Damage";
-        }
-        if (currentAttackSpeedText != null) {
-            currentAttackSpeedText.text = $"{activeTrt.attackSpeed}% Attack Speed";
-        }
-        if (currentMaxRangeText != null) currentMaxRangeText.text = $"{maxRangeString} Max Range";
-        if (currentCritChanceText != null) {
-            currentCritChanceText.text = $"{activeTrt.critChance}% Critical Strike";
+            if (currentNameText != null) currentNameText.text = $"{activeTrt.displayName}";
+            if (currentDamageText != null) {
+                currentDamageText.text = $"{activeTrt.damageMin} - {activeTrt.damageMax} Damage";
+            }
+            if (currentAttackSpeedText != null) {
+                currentAttackSpeedText.text = $"{activeTrt.attackSpeed}% Attack Speed";
+            }
+            if (currentMaxRangeText != null) currentMaxRangeText.text = $"{maxRangeString} Max Range";
+            if (currentCritChanceText != null) {
+                currentCritChanceText.text = $"{activeTrt.critChance}% Critical Strike";
+            }
         }
     }
 
     public void SetUpgradeCard() {
-        Turret activeTrt = GlobalData.activeTurret;
-        GameObject activeTrtObj = activeTrt.gameObject;
-        string activeTurretName = activeTrt.name.Replace("(Clone)", "");
-
-        if (activeTrt.level < 3) {
-            var upgradedTurretStats = GetTurretLevel(activeTurretName, activeTrt.level + 1);
-            if (upgradedTurretStats != null) SetUpgradeCardStats(upgradedTurretStats);
-        } else {
-            var upgradedTurretStats = GetTurretLevel(activeTurretName, activeTrt.level);
-            if (upgradedTurretStats != null) SetUpgradeCardStats(upgradedTurretStats);
+        if (hasActiveTurret) {
+            if (activeTrt.level < 3) {
+                var upgradedTurretStats = GetTurretLevel(activeTurretType, activeTrt.level + 1);
+                if (upgradedTurretStats != null) SetUpgradeCardStats(upgradedTurretStats);
+            } else {
+                var upgradedTurretStats = GetTurretLevel(activeTurretType, activeTrt.level);
+                if (upgradedTurretStats != null) SetUpgradeCardStats(upgradedTurretStats);
+            }
         }
     }
 
     public void SetUpgradeCardStats(Dictionary<string, object> upgradedTurretStats) {
-        if (upgradedNameText != null) upgradedNameText.text = $"{upgradedTurretStats["Name"]}";
-        if (upgradedDamageText != null) {
-            string damageText = $"{upgradedTurretStats["DamageMin"]} - {upgradedTurretStats["DamageMax"]} Damage";
-            upgradedDamageText.text = damageText;
-        }
-        if (upgradedAttackSpeedText != null) {
-            upgradedAttackSpeedText.text = $"{upgradedTurretStats["AttackSpeed"]}% Attack Speed";
-        }
-        if (upgradedMaxRangeText != null) upgradedMaxRangeText.text = $"{upgradedTurretStats["MaxRange"]} Max Range";
-        if (upgradedCritChanceText != null) {
-            upgradedCritChanceText.text = $"{upgradedTurretStats["CriticalStrike"]}% Critical Strike";
+        if (hasActiveTurret) {
+            if (upgradedNameText != null) upgradedNameText.text = $"{upgradedTurretStats["Name"]}";
+            if (upgradedDamageText != null) {
+                string damageText = $"{upgradedTurretStats["DamageMin"]} - {upgradedTurretStats["DamageMax"]} Damage";
+                upgradedDamageText.text = damageText;
+            }
+            if (upgradedAttackSpeedText != null) {
+                upgradedAttackSpeedText.text = $"{upgradedTurretStats["AttackSpeed"]}% Attack Speed";
+            }
+            if (upgradedMaxRangeText != null) upgradedMaxRangeText.text = $"{upgradedTurretStats["MaxRange"]} Max Range";
+            if (upgradedCritChanceText != null) {
+                upgradedCritChanceText.text = $"{upgradedTurretStats["CriticalStrike"]}% Critical Strike";
+            }
         }
     }
 
     public void SetUpgradeCosts() {
-        Turret activeTrt = GlobalData.activeTurret;
-        string activeTurretName = activeTrt.name.Replace("(Clone)", "");
-        if (costGraphics != null && costGraphics.Length > 0) {
-            foreach (var costGraphic in costGraphics) {
-                if (costGraphic.name == $"{activeTurretName} Cost Graphic") {
-                    if (costGraphic.transform.parent != null) {
-                        string parentName = costGraphic.transform.parent.name.ToLower();
-                        if (parentName.Contains("upgrade")) {
-                            costToUpgrade = activeTrt.baseCost * (activeTrt.level * gameSettings.UpgradeTurretCostPercentage);
-                            string upgradeCostText = $"{costToUpgrade}";
-                            string upgradeCostTextOnCard = $"{activeTrt.cost + costToUpgrade}";
-                            if (upgradeCost != null) upgradeCost.text = upgradeCostText;
-                            SetTexts(upgradeCostTextOnCard, costGraphic);
-                        } else {
-                            SetTexts($"{activeTrt.cost}", costGraphic);
+        if (hasActiveTurret) {
+            if (costGraphics != null && costGraphics.Length > 0) {
+                foreach (var costGraphic in costGraphics) {
+                    if (costGraphic.name == $"{activeTurretType} Cost Graphic") {
+                        if (costGraphic.transform.parent != null) {
+                            string parentName = costGraphic.transform.parent.name.ToLower();
+                            if (parentName.Contains("upgrade")) {
+                                costToUpgrade = activeTrt.baseCost * (activeTrt.level * gameSettings.UpgradeTurretCostPercentage);
+                                string upgradeCostText = $"{costToUpgrade}";
+                                string upgradeCostTextOnCard = $"{activeTrt.cost + costToUpgrade}";
+                                if (upgradeCost != null) upgradeCost.text = upgradeCostText;
+                                SetTexts(upgradeCostTextOnCard, costGraphic);
+                            } else {
+                                SetTexts($"{activeTrt.cost}", costGraphic);
+                            }
                         }
+                        costGraphic.SetActive(true);
+                    } else {
+                        costGraphic.SetActive(false);
                     }
-                    costGraphic.SetActive(true);
-                } else {
-                    costGraphic.SetActive(false);
                 }
             }
         }
-        bool upgradeAffordable = costToUpgrade <= GlobalData.startCoins;
-        cardButton.interactable = upgradeAffordable;
-        GlobalData.SetGameObjectTransparency(gameObject, upgradeAffordable ? 1f : 0.5f);
     }
 
     public void SetTexts(string textToSet, GameObject gameObj) {

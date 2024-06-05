@@ -427,10 +427,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0.5
-  maxObjects: 20
+  maxObjects: 50
   enemy: {fileID: 6130411100527635600, guid: a60deb4a4eaffeb4496a090f902c1859, type: 3}
-  health: 250
-  reward: 12
+  health: 500
+  reward: 40
   damage: 1
   speed: 2.75
 --- !u!114 &52358595
@@ -21218,12 +21218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 25
-  maxObjects: 5
+  spawnDelay: 15
+  maxObjects: 15
   enemy: {fileID: 7151867049166236396, guid: 6dba153bdf3894148a2db3c21b045495, type: 3}
   health: 66666
   reward: 1000
-  damage: 4
+  damage: 5
   speed: 0.35
 --- !u!114 &406393707
 MonoBehaviour:
@@ -22982,11 +22982,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1.5
-  maxObjects: 33
+  spawnDelay: 1
+  maxObjects: 35
   enemy: {fileID: 8524807058230731324, guid: 3d88384d255f91549a16680c744804aa, type: 3}
-  health: 125
-  reward: 8
+  health: 100
+  reward: 3
   damage: 1
   speed: 1.25
 --- !u!114 &788005420
@@ -23772,13 +23772,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.75
-  maxObjects: 19
+  spawnDelay: 0.5
+  maxObjects: 33
   enemy: {fileID: 7723692932343303451, guid: cf07c80746848c145a9c7596282bd6f9, type: 3}
   health: 200
-  reward: 10
+  reward: 15
   damage: 1
-  speed: 2.33
+  speed: 3
 --- !u!114 &940617220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23836,13 +23836,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
-  maxObjects: 25
+  spawnDelay: 0.5
+  maxObjects: 30
   enemy: {fileID: 683840796517577071, guid: 9f40db637eaecfa4aa1ccc3e5de89728, type: 3}
   health: 150
-  reward: 7
+  reward: 10
   damage: 1
-  speed: 2.75
+  speed: 3
 --- !u!114 &1002159808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24046,13 +24046,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.75
-  maxObjects: 22
+  spawnDelay: 0.5
+  maxObjects: 30
   enemy: {fileID: 7388792938818321958, guid: 19dcc03519dc7b04a840e73bbac8c632, type: 3}
-  health: 380
-  reward: 4
+  health: 250
+  reward: 20
   damage: 1
-  speed: 1
+  speed: 2.33
 --- !u!114 &1076774708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25276,12 +25276,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0.75
-  maxObjects: 40
+  maxObjects: 35
   enemy: {fileID: 2700143422855060756, guid: 9f4a7e7086810f94bba0c2569d5a3870, type: 3}
-  health: 575
-  reward: 17
+  health: 300
+  reward: 25
   damage: 1
-  speed: 1.5
+  speed: 2.75
 --- !u!114 &1320397633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25647,11 +25647,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.75
-  maxObjects: 30
+  spawnDelay: 0.33
+  maxObjects: 75
   enemy: {fileID: 2786090958754132184, guid: f4eb80e51b140a847acaa168eb0c0c52, type: 3}
-  health: 300
-  reward: 13
+  health: 733
+  reward: 50
   damage: 1
   speed: 3
 --- !u!114 &1419289361
@@ -26252,13 +26252,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
-  maxObjects: 35
+  spawnDelay: 0.5
+  maxObjects: 40
   enemy: {fileID: 8530932818556487183, guid: 651a7dcbd5fed32498abdda4429e4b86, type: 3}
   health: 50
-  reward: 3
+  reward: 4
   damage: 1
-  speed: 1.5
+  speed: 2.5
 --- !u!114 &1516746675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26661,13 +26661,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
-  maxObjects: 25
+  spawnDelay: 0.25
+  maxObjects: 100
   enemy: {fileID: 8489220471443959851, guid: 45996f68d6e5e2149a3841c4c862fab5, type: 3}
-  health: 420
-  reward: 15
+  health: 1000
+  reward: 75
   damage: 1
-  speed: 2.5
+  speed: 1
 --- !u!114 &1656921093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26725,13 +26725,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
-  maxObjects: 35
+  spawnDelay: 0.33
+  maxObjects: 40
   enemy: {fileID: 6732601913314294, guid: 52a7d573fd1338641ba8d5dfd26343a5, type: 3}
-  health: 500
-  reward: 16
+  health: 420
+  reward: 35
   damage: 1
-  speed: 1
+  speed: 2.33
 --- !u!114 &1663446236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27109,13 +27109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.75
-  maxObjects: 30
+  spawnDelay: 0.35
+  maxObjects: 35
   enemy: {fileID: 4063584114238252632, guid: 09fa52086ee37014996030f2ed29b387, type: 3}
   health: 85
-  reward: 5
+  reward: 7
   damage: 1
-  speed: 1.5
+  speed: 2.75
 --- !u!114 &1754480728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32014,7 +32014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21fd3fcdd3bf074a94beb211a76c14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeTurretCostPercentage: 0.5
+  startLives: 20
+  startCoins: 300
+  UpgradeTurretCostPercentage: 1
   sellTurretButtonCard: {fileID: 1311049618}
   currentStatsCard: {fileID: 1707028357}
   upgradeButton: {fileID: 467113717}
@@ -32088,13 +32090,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.75
-  maxObjects: 30
+  spawnDelay: 0.4
+  maxObjects: 33
   enemy: {fileID: 7513705259765654109, guid: c534e9744c5ffab4c933125dad9600e2, type: 3}
   health: 75
-  reward: 4
+  reward: 5
   damage: 1
-  speed: 1.5
+  speed: 2.6
 --- !u!114 &1812859718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39685,13 +39687,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
-  maxObjects: 45
+  spawnDelay: 0.4
+  maxObjects: 66
   enemy: {fileID: 3224346369048156142, guid: a45b568ccef9afc418a3431fe6b8e8a1, type: 3}
-  health: 650
-  reward: 18
+  health: 666
+  reward: 45
   damage: 1
-  speed: 1.2
+  speed: 2.33
 --- !u!114 &2095354589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40049,13 +40051,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.5
-  maxObjects: 20
+  spawnDelay: 0.33
+  maxObjects: 35
   enemy: {fileID: 819412901668981562, guid: e32d7ef2ab39839469df4745b8383159, type: 3}
   health: 350
-  reward: 14
+  reward: 30
   damage: 1
-  speed: 2
+  speed: 2.5
 --- !u!114 &2145503280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84047,7 +84049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: 55 - 85'
+  m_text: 'Damage: 30 - 50'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -94264,21 +94266,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 788005418}
   - {fileID: 1516746673}
   - {fileID: 1812859716}
   - {fileID: 1754480726}
   - {fileID: 8830354600032440079}
-  - {fileID: 788005418}
   - {fileID: 1002159806}
-  - {fileID: 1076774706}
   - {fileID: 940617218}
-  - {fileID: 52358593}
-  - {fileID: 1419289359}
-  - {fileID: 2145503278}
-  - {fileID: 1656921091}
-  - {fileID: 1663446234}
+  - {fileID: 1076774706}
   - {fileID: 1320397631}
+  - {fileID: 2145503278}
+  - {fileID: 1663446234}
+  - {fileID: 52358593}
   - {fileID: 2095354587}
+  - {fileID: 1419289359}
+  - {fileID: 1656921091}
   - {fileID: 406393705}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -97840,12 +97842,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0.5
-  maxObjects: 20
+  maxObjects: 30
   enemy: {fileID: 2081689204272873879, guid: ce3e8be5e7988504c9f5307ce180814b, type: 3}
   health: 100
-  reward: 5
+  reward: 9
   damage: 1
-  speed: 1.5
+  speed: 2.33
 --- !u!224 &8878490465970981541
 RectTransform:
   m_ObjectHideFlags: 0
