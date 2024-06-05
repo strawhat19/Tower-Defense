@@ -429,7 +429,7 @@ MonoBehaviour:
   health: 666
   speed: 3
   maxObjects: 66
-  reward: 45
+  reward: 40
   spawnDelay: 0.5
   damage: 1
   enemy: {fileID: 6130411100527635600, guid: a60deb4a4eaffeb4496a090f902c1859, type: 3}
@@ -21219,10 +21219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 66666
-  speed: 0.5
+  speed: 0.75
   maxObjects: 10
   reward: 1000
-  spawnDelay: 3.5
+  spawnDelay: 5
   damage: 5
   enemy: {fileID: 7151867049166236396, guid: 6dba153bdf3894148a2db3c21b045495, type: 3}
 --- !u!114 &406393707
@@ -22938,7 +22938,7 @@ MonoBehaviour:
   health: 2000
   speed: 2.25
   maxObjects: 150
-  reward: 65
+  reward: 60
   spawnDelay: 0.35
   damage: 1
   enemy: {fileID: 515018150890214836, guid: 21c16230b87351d4d854ae0dfd00c1f5, type: 3}
@@ -23265,8 +23265,8 @@ MonoBehaviour:
   health: 750
   speed: 3
   maxObjects: 75
-  reward: 50
-  spawnDelay: 0.75
+  reward: 45
+  spawnDelay: 0.5
   damage: 1
   enemy: {fileID: 5435418521212459779, guid: f5be9cecee4f87b43813a7d9bf167960, type: 3}
 --- !u!114 &891187051
@@ -23900,10 +23900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 250
+  health: 333
   speed: 3
   maxObjects: 75
-  reward: 15
+  reward: 12
   spawnDelay: 0.5
   damage: 1
   enemy: {fileID: 7723692932343303451, guid: cf07c80746848c145a9c7596282bd6f9, type: 3}
@@ -23967,8 +23967,8 @@ MonoBehaviour:
   health: 1500
   speed: 2.5
   maxObjects: 133
-  reward: 60
-  spawnDelay: 0.4
+  reward: 55
+  spawnDelay: 0.35
   damage: 1
   enemy: {fileID: 1110626770881241762, guid: 7a904f29d1f021149916e4fb0cb64cd4, type: 3}
 --- !u!114 &942018772
@@ -24028,7 +24028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 225
+  health: 300
   speed: 3
   maxObjects: 69
   reward: 10
@@ -24238,10 +24238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 350
   speed: 2.75
   maxObjects: 85
-  reward: 20
+  reward: 15
   spawnDelay: 0.275
   damage: 1
   enemy: {fileID: 7388792938818321958, guid: 19dcc03519dc7b04a840e73bbac8c632, type: 3}
@@ -25467,10 +25467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 350
+  health: 420
   speed: 3
   maxObjects: 50
-  reward: 25
+  reward: 19
   spawnDelay: 0.35
   damage: 1
   enemy: {fileID: 2700143422855060756, guid: 9f4a7e7086810f94bba0c2569d5a3870, type: 3}
@@ -25842,7 +25842,7 @@ MonoBehaviour:
   health: 3333
   speed: 3.33
   maxObjects: 100
-  reward: 70
+  reward: 65
   spawnDelay: 0.33
   damage: 1
   enemy: {fileID: 2786090958754132184, guid: f4eb80e51b140a847acaa168eb0c0c52, type: 3}
@@ -26444,7 +26444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 99
   speed: 2.33
   maxObjects: 69
   reward: 3
@@ -26856,8 +26856,8 @@ MonoBehaviour:
   health: 5555
   speed: 2
   maxObjects: 35
-  reward: 75
-  spawnDelay: 0.25
+  reward: 69
+  spawnDelay: 0.5
   damage: 1
   enemy: {fileID: 8489220471443959851, guid: 45996f68d6e5e2149a3841c4c862fab5, type: 3}
 --- !u!114 &1656921093
@@ -26917,10 +26917,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 420
+  health: 550
   speed: 2.75
-  maxObjects: 69
-  reward: 35
+  maxObjects: 60
+  reward: 30
   spawnDelay: 0.33
   damage: 1
   enemy: {fileID: 6732601913314294, guid: 52a7d573fd1338641ba8d5dfd26343a5, type: 3}
@@ -32280,8 +32280,8 @@ MonoBehaviour:
   health: 1000
   speed: 2.75
   maxObjects: 100
-  reward: 55
-  spawnDelay: 0.5
+  reward: 50
+  spawnDelay: 0.4
   damage: 1
   enemy: {fileID: 1260647356737756570, guid: f07c769aeb92cfe48bb26fbb2204d36d, type: 3}
 --- !u!114 &1805902507
@@ -39943,10 +39943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 600
   speed: 2.5
   maxObjects: 65
-  reward: 40
+  reward: 35
   spawnDelay: 0.4
   damage: 1
   enemy: {fileID: 3224346369048156142, guid: a45b568ccef9afc418a3431fe6b8e8a1, type: 3}
@@ -40307,10 +40307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8b747d3de20434a9c9f062550cfa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 385
+  health: 500
   speed: 3
   maxObjects: 55
-  reward: 30
+  reward: 22
   spawnDelay: 0.33
   damage: 1
   enemy: {fileID: 819412901668981562, guid: e32d7ef2ab39839469df4745b8383159, type: 3}
@@ -70703,7 +70703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: 5 - 10'
+  m_text: 'Damage: 7.5 - 12.5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -70887,7 +70887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15% Critical Strike
+  m_text: 20% Critical Strike
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -84468,7 +84468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8% Critical Strike
+  m_text: 10% Critical Strike
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -92457,7 +92457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 18 Max Range
+  m_text: 19 Max Range
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -96191,7 +96191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12% Critical Strike
+  m_text: 15% Critical Strike
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -97307,7 +97307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: 35 - 50'
+  m_text: 'Damage: 33 - 55'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

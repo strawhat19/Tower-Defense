@@ -40,17 +40,6 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     // Turret Upgrades
     public Dictionary<string, Dictionary<string, object>> TurretLevels = new Dictionary<string, Dictionary<string, object>> {
-        { "Bullet_Gun", new Dictionary<string, object> {
-            { "Level", 1 }, 
-            { "Cost", 100f },  
-            { "Type", "Bullet Gun" }, 
-            { "Name", "Bullet Gun" }, 
-            { "DamageMin", 15f }, 
-            { "DamageMax", 25f }, 
-            { "AttackSpeed", 2f },
-            { "MaxRange", 15f },
-            { "CriticalStrike", 15f },
-        }},
         { "Bullets_Gun", new Dictionary<string, object> { 
             { "Level", 2 }, 
             { "Cost", 200f }, 
@@ -64,7 +53,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }},
         { "Bullets_Gunner", new Dictionary<string, object> { 
             { "Level", 3 }, 
-            { "Cost", 300f }, 
+            { "Cost", 400f }, 
             { "Type", "Bullet Gun" }, 
             { "Name", "Bullets Gunner" }, 
             { "DamageMin", 30f }, 
@@ -72,17 +61,6 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "AttackSpeed", 2.5f },
             { "MaxRange", 19f },
             { "CriticalStrike", 25f },
-        }},
-        { "Missile_Launcher", new Dictionary<string, object> {
-            { "Level", 1 }, 
-            { "Cost", 200f }, 
-            { "Type", "Missile Launcher" }, 
-            { "Name", "Missile Launcher" }, 
-            { "DamageMin", 30f }, 
-            { "DamageMax", 50f }, 
-            { "AttackSpeed", 1f },
-            { "MaxRange", 20f },
-            { "CriticalStrike", 20f },
         }},
         { "Mortar_Launcher", new Dictionary<string, object> {
             { "Level", 2 }, 
@@ -97,7 +75,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }},
         { "MOAB", new Dictionary<string, object> {
             { "Level", 3 }, 
-            { "Cost", 600f }, 
+            { "Cost", 800f }, 
             { "Type", "Missile Launcher" }, 
             { "Name", "MOAB" }, 
             { "DamageMin", 105f }, 
@@ -105,17 +83,6 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "AttackSpeed", 2f },
             { "MaxRange", 25f },
             { "CriticalStrike", 40f },
-        }},
-        { "Photon_Blaster", new Dictionary<string, object> {
-            { "Level", 1 }, 
-            { "Cost", 300f }, 
-            { "Type", "Photon Blaster" }, 
-            { "Name", "Photon Blaster" }, 
-            { "DamageMin", 7.5f }, 
-            { "DamageMax", 12.5f }, 
-            { "AttackSpeed", 10f },
-            { "MaxRange", 12f },
-            { "CriticalStrike", 10f },
         }},
         { "Photon_Gunner", new Dictionary<string, object> {
             { "Level", 2 }, 
@@ -130,7 +97,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }},
         { "Photon_Beams", new Dictionary<string, object> {
             { "Level", 3 }, 
-            { "Cost", 900f }, 
+            { "Cost", 1200f }, 
             { "Type", "Photon Blaster" }, 
             { "Name", "Photon Beams" }, 
             { "DamageMin", 15f }, 
@@ -138,17 +105,6 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "AttackSpeed", 15f },
             { "MaxRange", 17.5f },
             { "CriticalStrike", 20f },
-        }},
-        { "Machine_Gun", new Dictionary<string, object> {
-            { "Level", 1 }, 
-            { "Cost", 400f }, 
-            { "Type", "Machine Gun" }, 
-            { "Name", "Machine Gun" }, 
-            { "DamageMin", 10f }, 
-            { "DamageMax", 15f }, 
-            { "AttackSpeed", 15f },
-            { "MaxRange", 10f },
-            { "CriticalStrike", 5f },
         }},
         { "Machine_Guns", new Dictionary<string, object> {
             { "Level", 2 }, 
@@ -163,7 +119,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }},
         { "Machine_Gunner", new Dictionary<string, object> {
             { "Level", 3 }, 
-            { "Cost", 1200f }, 
+            { "Cost", 1600f }, 
             { "Type", "Machine Gun" }, 
             { "Name", "Machine Gunner" }, 
             { "DamageMin", 25f }, 
@@ -171,17 +127,6 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "AttackSpeed", 20f },
             { "MaxRange", 15f },
             { "CriticalStrike", 15f },
-        }},
-        { "Laser_Cannon", new Dictionary<string, object> {
-            { "Level", 1 }, 
-            { "Cost", 500f }, 
-            { "Type", "Laser Cannon" }, 
-            { "Name", "Laser Cannon" }, 
-            { "DamageMin", 33f }, 
-            { "DamageMax", 55f }, 
-            { "AttackSpeed", 5f },
-            { "MaxRange", 18f },
-            { "CriticalStrike", 10f },
         }},
         { "Laser_Phaser", new Dictionary<string, object> {
             { "Level", 2 }, 
@@ -192,18 +137,18 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             { "DamageMax", 75f }, 
             { "AttackSpeed", 7.5f },
             { "MaxRange", 20f },
-            { "CriticalStrike", 12f },
+            { "CriticalStrike", 15f },
         }},
         { "Disintegration", new Dictionary<string, object> {
             { "Level", 3 }, 
-            { "Cost", 1500f }, 
+            { "Cost", 2000f }, 
             { "Type", "Laser Cannon" }, 
             { "Name", "Disintegration" }, 
             { "DamageMin", 75f }, 
             { "DamageMax", 100f }, 
             { "AttackSpeed", 10f },
             { "MaxRange", 25f },
-            { "CriticalStrike", 15f },
+            { "CriticalStrike", 20f },
         }},
     };
 
