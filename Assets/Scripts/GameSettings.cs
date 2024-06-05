@@ -5,9 +5,10 @@ using System.Collections.Generic;
 
 public class GameSettings : MonoBehaviour {
     public static GameSettings Instance;
+
     [Header("Game Settings")]
     public float startLives = 20f;
-    public float startCoins = 300f;
+    public float startCoins = 500f;
 
     [Header("Turret Settings")]
     public float UpgradeTurretCostPercentage = 0.5f;

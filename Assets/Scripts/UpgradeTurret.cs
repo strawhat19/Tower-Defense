@@ -230,7 +230,7 @@ public class UpgradeTurret : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 if (buttonEnabled) {
                     activeTrt.Upgrade(upgradedTurretStats, costToUpgrade);
                 } else {
-                    string cantUpgradeYetMessage = "Can't Upgrade Yet";
+                    string cantUpgradeYetMessage = "Can't Upgrade Yet.";
                     GlobalData.Message = cantUpgradeYetMessage;
                 }
             }

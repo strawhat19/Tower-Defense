@@ -134,11 +134,14 @@ public class TilemapInteraction : MonoBehaviour {
         // Get the cost of the turret from its component
         float turretCost = turret.GetComponent<Turret>().baseCost;
         int turretUnlockedAfterWave = turret.GetComponent<Turret>().unlockedAfterWave;
-        turretUnlocked = turretUnlockedAfterWave <= GlobalData.currentWave;
-
-        // Check if the player can afford the turret
+        bool turretWaveUnlocked = turretUnlockedAfterWave <= GlobalData.currentWave;
+        bool turretIsReady = turretUnlockedAfterWave <= (GlobalData.currentWave + 1);
+        bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
+        turretUnlocked = turretWaveUnlocked || (turretIsReady && readyForNextWave);
         canAfford = GlobalData.startCoins >= turretCost;
-        if (turretUnlocked && canAfford) {
+
+        bool turretCanBePlaced = turretUnlocked && canAfford;
+        if (turretCanBePlaced) {
             // Instantiate the turret at the clicked position
             GameObject newTurret = Instantiate(turret, worldPos, Quaternion.identity);
             // Enable the firing logic for the placed turret
@@ -170,13 +173,11 @@ public class TilemapInteraction : MonoBehaviour {
             // Destroy the semi-transparent turret preview
             if (activePreviewTurret != null) Destroy(activePreviewTurret);
 
-            string turretPlacedMessage = turret.name + " placed";
+            string turretPlacedMessage = turret.name + " Placed.";
             GlobalData.Message = turretPlacedMessage;
-        } else if (!turretUnlocked) {
-            GlobalData.Message = turret.name + " will be unlocked after wave #" + turretUnlockedAfterWave;
         } else {
-            string cantAffordTurretMessage = "Cannot afford " + turret.name + ". Cost: " + turretCost + ", Available: " + GlobalData.startCoins;
-            GlobalData.Message = cantAffordTurretMessage;
+            string cantPlaceTurretRightNow = "Can't Place " + turret.name + " Yet.";
+            GlobalData.Message = cantPlaceTurretRightNow;
         }
     }
 

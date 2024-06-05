@@ -228,9 +228,11 @@ public class Enemy : MonoBehaviour {
         AddCoins();
         Invoke("ScaleUp", 0.375f);
         Invoke("Die", 0.55f);
-        if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
+        int numberToShow = wavePosition;
         string enemyName = gameObject.name.Replace("(Clone)", "");
-        GlobalData.Message = enemyName + " #" + wavePosition + " Killed. +" + reward + " Coins";
+        if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
+        if (GlobalData.lastEnemyInWaveDied == true) numberToShow = waveMax;
+        GlobalData.Message = enemyName + " " + wavePosition + "/" + waveMax + " Killed. + " + reward + " Coins.";
     }
 
     void RemoveDamageText() {

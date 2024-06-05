@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipSprite: 1
-  flipInverse: 0
+  flipInverse: 1
   waves: {fileID: 0}
   waveMax: 50
   wavePosition: 1

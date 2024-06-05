@@ -86,9 +86,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
             bool isActiveTurret = turretShop.turret == turret;
             if (turretSettings != null) {
                 int turretUnlockedAfterWave = turretSettings.unlockedAfterWave;
-                turretUnlocked = turretUnlockedAfterWave <= GlobalData.currentWave;
-                // bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
-                // bool turretIsReady = (turretUnlockedAfterWave + 1) <= GlobalData.currentWave;
+                bool turretWaveUnlocked = turretUnlockedAfterWave <= GlobalData.currentWave;
+                bool turretIsReady = turretUnlockedAfterWave <= (GlobalData.currentWave + 1);
+                bool readyForNextWave = GlobalData.lastEnemyInWaveSpawned && GlobalData.lastEnemyInWaveDied;
+                turretUnlocked = turretWaveUnlocked || (turretIsReady && readyForNextWave);
                 if (cardButton != null) cardButton.interactable = turretUnlocked;
                 if (turretUnlocked) {
                     SetStatusIcon(coinIconSprite);
