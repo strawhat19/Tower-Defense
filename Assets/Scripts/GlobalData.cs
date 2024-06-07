@@ -18,6 +18,7 @@ public static class GlobalData {
     public static float startCoins = GameSettings.Instance != null ? GameSettings.Instance.startCoins : 500f;
 
     // Wave Management
+    public static Wave activeWave;
     public static int maxWaves = 3;
     public static int currentWave = 1;
     public static int currentLevel = 1;

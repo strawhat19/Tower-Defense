@@ -16,6 +16,7 @@ public class Waves : MonoBehaviour {
     private int currentWaveIndex = 0;
     private bool gameStarted = false;
     public bool wavesStarted = false;
+    private WaveInfoDisplay waveInfo;
     private bool isWaitingForNextWave = false;
 
     [Header("Waypoints Settings")]
@@ -30,6 +31,7 @@ public class Waves : MonoBehaviour {
     public HandleShapes handleShape = HandleShapes.Circle;
 
     void Start() {
+        waveInfo = FindObjectOfType<WaveInfoDisplay>();
         SetPath();
         SetWaves();
         StartWaves();
@@ -99,10 +101,20 @@ public class Waves : MonoBehaviour {
             GlobalData.lastEnemyInWaveSpawned = false;
             GlobalData.lastEnemyInWaveDied = false;
             waves[currentWaveIndex].SetActive(true);
+            SetActiveWave();
             wavesStarted = true;
             GlobalData.Message = "Wave Started";
         } else {
             GlobalData.Message = "All waves are complete!";
+        }
+    }
+
+    void SetActiveWave() {
+        GlobalData.activeWave = waves[currentWaveIndex].GetComponent<Wave>();
+        if (waveInfo != null && GlobalData.activeWave != null) {
+            if (GlobalData.activeWave.enemy != null) {
+                waveInfo.SetActiveWave(GlobalData.activeWave, GlobalData.activeWave.enemy);
+            }
         }
     }
 

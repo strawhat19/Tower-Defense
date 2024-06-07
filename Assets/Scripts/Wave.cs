@@ -15,11 +15,11 @@ public class Wave : MonoBehaviour {
     private ObjectPooler _pooler;
     private EnemySettings defaultsVsOverride = EnemySettings.UseOverrideValues;
 
+    public float spawnDelay;
+    public int maxObjects = 10;
     public float health = GlobalData.defaultHealth;
     public float speed = GlobalData.defaultSpeed;
-    [SerializeField] private int maxObjects = 10;
     public float reward = GlobalData.defaultReward;
-    [SerializeField] private float spawnDelay;
     public float damage = GlobalData.defaultDamage;
     public GameObject enemy;
 

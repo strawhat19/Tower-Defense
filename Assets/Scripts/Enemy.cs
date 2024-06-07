@@ -232,7 +232,7 @@ public class Enemy : MonoBehaviour {
         string enemyName = gameObject.name.Replace("(Clone)", "");
         if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
         if (GlobalData.lastEnemyInWaveDied == true) numberToShow = waveMax;
-        GlobalData.Message = enemyName + " " + wavePosition + "/" + waveMax + " Killed. + " + reward + " Coins.";
+        GlobalData.Message = enemyName + " " + wavePosition + "/" + waveMax + " Killed.";
     }
 
     void RemoveDamageText() {
