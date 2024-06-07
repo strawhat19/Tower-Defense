@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour {
 
     [Header("Damage")]
     public float damage = GlobalData.defaultDamage;
+    public GameObject damageEffect;
     public TextMeshProUGUI damageText;
     public GameObject damageTextContainer;
     public GameObject damageTextAnimation;
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void Update() {
+        SetDamageEffect(false);
         if (waves != null && waves.waypoints.Length > 0) {
             Move();
         }
@@ -169,8 +171,22 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    void SetDamageEffect(bool play = true) {
+        if (damageEffect != null) {
+            ParticleSystem[] particleSystems = damageEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (ParticleSystem ps in particleSystems) {
+                if (play == true) {
+                    ps.Play();
+                } else {
+                    ps.Stop();
+                }
+            }
+        }
+    }
+
     void TriggerHitAnimation() {
         animator.SetBool("Hit", true);
+        SetDamageEffect(true);
         Invoke("StopHitAnimation", 0.1f);
     }
 

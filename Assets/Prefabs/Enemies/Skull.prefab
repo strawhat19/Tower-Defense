@@ -781,11 +781,11 @@ MonoBehaviour:
   waveMax: 15
   wavePosition: 1
   speed: 3
-  reward: 7.5
+  reward: 1000
   goldTextAnimation: {fileID: 136554868641308931, guid: 35481c759b5f3284c99f0b3b29594466, type: 3}
   goldPopupLocation: {fileID: 1665378497682485746}
-  maxHealth: 75
-  currentHealth: 75
+  maxHealth: 66666
+  currentHealth: 66666
   HealthDisplay: 2
   health: {fileID: 271217574659817145}
   healthText: {fileID: 2302206517583841706}

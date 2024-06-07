@@ -51,6 +51,38 @@ public class AimAndFire : MonoBehaviour {
 
         Debug.Log("Collided with " + collidedWith.name);
     }
+    
+    void OnCollisionEnter2D(Collision2D collidedWith) {
+        // ParticleSystem bulletImpactParticles = bulletImpact.GetComponent<ParticleSystem>();
+        // ParticlePhysicsExtensions.GetCollisionEvents(bulletImpactParticles, collidedWith, particleCollisionEvents);
+        // int evts = bulletParticles.GetCollisionEvents(collidedWith, particleCollisionEvents);
+
+        // for (int i = 0; i < evts; i++) {
+        //     var objectCollidedWith = particleCollisionEvents[i].colliderComponent;
+        //     if (objectCollidedWith.CompareTag("Enemy")) {
+        //         Enemy enemySettings = objectCollidedWith.GetComponent<Enemy>();
+        //         if (enemySettings != null) enemySettings.TakeDamage(0f, false);
+        //     }   
+        // }
+
+        Debug.Log("Collided with " + collidedWith.gameObject.name);
+    }
+
+    void OnParticleCollision2D(GameObject collidedWith) {
+        // ParticleSystem bulletImpactParticles = bulletImpact.GetComponent<ParticleSystem>();
+        // ParticlePhysicsExtensions.GetCollisionEvents(bulletImpactParticles, collidedWith, particleCollisionEvents);
+        int evts = bulletParticles.GetCollisionEvents(collidedWith, particleCollisionEvents);
+
+        for (int i = 0; i < evts; i++) {
+            var objectCollidedWith = particleCollisionEvents[i].colliderComponent;
+            if (objectCollidedWith.CompareTag("Enemy")) {
+                Enemy enemySettings = objectCollidedWith.GetComponent<Enemy>();
+                if (enemySettings != null) enemySettings.TakeDamage(0f, false);
+            }   
+        }
+
+        Debug.Log("Collided with " + collidedWith.name);
+    }
 
     public void StopFiring() {
         if (fireSound != null) fireSound.Stop();

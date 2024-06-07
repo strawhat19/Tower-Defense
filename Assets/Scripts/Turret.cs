@@ -192,7 +192,7 @@ public class Turret : MonoBehaviour {
                 }
                 // float damage = GlobalData.CalculateLevelScaled(damageInRange);
                 if (shootSound != null) shootSound.Play();
-                proj.Seek(target, damageInRange, isCriticalStrike, hitSound);
+                proj.Seek(target, damageInRange, isCriticalStrike, hitSound, this);
             }
         }
     }

@@ -27,9 +27,12 @@ public class WaveInfoDisplay : MonoBehaviour {
         gameSettings = FindObjectOfType<GameSettings>();
     }
 
-    // void Update() {
-        
-    // }
+    public void SetActiveWave(Wave waveInfoToDisplay, GameObject enemyToShow) {
+        if (waveInfoToDisplay != null) activeWave = waveInfoToDisplay;
+        SetEnemyContainer(enemyToShow);
+        SetActiveWaveTexts();
+    }
+
     void SetActiveWaveTexts() {
         if (waveNum != null) waveNum.text = $"Wave {GlobalData.currentWave}";
         if (activeWave != null) {
@@ -77,11 +80,5 @@ public class WaveInfoDisplay : MonoBehaviour {
                 if (rigidbody2D != null) Destroy(rigidbody2D);
             }
         }
-    }
-
-    public void SetActiveWave(Wave waveInfoToDisplay, GameObject enemyToShow) {
-        if (waveInfoToDisplay != null) activeWave = waveInfoToDisplay;
-        SetEnemyContainer(enemyToShow);
-        SetActiveWaveTexts();
     }
 }
