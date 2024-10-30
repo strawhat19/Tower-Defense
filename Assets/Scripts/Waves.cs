@@ -100,6 +100,7 @@ public class Waves : MonoBehaviour {
             GlobalData.currentWave = currentWaveIndex + 1;
             GlobalData.lastEnemyInWaveSpawned = false;
             GlobalData.lastEnemyInWaveDied = false;
+            GlobalData.killed = 0;
             waves[currentWaveIndex].SetActive(true);
             SetActiveWave();
             wavesStarted = true;

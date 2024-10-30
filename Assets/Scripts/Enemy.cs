@@ -212,6 +212,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void AddCoins() {
+        GlobalData.killed = GlobalData.killed + 1;
         GlobalData.startCoins = GlobalData.startCoins + reward;
     }
 
@@ -244,11 +245,11 @@ public class Enemy : MonoBehaviour {
         AddCoins();
         Invoke("ScaleUp", 0.375f);
         Invoke("Die", 0.55f);
-        int numberToShow = wavePosition;
+        int numberToShow = GlobalData.killed;
         string enemyName = gameObject.name.Replace("(Clone)", "");
         if (wavePosition == waveMax) GlobalData.lastEnemyInWaveDied = true;
-        if (GlobalData.lastEnemyInWaveDied == true) numberToShow = waveMax;
-        GlobalData.Message = enemyName + " " + wavePosition + "/" + waveMax + " Killed.";
+        // if (GlobalData.lastEnemyInWaveDied == true || GlobalData.killed >= waveMax) numberToShow = waveMax;
+        GlobalData.Message = enemyName + " " + numberToShow + "/" + waveMax + " Killed.";
     }
 
     void RemoveDamageText() {
